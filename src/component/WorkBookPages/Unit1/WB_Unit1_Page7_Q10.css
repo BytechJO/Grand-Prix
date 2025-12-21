@@ -1,0 +1,59 @@
+/* WB_Unit1_Page7_Q10.css */
+
+
+
+
+
+
+.number-of-q {
+  font-weight: bold;
+  margin-right: 8px;
+  color: #000; /* أسود */
+}
+
+
+
+.example p {
+  color: #000; /* أسود */
+}
+
+.questions-grid {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+
+}
+
+.sentence-row {
+  padding: 10px 0;
+  border-bottom: 1px dashed #e5e7eb;
+}
+
+.sentence-row:last-child {
+  border-bottom: none;
+}
+
+.sentence-label {
+  font-weight: 600;
+  color: #000; /* أسود */
+}
+
+.answer-input {
+  border: 2px solid #d1d5db;
+  transition: all 0.3s;
+  color: #000; /* أسود */
+}
+
+.answer-input:focus {
+  border-color: #9ca3af; /* رمادي بدلاً من الأزرق */
+}
+
+.age-info {
+  min-width: 90px;
+  font-size: 0.9rem;
+  color: #4b5563; /* رمادي غامق */
+}
+
+/* الأزرار - بدون تغيير الشكل أو اللون */
+
+

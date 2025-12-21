@@ -1,0 +1,82 @@
+/* === PAGE CENTERING === */
+.matching-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+
+  padding: 40px 20px;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+
+/* === MAIN COLUMNS CONTAINER === */
+.matching-columns {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+margin-top: 0px;
+  gap: 200px; /* ⭐ مسافة ممتازة للتوصيل */
+  padding: 10px 80px;
+
+  background: #ffffff;
+  border-radius: 24px;
+}
+
+/* === COLUMNS === */
+.left-column,
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+/* === ITEM BOX === */
+.item-box {
+  min-width: 320px;
+  padding: 16px 22px;
+
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* LEFT ITEMS */
+.left-column .item-box {
+  background: linear-gradient(135deg, #5ecad3, #7fe0e8);
+  color: #083344;
+}
+
+/* RIGHT ITEMS */
+.right-column .item-box {
+  background: linear-gradient(135deg, #ffd65a, #ffb703);
+  color: #422006;
+}
+
+/* === HOVER EFFECT === */
+.item-box:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* === CANVAS === */
+canvas {
+  z-index: 1;
+}
+
+
+
+
+.wrong-box {
+  background-color: #ffe5e5 !important;
+  border: 2px solid red !important;
+}
+

@@ -1,0 +1,125 @@
+/* Page5_Q2_SAppeler.css */
+
+/* الحاوية الرئيسية */
+.page-wrapper2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+/* عنوان الصفحة */
+
+
+
+/* صندوق الكلمات */
+.word-bank-container {
+  padding: 1.5rem;
+
+  border-radius: 1rem;
+  border: 2px solid #93c5fd;
+  max-width: 960px;
+  width: 50%;
+  margin-left: 25%;
+  margin-bottom: 5%;
+}
+
+.word-bank-container h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #1d4ed8;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.word-bank-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.word-item {
+  padding: 0.5rem;
+  background-color: #ffffff;
+
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.word-item span:first-child {
+  font-weight: bold;
+  color: #1d4ed8;
+  margin-right: 0.5rem;
+}
+
+/* جدول التصنيف */
+.classification-table-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.classification-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* عمودان متساويان */
+  border: 2px solid #d63384; /* إطار الجدول كامل */
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 960px;
+  width: 100%;
+}
+
+/* عنوان كل عمود */
+.category-column h3 {
+  background-color: #d63384; /* زهري غامق */
+  color: white;
+  text-align: center;
+  padding: 0.75rem;
+  margin: 0;
+}
+
+/* كل الأعمدة */
+.category-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* المدخلات - الخلايا */
+.category-column input {
+  border: 1px solid #d63384; /* حواف زهرية */
+  padding: 0.5rem;
+  text-align: left;
+  font-size: 1rem;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  border-top: 0; /* لظهور الصفوف كجدول متصل */
+}
+
+/* أول خلية في العمود */
+.category-column input:first-child {
+  border-top: 1px solid #d63384; /* للحفاظ على الحد العلوي */
+}
+
+/* ألوان الإجابة */
+.category-column input.correct {
+  background-color: #d4f4dd; /* أخضر فاتح */
+  border-color: #28a745;
+}
+
+.category-column input.wrong {
+  background-color: #f8d7da; /* أحمر فاتح */
+  border-color: #dc3545;
+}
+
+
+/* الخلايا المعطلة */
+.disabled-cell {
+  background-color: #f3f3f3;
+  border: 1px dashed #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}

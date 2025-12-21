@@ -1,0 +1,7 @@
+.correct-input {
+  background-color: #d4f4dd; /* أخضر فاتح */
+}
+
+.wrong-input {
+  background-color: #f8d0d3; /* أحمر فاتح */
+}

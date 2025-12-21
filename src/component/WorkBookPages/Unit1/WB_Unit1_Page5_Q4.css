@@ -1,0 +1,205 @@
+/* صفحة التمرين الرئيسية */
+.page-wrapper {
+  min-height: 100vh;
+
+}
+
+
+
+
+
+/* حاوية التمرين */
+.exercise-container {
+
+ 
+  transition: transform 0.3s ease;
+}
+
+.exercise-container:hover {
+  transform: translateY(-2px);
+}
+
+/* قسم المثال */
+.example-section {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border-left: 4px solid #1976d2;
+}
+
+.example-section h3 {
+  color: #0d47a1;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+/* عنصر الجملة */
+.sentence-item {
+  background: #fafafa;
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.sentence-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: #42a5f5;
+}
+
+.sentence-item:hover {
+  background: #f0f7ff;
+  border-color: #bbdefb;
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.1);
+}
+
+.sentence-label {
+  font-size: 1.1rem;
+  background: #e3f2fd;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.sentence-text {
+  font-size: 1.1rem;
+  color: #263238;
+  line-height: 1.6;
+}
+
+/* شبكة الضمائر */
+.pronouns-grid {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pronoun-btn {
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 2px solid;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.pronoun-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.pronoun-btn:focus::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(20, 20);
+    opacity: 0;
+  }
+}
+
+.pronoun-btn:hover:not(.selected) {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pronoun-btn.selected {
+  box-shadow: 0 2px 10px rgba(33, 150, 243, 0.3);
+  animation: pulse 0.5s ease;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+
+
+/* تصميم متجاوب */
+@media (max-width: 768px) {
+  .page-wrapper {
+    padding: 1rem;
+  }
+  
+  .header-title-page8 {
+    margin-left: 0 !important;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  
+  .pronouns-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  
+  
+  .sentence-item {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .sentence-label {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .pronouns-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .pronoun-btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,225 @@
+/* نسخة مصغرة للسكور كارد على اليمين */
+.score-card-container {
+  position: fixed;
+  top: 80px;
+  right: 40px;
+  width: 220px;
+  max-width: 30%;
+  z-index: 9999;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.score-card-enhanced {
+  width: 100%;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.8s ease-out;
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(135deg, #430f68, #6a1fb3);
+}
+
+.score-card-enhanced:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.score-header {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.score-icon {
+  font-size: 28px;
+  margin-bottom: 6px;
+  animation: bounce 1s ease infinite alternate;
+}
+
+.score-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+
+.score-subtitle {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.score-content {
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.score-value-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 12px;
+}
+
+.score-main-value {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.score-total {
+  font-size: 18px;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.score-percentage {
+  font-size: 18px;
+  font-weight: 700;
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 4px 10px;
+  border-radius: 40px;
+}
+
+.score-progress {
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.score-progress-bar {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1s ease-out;
+  background: linear-gradient(to right, #430f68, #6a1fb3);
+}
+
+.score-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  gap: 8px;
+}
+
+.stat-item {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 8px;
+  text-align: center;
+  backdrop-filter: blur(4px);
+  transition: transform 0.2s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-2px);
+}
+
+.stat-label {
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  opacity: 0.9;
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.score-message {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.retry-button {
+  display: none; /* إخفاء زر إعادة الاختبار في النسخة المصغرة */
+}
+
+.score-decoration {
+  display: none; /* إخفاء الزخارف */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-5px);
+  }
+}
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.5s infinite;
+}
+
+/* ألوان النسخة المصغرة */
+.score-card-enhanced.excellent,
+.score-card-enhanced.very-good,
+.score-card-enhanced.good,
+.score-card-enhanced.average,
+.score-card-enhanced.poor,
+.score-card-enhanced.very-poor {
+  background: linear-gradient(135deg, #430f68, #6a1fb3);
+}
+
+@media (max-width: 480px) {
+  .score-card-container {
+    width: 90%;
+    right: 5%;
+    top: 10px;
+  }
+
+  .score-main-value {
+    font-size: 28px;
+  }
+
+  .score-percentage {
+    font-size: 16px;
+    padding: 3px 8px;
+  }
+
+  .score-stats {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+.score-card-container {
+  position: fixed;
+  top: 80px;
+  right: 40px;
+  width: 220px;
+  max-width: 30%;
+  z-index: 9999;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: grab; /* يجعل المؤشر يشير إلى إمكانية السحب */
+}

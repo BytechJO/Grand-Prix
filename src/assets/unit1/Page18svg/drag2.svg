@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 218 116.43">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #cb2026;
+      }
+
+      .cls-3 {
+        fill: #213065;
+      }
+
+      .cls-4 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath-3);
+      }
+
+      .cls-6 {
+        clip-path: url(#clippath-4);
+      }
+
+      .cls-7 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-8 {
+        clip-path: url(#clippath-5);
+      }
+
+      .cls-9 {
+        fill: #fff;
+      }
+
+      .cls-10 {
+        opacity: .95;
+      }
+
+      .cls-11 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" width="218" height="116.43"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <path class="cls-1" d="M4.27,1s-3.27,0-3.27,3.27v107.89s0,3.27,3.27,3.27h209.46s3.27,0,3.27-3.27V4.27s0-3.27-3.27-3.27H4.27Z"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <path class="cls-1" d="M4.27,1s-3.11,0-3.26,3.03v108.27c.04.62.4,3.13,3.26,3.13h209.46s3.27,0,3.27-3.27V4.27s0-3.27-3.27-3.27H4.27Z"/>
+    </clipPath>
+    <clipPath id="clippath-3">
+      <path class="cls-1" d="M4.27,1s-3.27,0-3.27,3.27v107.89s0,3.27,3.27,3.27h209.46s3.27,0,3.27-3.27V4.27s0-3.27-3.27-3.27H4.27Z"/>
+    </clipPath>
+    <clipPath id="clippath-4">
+      <path class="cls-1" d="M4.27,1s-3.11,0-3.26,3.03v108.27c.04.62.4,3.13,3.26,3.13h209.46s3.27,0,3.27-3.27V4.27s0-3.27-3.27-3.27H4.27Z"/>
+    </clipPath>
+    <clipPath id="clippath-5">
+      <path class="cls-1" d="M4.27,1s-3.27,0-3.27,3.27v107.89s0,3.27,3.27,3.27h209.46s3.27,0,3.27-3.27V4.27s0-3.27-3.27-3.27H4.27Z"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g class="cls-10">
+      <g class="cls-11">
+        <path class="cls-9" d="M4.27,1S1,1,1,4.27v107.89s0,3.27,3.27,3.27h209.46s3.27,0,3.27-3.27V4.27s0-3.27-3.27-3.27H4.27Z"/>
+        <g class="cls-4">
+          <polygon class="cls-3" points="217 37.83 217 8.97 169.21 37.83 217 37.83"/>
+          <polygon class="cls-3" points="217 109.69 217 81.03 169.29 81.03 217 109.69"/>
+          <polygon class="cls-3" points="192.41 -5.37 127.09 -5.37 127.09 34.07 192.41 -5.37"/>
+        </g>
+        <g class="cls-7">
+          <polygon class="cls-3" points="127.09 124.23 192.83 124.23 127.09 84.73 127.09 124.23"/>
+          <polygon class="cls-3" points="1 81.03 1 110.21 49.33 81.03 1 81.03"/>
+        </g>
+        <g class="cls-5">
+          <polygon class="cls-3" points="26.12 124.23 91.06 124.23 91.06 85.01 26.12 124.23"/>
+        </g>
+        <g class="cls-6">
+          <polygon class="cls-3" points="91.06 -5.37 25.47 -5.37 91.06 34.04 91.06 -5.37"/>
+          <polygon class="cls-3" points="1 8.98 1 37.83 49.01 37.83 1 8.98"/>
+          <polygon class="cls-9" points="1 72.39 1 81.03 49.33 81.03 1 110.21 1 124.23 73 81.03 89.1 81.03 17.1 124.23 26.12 124.23 91.06 85.01 91.06 124.23 98.2 124.23 98.2 72.39 1 72.39"/>
+          <polygon class="cls-9" points="119.8 124.23 127.09 124.23 127.09 84.73 192.83 124.23 217 124.23 145 81.03 161.1 81.03 217 114.57 217 109.69 169.29 81.03 217 81.03 217 72.39 119.8 72.39 119.8 124.23"/>
+          <polygon class="cls-9" points="98.2 -5.37 91.06 -5.37 91.06 34.04 25.47 -5.37 1 -5.37 73 37.83 56.9 37.83 1 4.29 1 8.98 49.01 37.83 1 37.83 1 46.47 98.2 46.47 98.2 -5.37"/>
+          <polygon class="cls-9" points="145 37.83 128.9 37.83 200.9 -5.37 192.41 -5.37 127.09 34.07 127.09 -5.37 119.8 -5.37 119.8 46.47 217 46.47 217 37.83 169.2 37.83 217 8.97 217 -5.37 145 37.83"/>
+          <polygon class="cls-2" points="119.8 -5.37 98.2 -5.37 98.2 46.47 1 46.47 1 72.39 98.2 72.39 98.2 124.23 119.8 124.23 119.8 72.39 217 72.39 217 46.47 119.8 46.47 119.8 -5.37"/>
+          <polygon class="cls-2" points="73 37.83 1 -5.37 1 4.29 56.9 37.83 73 37.83"/>
+          <polygon class="cls-2" points="145 37.83 217 -5.37 200.9 -5.37 128.9 37.83 145 37.83"/>
+          <polygon class="cls-2" points="73 81.03 1 124.23 17.1 124.23 89.1 81.03 73 81.03"/>
+        </g>
+        <g class="cls-8">
+          <polygon class="cls-2" points="145 81.03 217 124.23 217 114.57 161.1 81.03 145 81.03"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

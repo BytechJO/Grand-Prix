@@ -1,0 +1,94 @@
+/* ======== Questions Grid ======== */
+.Ex {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* صورتين في كل صف */
+  gap: 1rem;
+  justify-items: center;
+}
+
+.photo-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.photo-box img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  transition: all 0.2s ease;
+}
+
+.photo-box img:hover {
+  transform: scale(1.05);
+  border-color: #430f68;
+}
+
+/* ======== Emoji Buttons ======== */
+.emoji-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.emoji-btn {
+  width: 36px;
+  height: 36px;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emoji-btn img {
+  width: 24px;
+  height: 24px;
+}
+
+.emoji-btn.selected {
+  border-color: #430f68;
+  background-color: #f0e6fa;
+}
+
+.emoji-btn.correct {
+  border-color: green;
+  background-color: #d4f5d4;
+}
+
+.emoji-btn.wrong {
+  border-color: red;
+  background-color: #f5d4d4;
+}
+
+.emoji-btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ======== Responsive ======== */
+@media (max-width: 480px) {
+  .Ex {
+    grid-template-columns: 1fr; /* صورة واحدة في كل صف على الموبايل */
+  }
+
+  .photo-box img {
+    width: 200px;
+    height: 100px;
+  }
+
+  .emoji-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .emoji-btn img {
+    width: 20px;
+    height: 20px;
+  }
+}

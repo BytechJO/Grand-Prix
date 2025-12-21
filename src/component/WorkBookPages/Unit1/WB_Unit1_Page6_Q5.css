@@ -1,0 +1,39 @@
+.page5Q5 {
+    display: flex;
+margin-left: 20%;
+    align-items: flex-start; /* محاذاة من الأعلى */
+    width: 70%;
+    height: 70vh;
+    gap: 20px; /* مسافة بين الأعمدة */
+    flex-direction: row;
+}
+
+/* العمود الخاص بالـ inputs */
+.inputs-column {
+    width: 45%; /* يمكن تعديل العرض حسب الحاجة */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* المسافة بين كل input */
+}
+
+
+
+.inputs-column input {
+    border-bottom: 2px solid black;
+    padding: 5px 0;
+    width: 50%; /* عرض الفراغ */
+}
+
+/* العمود الخاص بالصورة */
+.imgQ5wb {
+    width: 45%; /* يمكن تعديل العرض حسب الحاجة */
+    display: flex;
+    justify-content: center; /* لوضع الصورة في الوسط داخل العمود */
+    align-items: center;
+}
+
+.imgQ5wb img {
+    width: 100%; /* الصورة تشغل كامل العمود */
+    height: auto; /* تحافظ على النسبة */
+    object-fit: contain; /* لتجنب التشويه */
+}

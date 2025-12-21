@@ -1,0 +1,121 @@
+/* Q5U1.css - Styles for the avoir/être exercise */
+
+.page-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+
+}
+
+
+
+
+
+.number-of-q {
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 1.3rem;
+}
+
+/* مثال توضيحي */
+.example-box {
+
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  border-right: 4px solid #3498db;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.example-text {
+  font-size: 1.1rem;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.correct-answer {
+  color: #27ae60;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* حاوية الأسئلة */
+.questions-container {
+  width: 60%;
+  margin-bottom: 30px;
+}
+
+.question-row1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.question-item {
+  flex: 1;
+  min-width: 150px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+
+
+.sentence {
+  font-size: 1.1rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.answer-input {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  transition: all 0.3s;
+  background-color: white;
+}
+
+.answer-input:focus {
+  border-color: #73C8D2;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(115, 200, 210, 0.2);
+}
+
+.answer-input::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+
+
+
+
+
+/* تصميم متجاوب */
+@media (max-width: 768px) {
+  .header-title-page8 {
+    margin-left: 0 !important;
+    text-align: center;
+  }
+  
+  .question-row1 {
+    flex-direction: column;
+  }
+  
+  .question-item {
+    min-width: 50%;
+  }
+  
+
+  
+ 
+}
