@@ -1,0 +1,48 @@
+.page-wrapper1 {
+  width: 100%;
+  padding: 20px;
+}
+
+
+
+.question-container {
+  display: flex;
+  flex-direction: row-reverse; /* ← يعكس الاتجاه */
+  gap: 40px;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+
+.image-box img {
+  width: 340px; /* كانت 260px */
+  height: auto;
+}
+
+
+.mcq-box {
+  flex: 1;
+}
+
+.question-block {
+  margin-bottom: 20px;
+}
+
+.question-block p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.option {
+  display: block;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.option input {
+  margin-right: 8px;
+}
+
+
+
+

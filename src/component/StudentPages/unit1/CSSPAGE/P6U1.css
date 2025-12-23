@@ -45,6 +45,16 @@
     height: 70%;
     margin-top: 15px;
 }
+.q6-body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-wrap: nowrap;
+    gap: 5px;
+    width: 100%;
+    height: 70%;
+    margin-top: 15px;
+}
 
 .q5-character-group {
     display: flex;

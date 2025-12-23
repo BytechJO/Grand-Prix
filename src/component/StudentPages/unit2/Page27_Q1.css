@@ -1,0 +1,75 @@
+.page-wrapper1 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.item-box {
+  padding: 8px;
+  border: 1px solid #000;
+  border-radius: 4px;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100%; /* أو أي ارتفاع تريده للصورة الكبيرة */
+}
+
+.exercise-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* يحافظ على نسبة العرض إلى الارتفاع */
+}
+
+
+.exercise-image {
+  width: 100%;
+  height: 100%;
+}
+
+.exercise-input {
+  width: 45px;
+  height: 35px;
+  text-align: center;
+  font-weight: bold;
+  border: 2px solid #000;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+}
+
+/* زر التحكم */
+.action-buttons-container button {
+  padding: 8px 12px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.try-again-button {
+  background-color: #f0ad4e;
+  color: white;
+  border: none;
+}
+
+.show-answer-btn.swal-continue {
+  background-color: #5bc0de;
+  color: white;
+  border: none;
+}
+
+.check-button2 {
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+}

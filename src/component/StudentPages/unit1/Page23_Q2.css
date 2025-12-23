@@ -1,0 +1,103 @@
+/* ===== Layout ===== */
+
+.tf-layout {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  margin-left: 30%;
+  width: 100%;
+  
+}
+
+/* ===== Image Side ===== */
+
+.image-side {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.image-side img {
+  width: 60%;
+
+  height: 50%;
+}
+
+/* ===== Questions Side ===== */
+
+.questions-side {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* ===== True / False Question ===== */
+
+.tf-question {
+
+  padding: 5px 22px;
+  border-radius: 10px;
+}
+
+.tf-question p {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+/* ===== Buttons ===== */
+
+.tf-question button {
+  padding: 5px 15px;
+  margin-right: 12px;
+  border-radius: 20px;
+  border: 2px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+/* عند الاختيار فقط */
+.tf-question button.selected {
+  background-color: #e3f2fd;
+  border-color: #2196f3;
+  color: #0d47a1;
+}
+
+/* بعد التحقق - إجابة صحيحة */
+.tf-question button.correct {
+  background-color: #e6f4ea;
+  border-color: #2e7d32;
+  color: #2e7d32;
+}
+
+/* بعد التحقق - إجابة خاطئة */
+.tf-question button.wrong {
+  background-color: #fdecea;
+  border-color: #c62828;
+  color: #c62828;
+}
+
+/* ===== Action Buttons ===== */
+
+
+
+/* ===== Responsive ===== */
+
+@media (max-width: 900px) {
+  .tf-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-side img {
+    max-width: 300px;
+  }
+
+  .questions-side {
+    width: 100%;
+  }
+}

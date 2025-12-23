@@ -9,7 +9,7 @@ import { IoMdSettings } from "react-icons/io";
 import { TbMessageCircle } from "react-icons/tb";
 import ValidationAlert from "../../Popup/ValidationAlert";
 import ScoreCardEnhanced from "../../Popup/ScoreCard"; // عدّل المسار حسب مكانه
-import './CSSPAGE/Section.css'
+
 
 import "./CSSPAGE/Q5U1.css"
 const images = [
@@ -258,20 +258,7 @@ className="header-title-page1 w-full text-left mb-4"
         <button onClick={checkAnswer} className="check-button2">Check Answer ✓</button>
       </div>
 
-<div className="section-overlay">
-  <div className="section-banner">
 
-    <div className="orange-bg"></div>
-
-    <div className="section-card">
-      <span className="section-text">Section</span>
-      <span className="section-letter">A</span>
-    </div>
-
-    <div className="title-text">Salut!</div>
-
-  </div>
-</div>
 
 
     </div>

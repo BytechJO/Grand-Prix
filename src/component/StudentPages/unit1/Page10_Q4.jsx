@@ -302,20 +302,7 @@ className="header-title-page1 w-full text-left mb-4"
     </div>
   </div>
 </div>
-<div className="section-overlay">
-  <div className="section-banner">
 
-    <div className="orange-bg"></div>
-
-    <div className="section-card">
-      <span className="section-text">Section</span>
-      <span className="section-letter">B</span>
-    </div>
-
-    <div className="title-text">Ça va ?</div>
-
-  </div>
-</div>
 <div className="spaces"></div>
 {score && <ScoreCardEnhanced score={score} />}
       {/* Action Buttons */}

@@ -173,20 +173,7 @@ className="header-title-page1 w-full text-left mb-4"
       <div className="spaces"></div>
       <div className="spaces"></div>
       <div className="spaces"></div>
-<div className="section-overlay">
-  <div className="section-banner">
 
-    <div className="orange-bg"></div>
-
-    <div className="section-card">
-      <span className="section-text">Section</span>
-      <span className="section-letter">C</span>
-    </div>
-
-    <div className="title-text">Mon âge</div>
-
-  </div>
-</div>
       {/* Action Buttons */}
       <div className="action-buttons-container">
         <button onClick={resetExercise} className="try-again-button">Start Again ↻</button>

@@ -1,13 +1,12 @@
 import React, { useState, useRef } from "react";
-import CD6_Pg8_Instruction1_AdultLady from "../../../assets/unit1/SoundU1/U1SAQ5.mp3";
+import CD6_Pg8_Instruction1_AdultLady from "../../../assets/unit1/SoundU1/ScQ4.mp3";
 import { FaPlay, FaPause } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import ValidationAlert from "../../Popup/ValidationAlert";
-import "./CSSPAGE/Q5U1.css";
-import img1 from "../../../assets/unit1/imgs/page6/1.svg";
-import img2 from "../../../assets/unit1/imgs/page6/2.svg";
+import "./page14_Q4.css";
+import imgbackground from "../../../assets/unit1/sectionD/14png.png";
 import { TbMessageCircle } from "react-icons/tb";
-import ScoreCardEnhanced from "../../Popup/ScoreCard"; // عدّل المسار حسب مكانه
+import ScoreCardEnhanced from "../../Popup/ScoreCard";
 
 const Page5_Q1_CleanAudio = () => {
   const audioRef = useRef(null);
@@ -16,11 +15,27 @@ const Page5_Q1_CleanAudio = () => {
   const [duration, setDuration] = useState(0);
   const [showSettings, setShowSettings] = useState(false);
   const [volume, setVolume] = useState(1);
-  const [score, setScore] = useState(null); // لتخزين عدد الإجابات الصحيحة وإجمالي الأسئلة
+  const [score, setScore] = useState(null);
 
-  // ✅ ANSWERS
-  const [boyName, setBoyName] = useState("");
-  const [girlName, setGirlName] = useState("");
+  // IMAGE QUESTION
+  const [imageSelections, setImageSelections] = useState([null, null, null]);
+  const [checkedMarks, setCheckedMarks] = useState(false);
+
+  const imageBoxes = [
+    { top: "27%", left: "15%" },
+    { top: "40%", left: "10%" },
+    { top: "54%", left: "27%" },
+  ];
+
+  const correctBoxes = [1, 2, 3]; // المربعات الصحيحة حسب ترتيبك
+
+  // عند اختيار المربع
+  const handleImageClick = (idx) => {
+    if (checkedMarks) return; // منع التغيير بعد التحقق
+    const newSelections = [...imageSelections];
+    newSelections[idx] = idx + 1; // حفظ رقم المربع (1,2,3)
+    setImageSelections(newSelections);
+  };
 
   const togglePlay = () => {
     const audio = audioRef.current;
@@ -45,214 +60,165 @@ const Page5_Q1_CleanAudio = () => {
 
   // ✅ CHECK ANSWER
   const checkAnswer = () => {
-    const correctBoyName = "Antoine";
-    const correctGirlName = "Emma";
+    let correctCount = 0;
 
-    if (!boyName.trim() || !girlName.trim()) {
-      ValidationAlert.info("Attention!", "Veuillez remplir les deux champs.");
-      return;
-    }
+    imageSelections.forEach((val) => {
+      if (correctBoxes.includes(val)) correctCount++;
+    });
 
-    const isBoyCorrect =
-      boyName.trim().toLowerCase() === correctBoyName.toLowerCase();
-    const isGirlCorrect =
-      girlName.trim().toLowerCase() === correctGirlName.toLowerCase();
-
-    const correctCount = (isBoyCorrect ? 1 : 0) + (isGirlCorrect ? 1 : 0);
-    const total = 2;
-
-    // ✅ تحديث ScoreCardEnhanced
+    const total = correctBoxes.length;
     setScore({ correct: correctCount, total });
+    setCheckedMarks(true);
 
-    // التنبيهات
+    const newSelections = imageSelections.map(val =>
+      correctBoxes.includes(val) ? val : val !== null ? -1 : null
+    );
+    setImageSelections(newSelections);
+
     if (correctCount === total) {
-      ValidationAlert.success(
-        `Excellent! (${correctCount}/${total})`,
-        "All answers are correct!"
-      );
+      ValidationAlert.success(`Excellent! (${correctCount}/${total})`, "All answers are correct!");
     } else if (correctCount === 0) {
-      ValidationAlert.error(
-        `All answers are incorrect. (${correctCount}/${total})`,
-        "Try again!"
-      );
+      ValidationAlert.error(`All answers are incorrect. (${correctCount}/${total})`, "Try again!");
     } else {
-      ValidationAlert.error(
-        `You got ${correctCount} out of ${total} correct.`,
-        "Almost there!"
-      );
+      ValidationAlert.error(`You got ${correctCount} out of ${total} correct.`, "Almost there!");
     }
   };
 
   // ✅ SHOW ANSWER
   const showAnswerFunc = () => {
-    setBoyName("Antoine");
-    setGirlName("Emma");
+    const newSelections = [...imageSelections];
+    correctBoxes.forEach((val, idx) => {
+      newSelections[idx] = val; // وضع الإجابة الصحيحة
+    });
+    setImageSelections(newSelections);
+    setCheckedMarks(true);
 
-    // جميع الإجابات صحيحة بعد العرض
-    const total = 2;
-    const correctCount = 2;
+    const total = correctBoxes.length;
+    const correctCount = total;
     setScore({ correct: correctCount, total });
 
-    ValidationAlert.success(
-      "Answers shown",
-      "The correct names have been placed.",
-      `${correctCount}/${total}`
-    );
+    ValidationAlert.success("Answers shown", "The correct answers have been placed.", `${correctCount}/${total}`);
   };
 
   // ✅ RESET
   const resetExercise = () => {
-    setBoyName("");
-    setGirlName("");
-    setScore(null); // إعادة تعيين ScoreCard
+    setImageSelections([null, null, null]);
+    setScore(null);
     resetAudio();
+    setCheckedMarks(false);
   };
 
-  // === Captions state ===
-  const [showCaption, setShowCaption] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(null);
-
-  // === Captions array ===
-  const captions = [
-    { start: 5, end: 6.9, text: "Grand Prix A1" },
-    { start: 7.3, end: 8.2, text: "unité 1" },
-    { start: 8.7, end: 9.5, text: " se présenter. " },
-    { start: 10.2, end: 11.2, text: "Section A." },
-    { start: 11.9, end: 12.3, text: "Salut." },
-    { start: 12.9, end: 14.3, text: "Exercice 5" },
-    { start: 15.23, end: 16.77, text: "Écoute et réponds." },
-    { start: 18.78, end: 20.31, text: "Je m'appelle Antoine." },
-    { start: 21.39, end: 22.51, text: "Je m'appelle Emma." },
-  ];
   return (
     <div className="page-wrapper1 flex flex-col items-center justify-start gap-8 p-4">
-      {/* Question Header */}
-      <header
- className="header-title-page1 w-full text-left mb-4"
-  style={{ marginLeft: "42%", color:"black",marginTop:"5%",fontSize:"25px", fontWeight:"bold" }}
+      <header className="header-title-page1 w-full text-left mb-4"
+        style={{ marginLeft: "42%", color: "black", marginTop: "5%", fontSize: "25px", fontWeight: "bold" }}
       >
-        <span style={{ backgroundColor: "#73C8D2" }} className="ex-A">
-          A
-        </span>{" "}
-        <span style={{ color: "black" }} className="number-of-q">
-          5
-        </span>
+        <span style={{ backgroundColor: "#73C8D2" }} className="ex-A">A</span>{" "}
+        <span style={{ color: "black" }} className="number-of-q">5</span>
         Écoute et réponds.
       </header>
 
-      {/* ================= Audio Player + Captions ================= */}
-  <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-          <div className="audio-popup-read" style={{ width: "30%" }}>
-            <div className="audio-inner player-ui">
-              <audio
-                ref={audioRef}
-                src={CD6_Pg8_Instruction1_AdultLady}
-                onTimeUpdate={(e) => {
-                  const time = e.target.currentTime;
-                  setCurrent(time);
-                  updateCaption(time);
-                }}
-                onLoadedMetadata={(e) => setDuration(e.target.duration)}
-              />
-  
-              {/* Time & Slider */}
-               <div className="top-row">
-            <span className="audio-time">
-              {new Date(current * 1000).toISOString().substring(14, 19)}
-            </span>
-  
-            <input
-              type="range"
-              className="audio-slider"
-              min="0"
-              max={duration}
-              value={current}
-              onChange={(e) => {
-                audioRef.current.currentTime = e.target.value;
-                updateCaption(Number(e.target.value));
-              }}
-              style={{
-                background: `linear-gradient(to right, #430f68 ${
-                  (current / duration) * 100
-                }%, #d9d9d9ff ${(current / duration) * 100}%)`,
-              }}
+      {/* AUDIO PLAYER */}
+      <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+        <div className="audio-popup-read" style={{ width: "30%" }}>
+          <div className="audio-inner player-ui">
+            <audio
+              ref={audioRef}
+              src={CD6_Pg8_Instruction1_AdultLady}
+              onTimeUpdate={(e) => setCurrent(e.target.currentTime)}
+              onLoadedMetadata={(e) => setDuration(e.target.duration)}
             />
-  
-            <span className="audio-time">
-              {new Date(duration * 1000).toISOString().substring(14, 19)}
-            </span>
-          </div>
-  
-              {/* Controls */}
-              <div className="bottom-row flex justify-between items-center">
-                {/* Captions */}
-                <div
-                  className={`round-btn ${showCaption ? "active" : ""}`}
-                  style={{ position: "relative" }}
-                  onClick={() => setShowCaption(!showCaption)}
-                >
-                  <TbMessageCircle size={36} />
-                  <div className={`caption-inPopup ${showCaption ? "show" : ""}`} style={{ top:"100%", left:"10%" }}>
-                    {captions.map((cap,i) => (
-                      <p key={i} id={`caption-${i}`} className={`caption-inPopup-line2 ${activeIndex===i?"active":""}`}>{cap.text}</p>
-                    ))}
-                  </div>
-                </div>
-  
-                {/* Play/Pause */}
-                <button className="play-btn2" onClick={togglePlay}>
-                  {isPlaying ? <FaPause size={26}/> : <FaPlay size={26}/>}
+            <div className="top-row">
+              <span className="audio-time">{new Date(current * 1000).toISOString().substring(14, 19)}</span>
+              <input
+                type="range"
+                className="audio-slider"
+                min="0"
+                max={duration}
+                value={current}
+                onChange={(e) => { audioRef.current.currentTime = e.target.value; }}
+                style={{ background: `linear-gradient(to right, #430f68 ${(current / duration) * 100}%, #d9d9d9ff ${(current / duration) * 100}%)` }}
+              />
+              <span className="audio-time">{new Date(duration * 1000).toISOString().substring(14, 19)}</span>
+            </div>
+
+            <div className="bottom-row flex justify-between items-center">
+              <div className={`round-btn`} style={{ position: "relative" }}>
+                <TbMessageCircle size={36} />
+              </div>
+              <button className="play-btn2" onClick={togglePlay}>
+                {isPlaying ? <FaPause size={26} /> : <FaPlay size={26} />}
+              </button>
+              <div className="settings-wrapper">
+                <button className={`round-btn ${showSettings ? "active" : ""}`} onClick={() => setShowSettings(!showSettings)}>
+                  <IoMdSettings size={36} />
                 </button>
-  
-                {/* Settings */}
-                <div className="settings-wrapper">
-                  <button className={`round-btn ${showSettings?"active":""}`} onClick={()=>setShowSettings(!showSettings)}>
-                    <IoMdSettings size={36}/>
-                  </button>
-                  {showSettings && (
-                    <div className="settings-popup">
-                      <label>Volume</label>
-                      <input id="V"
-                        type="range"
-                        min="0"
-                        max="1"
-                        step="0.05"
-                        value={volume}
-                        onChange={(e) => {
-                          setVolume(e.target.value);
-                          audioRef.current.volume = e.target.value;
-                        }}
-                      />
-                    </div>
-                  )}
-                </div>
+                {showSettings && (
+                  <div className="settings-popup">
+                    <label>Volume</label>
+                    <input
+                      id="V"
+                      type="range"
+                      min="0"
+                      max="1"
+                      step="0.05"
+                      value={volume}
+                      onChange={(e) => { setVolume(e.target.value); audioRef.current.volume = e.target.value; }}
+                    />
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-      {/* =====================================End player ====================================== */}
-
+      {/* IMAGE QUESTION */}
+      <div
+        className="image-popup"
+        style={{
+          position: "relative",
+          width: "60%",
+          height: "400px",
+          backgroundImage: `url(${imgbackground})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          marginTop: "20px",
+        }}
+      >
+        {imageBoxes.map((box, idx) => (
+          <div
+            key={idx}
+            onClick={() => handleImageClick(idx)}
+            style={{
+              position: "absolute",
+              width: "150px",
+              height: "50px",
+              top: box.top,
+              left: box.left,
+              cursor: checkedMarks ? "not-allowed" : "pointer",
+              border: imageSelections[idx] !== null
+                ? imageSelections[idx] === correctBoxes[idx]
+                  ? "3px solid lightgreen"
+                  : imageSelections[idx] === -1
+                    ? "3px solid lightcoral"
+                    : "3px solid blue"
+                : "",
+              backgroundColor: imageSelections[idx] !== null ? "rgba(0,0,255,0.2)" : "transparent",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          />
+        ))}
+      </div>
+<div className="spaces"></div>
       {score && <ScoreCardEnhanced score={score} />}
 
-      {/* ✅ QUESTIONS */}
-      
-      <div className="spaces"></div>
-
-      {/* Action Buttons */}
       <div className="action-buttons-container">
-        <button onClick={resetExercise} className="try-again-button">
-          Start Again ↻
-        </button>
-        <button
-          onClick={showAnswerFunc}
-          className="show-answer-btn swal-continue"
-        >
-          Show Answer
-        </button>
-        <button onClick={checkAnswer} className="check-button2">
-          Check Answer ✓
-        </button>
+        <button onClick={resetExercise} className="try-again-button">Start Again ↻</button>
+        <button onClick={showAnswerFunc} className="show-answer-btn swal-continue">Show Answer</button>
+        <button onClick={checkAnswer} className="check-button2">Check Answer ✓</button>
       </div>
     </div>
   );

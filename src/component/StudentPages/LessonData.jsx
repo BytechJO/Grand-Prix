@@ -20,6 +20,14 @@ import Page18_Q7 from "./unit1/Page18_Q7";
 import Page19_Q9 from "./unit1/Page19_Q9";
 import Page22_Q1 from "./unit1/Page22_Q1";
 import Page22_Q2 from "./unit1/Page22_Q2";
+import Page22_Q3 from "./unit1/Page22_Q3";
+import Page22_Q4 from "./unit1/Page22_Q4";
+import Page23_Q1 from "./unit1/Page23_Q1";
+import Page23_Q2 from "./unit1/Page23_Q2";
+
+// ===================================================================
+//                             unit2
+// =================================================================
 
 
 
@@ -88,16 +96,15 @@ export const lessons = [
   { component: Page19_Q9, unit: 1 },
   { component: Page22_Q1, unit: 1 },
   { component: Page22_Q2, unit: 1 },
+  { component: Page22_Q3, unit: 1 },
+  { component: Page22_Q4, unit: 1 },
+  { component: Page23_Q1, unit: 1 },
+  { component: Page23_Q2, unit: 1 }
 
 
 
   // UNIT 2 MAIN
-  // { component: Unit2_Page5_Q1, unit: 2 },
-  // { component: Unit2_Page5_Q2, unit: 2 },
-  // { component: Unit2_Page5_Q3, unit: 2 },
-  // { component: Unit2_Page5_Q4, unit: 2 },
-  // { component: Unit2_Page6_Q1, unit: 2 },
-  // { component: Unit2_Page6_Q2, unit: 2, lastOfUnit: true },
+
 
   // // REVIEW
   // { component: Unit2_Page7_Q1, unit: 2, isReview: true },
