@@ -189,7 +189,7 @@ export default function BottomBar({
                    opacity-0 pointer-events-none transition-all duration-300 
                    group-hover:opacity-100 group-hover:scale-110">
  
-Édition de l’enseignant  </span>
+GUIDE PÉDAGOGIQUE </span>
 </div>
 
 

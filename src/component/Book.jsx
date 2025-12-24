@@ -206,7 +206,7 @@ export default function Book() {
     { id: 1, label: "Unité 1 Se présenter", start: 4, pages: 9 },
   ];
 
-  const teacherUnits = [{ id: 1, label: "Teacher Unit 1", start: 1, pages: 5 }];
+  const teacherUnits = [{ id: 1, label: "pages", start: 1, pages: 194 }];
 
   const sidebarUnits =
     {
@@ -227,7 +227,7 @@ export default function Book() {
   const tabs = [
     { id: "student", label: "MÉTHODE DE FRANÇAIS" },
     { id: "work", label: "LIVRE DE GRAMMAIRE" },
-    { id: "teacher", label: "Teacher’s Book" },
+    { id: "teacher", label: "GUIDE PÉDAGOGIQUE" },
   ];
   const studentBookInfo = {
   cover: stbookCover,
@@ -242,8 +242,8 @@ const workbookBookInfo = {
 };
 
 const teacherBookInfo = {
-  cover: "",
-  title: "Teacher Book",
+  cover: stbookCover,
+  title: "GUIDE PÉDAGOGIQUE",
   pages: teacherPages.length,
 };
 
