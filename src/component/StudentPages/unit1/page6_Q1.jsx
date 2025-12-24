@@ -4,7 +4,7 @@ import { FaPlay, FaPause } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { TbMessageCircle } from "react-icons/tb";
 import ValidationAlert from "../../Popup/ValidationAlert"; 
-import "./CSSPAGE/P6U1.css"
+import "./Page6_Q1.css"
 import img3 from "../../../assets/unit1/imgs/page6/3.svg"
 import img4 from "../../../assets/unit1/imgs/page6/4.svg"
 import img2 from "../../../assets/unit1/imgs/page6/5.svg"
@@ -290,71 +290,103 @@ className="header-title-page1 w-full text-left mb-4"
     
 
       {/* ========== Drag & Drop Exercise ========= */}
-      <DragDropContext onDragEnd={handleOnDragEnd}>
-        <div style={{marginTop:"0%"}} className="exercise-layout-vertical">
-          <div className="image-section-horizontal">
-            {exerciseData.images.map((imageSrc, index) => (
-              <Droppable key={`drop-${index + 1}`} droppableId={`drop-${index + 1}`}>
-                {(provided, snapshot) => (
-                  <div className="image-container">
-                    <img src={imageSrc} alt={`Visual hint ${index + 1}`} />
+  <DragDropContext onDragEnd={handleOnDragEnd}>
+  <div style={{ marginTop: "0%" }} className="exercise-layout-vertical">
+    {/* الكلمات في الأعلى */}
+    <Droppable droppableId="letters" direction="horizontal" isDropDisabled={true}>
+      {(provided) => (
+        <div className="letters-section-horizontal" ref={provided.innerRef} {...provided.droppableProps}>
+          {shuffledPairs.map((pair, index) => {
+            const isDropped = Object.values(droppedLetters).includes(pair.letter);
+            if (isDropped) return null;
+
+            return (
+              <div key={pair.id} className="letter-sentence-pair">
+                <Draggable draggableId={pair.letter} index={index}>
+                  {(providedDraggable, snapshot) => (
                     <div
-                      ref={provided.innerRef}
-                      {...provided.droppableProps}
-                      className={`drop-box ${snapshot.isDraggingOver ? 'is-over' : ''}`}
+                      ref={providedDraggable.innerRef}
+                      {...providedDraggable.draggableProps}
+                      {...providedDraggable.dragHandleProps}
+                      className={`letter-box ${snapshot.isDragging ? 'dragging' : ''}`}
                     >
-                   {droppedLetters[`drop-${index + 1}`] ? (
-  <div className="dropped-letter">{droppedLetters[`drop-${index + 1}`]}</div>
-) : (
-  <span className="placeholder">{index + 1}</span>
-)}
-
-                      {provided.placeholder}
+                      {pair.letter}
                     </div>
-                  </div>
-                )}
-              </Droppable>
-            ))}
-          </div>
+                  )}
+                </Draggable>
+                <span className="sentence-text">{pair.content}</span>
+              </div>
+            );
+          })}
+          {provided.placeholder}
+        </div>
+      )}
+    </Droppable>
 
-          <Droppable droppableId="letters" direction="horizontal" isDropDisabled={true}>
-            {(provided) => (
-              <div className="letters-section-horizontal" ref={provided.innerRef} {...provided.droppableProps}>
-                {shuffledPairs.map((pair, index) => {
-                  const isDropped = Object.values(droppedLetters).includes(pair.letter);
-                  if (isDropped) return null;
-
-                  return (
-                    <div key={pair.id} className="letter-sentence-pair">
-                      <Draggable draggableId={pair.letter} index={index}>
-                        {(providedDraggable, snapshot) => (
-                          <div
-                            ref={providedDraggable.innerRef}
-                            {...providedDraggable.draggableProps}
-                            {...providedDraggable.dragHandleProps}
-                            className={`letter-box ${snapshot.isDragging ? 'dragging' : ''}`}
-                          >
-                            {pair.letter}
-                          </div>
-                        )}
-                      </Draggable>
-                      <span className="sentence-text">{pair.content}</span>
-                    </div>
-                  );
-                })}
-                {provided.placeholder}
+    {/* الصور في الأسفل - عمودين */}
+    <div className="image-section-horizontal">
+      {/* العمود الأول */}
+      <div className="image-column">
+        {exerciseData.images.slice(0, Math.ceil(exerciseData.images.length / 2)).map((imageSrc, index) => (
+          <Droppable key={`drop-${index + 1}`} droppableId={`drop-${index + 1}`}>
+            {(provided, snapshot) => (
+              <div className="image-container">
+                <img src={imageSrc} alt={`Visual hint ${index + 1}`} />
+                <div
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                  className={`drop-box ${snapshot.isDraggingOver ? 'is-over' : ''}`}
+                >
+                  {droppedLetters[`drop-${index + 1}`] ? (
+                    <div className="dropped-letter">{droppedLetters[`drop-${index + 1}`]}</div>
+                  ) : (
+                    <span className="placeholder">{index + 1}</span>
+                  )}
+                  {provided.placeholder}
+                </div>
               </div>
             )}
           </Droppable>
-        </div>
-      </DragDropContext>
+        ))}
+      </div>
+      
+      {/* العمود الثاني */}
+      <div className="image-column">
+        {exerciseData.images.slice(Math.ceil(exerciseData.images.length / 2)).map((imageSrc, index) => {
+          const actualIndex = Math.ceil(exerciseData.images.length / 2) + index;
+          return (
+            <Droppable key={`drop-${actualIndex + 1}`} droppableId={`drop-${actualIndex + 1}`}>
+              {(provided, snapshot) => (
+                <div className="image-container">
+                  <img src={imageSrc} alt={`Visual hint ${actualIndex + 1}`} />
+                  <div
+                    ref={provided.innerRef}
+                    {...provided.droppableProps}
+                    className={`drop-box ${snapshot.isDraggingOver ? 'is-over' : ''}`}
+                  >
+                    {droppedLetters[`drop-${actualIndex + 1}`] ? (
+                      <div className="dropped-letter">{droppedLetters[`drop-${actualIndex + 1}`]}</div>
+                    ) : (
+                      <span className="placeholder">{actualIndex + 1}</span>
+                    )}
+                    {provided.placeholder}
+                  </div>
+                </div>
+              )}
+            </Droppable>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</DragDropContext>
       <div className="spaces">
    
 </div>
 
       {score && <ScoreCardEnhanced score={score} />}
 <div className="action-buttons-container flex gap-4 mt-4">
-        <button onClick={resetDragExercise} className="try-again-button">Recommencer ↻</button>
+          <button onClick={resetDragExercise} className="try-again-button">Recommencer ↻</button>
         <button onClick={showCorrectDragAnswer} className="show-answer-btn swal-continue">Afficher la réponse</button>
         <button onClick={checkDragAnswers} className="check-button2">Vérifier la réponse✓</button>
           </div>

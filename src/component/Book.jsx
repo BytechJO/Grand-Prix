@@ -11,7 +11,7 @@ import Popup from "./Popup/Popup";
 import LessonNavigator from "./StudentPages/LessonNavigator";
 import workbookCover from "../assets/workpages/Page1.png";
 import stbookCover from "../assets/unit1/imgs/Pages/1.png";
-
+import  teacherPDF  from "../assets/Grand Prix A1 TB2.pdf"
 // === ASSETS ===
 import logo from "../assets/unit1/imgs/Page 01/PMAAlogo.svg";
 import menu from "../assets/unit1/imgs/Page 01/menu.svg";
@@ -227,7 +227,7 @@ export default function Book() {
   const tabs = [
     { id: "student", label: "MÉTHODE DE FRANÇAIS" },
     { id: "work", label: "LIVRE DE GRAMMAIRE" },
-    // { id: "teacher", label: "Teacher’s Book" },
+    { id: "teacher", label: "Teacher’s Book" },
   ];
   const studentBookInfo = {
   cover: stbookCover,
@@ -356,6 +356,7 @@ const bookInfoSelector = {
           openRightSidebar: () => setRightBarOpen(true),
           keyIcon: FaKey,
         }}
+        teacherPdf={teacherPDF}
       />
 
       {/* LEFT SIDEBAR */}
@@ -375,7 +376,6 @@ const bookInfoSelector = {
         menu={[
           { key: "logo", label: "logo", icon: logo },
           { key: "audio", label: "Bouton Lire le son", icon: audioBtn },
-          { key: "video", label: "Bouton vidéo", icon: pauseBtn },
           { key: "arrow", label: "Bouton fléché", icon: arrowBtn },
           { key: "prev", label: "Bouton Précédent", icon: back },
           { key: "next", label: "Bouton Suivant", icon: next },

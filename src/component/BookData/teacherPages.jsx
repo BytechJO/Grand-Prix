@@ -1,6 +1,6 @@
 // يستورد كل الصور داخل مجلد Right TB تلقائياً
 const images = import.meta.glob(
-  "../../assets/Right TB/Right International TB G1_Page_*.png",
+  "../../assets/TB/Grand Prix A1 TB_Page_*.png",
   { eager: true }
 );
 
