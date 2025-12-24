@@ -19,8 +19,9 @@
 
 .questions-grid {
   background: white;
-  padding: 25px;
+  padding: 0px;
   border-radius: 12px;
+  margin-right: 5%;
 
 }
 

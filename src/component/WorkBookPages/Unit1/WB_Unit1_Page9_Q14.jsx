@@ -234,9 +234,7 @@ Trouve les nationalités et complète la grille.
               </div>
 
               {/* مساعدة: عدد الحروف */}
-              <div className="word-length">
-                <span className="length-badge">{word.length} lettres</span>
-              </div>
+            
             </div>
           ))}
         </div>
@@ -247,13 +245,13 @@ Trouve les nationalités et complète la grille.
         {/* أزرار التحكم */}
     <div className="action-buttons-container">
         <button onClick={resetExercise} className="try-again-button">
-          Start Again ↻
+          Recommencer ↻
         </button>
         <button onClick={showAnswerFunc} className="show-answer-btn">
-          Show Answer
+         Afficher la réponse
         </button>
         <button onClick={checkAnswer} className="check-button2">
-          Check Answer ✓
+          Vérifier la réponse✓
         </button>
       </div>
       </div>

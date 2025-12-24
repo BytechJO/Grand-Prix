@@ -115,98 +115,71 @@ const CurrentLesson = lesson?.component;
   };
 
   return (
-    <div>
-      <div
-        className="nav-buttons"
-        style={{
-          display: "flex",
-          width: "100%",
-          marginBottom: "5px",
-        position:"fixed",
-          gap: "20px",
-          justifyContent: "flex-start",
-          backgroundColor: "#430f68",
-              zIndex: 99000,   // ⭐ الحل هنا
-        }}
+ <div>
+  <div
+    className="nav-buttons"
+    style={{
+      display: "flex",
+      width: "100%",
+      marginBottom: "5px",
+      position: "fixed",
+      gap: "20px",
+      justifyContent: "flex-start",
+      backgroundColor: "#430f68",
+      zIndex: 99000, // ⭐ الحل هنا
+    }}
+  >
+    <button
+      onClick={() => index > 0 && setIndex(index - 1)}
+      disabled={index === 0}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        color: "white",
+        fontSize: "14px",
+        fontWeight: "500",
+        cursor: index === 0 ? "not-allowed" : "pointer",
+        opacity: index === 0 ? 0.5 : 1, // لجعل الزر أقل بروزًا عند التعطيل
+      }}
+    >
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 90 90"
+        style={{ padding: "10px" }}
+        className="nav-btn w-10 h-10 rounded-full transition"
       >
-        {index ? (
-          <button
-            onClick={() => setIndex(index - 1)}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              color: "white",
-              fontSize: "16px",
-              fontWeight: "500",
-              cursor: "pointer",
-            }}
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 90 90"
-              style={{
-              padding: "10px",
-            }}
-              className="nav-btn w-10 h-10 rounded-full transition"
-            >
-              <image href={back} x="0" y="0" width="90" height="90" />
-            </svg>{" "}
-            Exercice précédent
-          </button>
-        ) : (
-          <button
-            style={{
-              display: "flex",
-              alignItems: "center",
-              color: "white",
-              fontSize: "16px",
-              fontWeight: "500",
-              cursor: "pointer",
-            }}
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 90 90"
-              style={{
-              padding: "10px",
-            }}
-              className="nav-btn w-10 h-10 rounded-full transition"
-            >
-              <image href={back} x="0" y="0" width="90" height="90" />
-            </svg>{" "}
-         Exercice précédent
-          </button>
-        )}
+        <image href={back} x="0" y="0" width="90" height="90" />
+      </svg>
+      Exercice précédent
+    </button>
 
-        <button
-          onClick={handleNext}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            color: "white",
-            fontSize: "16px",
-            fontWeight: "500",
-            cursor: "pointer",
-          }}
-        >
-         Exercice suivant
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 90 90"
-            style={{
-              padding: "10px",
-            }}
-            className="nav-btn w-10 h-10 rounded-full transition"
-          >
-            <image href={next} x="0" y="0" width="90" height="90" />
-          </svg>
-        </button>
-      </div>
+    <button
+      onClick={handleNext}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        color: "white",
+        fontSize: "14px",
+        fontWeight: "500",
+        cursor: "pointer",
+      }}
+    >
+      Exercice suivant
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 90 90"
+        style={{ padding: "10px" }}
+        className="nav-btn w-10 h-10 rounded-full transition"
+      >
+        <image href={next} x="0" y="0" width="90" height="90" />
+      </svg>
+    </button>
+  </div>
 
-{CurrentLesson ? <CurrentLesson /> : null}
-    </div>
+  {CurrentLesson ? <CurrentLesson /> : null}
+</div>
+
   );
 }

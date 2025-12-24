@@ -187,9 +187,9 @@ Complète les phrases avec le verbe « s’appeler ».
 <div className="spaces"></div>
       {/* Action Buttons */}
       <div className="action-buttons-container flex gap-4">
-        <button onClick={resetExercise} className="try-again-button">Start Again ↻</button>
-        <button onClick={showAnswerFunc} className="show-answer-btn">Show Answer</button>
-        <button onClick={checkAnswer} className="check-button2">Check Answer ✓</button>
+        <button onClick={resetExercise} className="try-again-button">Recommencer ↻</button>
+        <button onClick={showAnswerFunc} className="show-answer-btn">Afficher la réponse</button>
+        <button onClick={checkAnswer} className="check-button2">Vérifier la réponse✓</button>
       </div>
     </div>
   );

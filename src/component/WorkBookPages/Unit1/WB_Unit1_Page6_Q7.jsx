@@ -158,12 +158,12 @@ className="header-title-page1 w-full text-left mb-4"
       </header>
 
       {/* ✅ QUESTIONS */}
-      <div className="page5Q5">
+      <div className="page5Q5" style={{marginLeft:"13%"}}>
         <div className="inputs-column">
           {Object.keys(questions).map((key, index) => (
             <div className="input-group" key={key}>
               <label>
-                <strong>{String.fromCharCode(97 + index)} </strong>
+                <strong style={{fontSize:"20px"}}>{String.fromCharCode(97 + index)} </strong>
                 {questions[key].split("____")[0]}
                 <input
                   type="text"
@@ -181,9 +181,9 @@ className="header-title-page1 w-full text-left mb-4"
 
       {/* Action Buttons */}
       <div className="action-buttons-container flex gap-4">
-        <button onClick={resetExercise} className="try-again-button">Start Again ↻</button>
-        <button onClick={showAnswerFunc} className="show-answer-btn">Show Answer</button>
-        <button onClick={checkAnswer} className="check-button2">Check Answer ✓</button>
+        <button onClick={resetExercise} className="try-again-button">Recommencer ↻</button>
+        <button onClick={showAnswerFunc} className="show-answer-btn">Afficher la réponse</button>
+        <button onClick={checkAnswer} className="check-button2">Vérifier la réponse✓</button>
       </div>
     </div>
   );

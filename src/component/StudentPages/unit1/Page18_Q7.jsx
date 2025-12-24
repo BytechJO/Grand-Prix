@@ -266,9 +266,9 @@ const Page5_Q1_CleanAudio = () => {
       {/* Score & Buttons */}
       {score && <ScoreCardEnhanced score={score} />}
       <div className="action-buttons-container flex gap-4 mt-4">
-        <button onClick={resetDragExercise} className="try-again-button">Start Again ↻</button>
-        <button onClick={showCorrectDragAnswer} className="show-answer-btn swal-continue">Show Answer</button>
-        <button onClick={checkDragAnswers} className="check-button2">Check Answer ✓</button>
+        <button onClick={resetDragExercise} className="try-again-button">Recommencer ↻</button>
+        <button onClick={showCorrectDragAnswer} className="show-answer-btn swal-continue">Afficher la réponse</button>
+        <button onClick={checkDragAnswers} className="check-button2">Vérifier la réponse✓</button>
       </div>
     </div>
   );

@@ -738,3 +738,45 @@ height: 40%;
 
 }
 
+.action-buttons-container button {
+  max-width: 300px;
+  width: 100%;
+  text-align: center;
+  padding: 10px 18px;
+  white-space: nowrap;
+  overflow: hidden;     /* إذا أردت اقتطاع النص الطويل */
+ 
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 17px;
+  transition: all 0.3s ease;
+}
+
+.show-answer-btn {
+  background-color: rgb(44, 120, 180);
+  color: white;
+}
+
+.show-answer-btn:hover {
+  background-color: #05a197;
+}
+
+.check-button2 {
+  background-color: #28a745;
+  color: white;
+}
+
+.check-button2:hover {
+  background-color: #218838;
+}
+
+.try-again-button {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.try-again-button:hover {
+  background-color: #e0a800;
+}

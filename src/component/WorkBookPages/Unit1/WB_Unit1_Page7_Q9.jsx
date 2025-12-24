@@ -247,7 +247,7 @@ Associe les sujets aux phrases correspondantes.
 
       </header>
 
-      <div className="matching-columns" style={{ display: "flex", gap: "300px" }}>
+      <div className="matching-columns" style={{ display: "flex", gap: "220px" }}>
         <div className="left-column" style={{ display: "flex", flexDirection: "column", gap: "40px" }}>
           {leftItems.map((item, i) => (
             <div
@@ -298,13 +298,13 @@ Associe les sujets aux phrases correspondantes.
 
       <div className="action-buttons-container" style={{ marginTop: "30px" }}>
         <button onClick={resetExercise} className="try-again-button">
-          Start Again ↻
+          Recommencer ↻
         </button>
         <button onClick={showAnswerFunc} className="show-answer-btn">
-          Show Answer
+         Afficher la réponse
         </button>
         <button onClick={checkAnswer} className="check-button2">
-          Check Answer ✓
+          Vérifier la réponse✓
         </button>
       </div>
     </div>

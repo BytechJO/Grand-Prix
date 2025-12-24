@@ -157,11 +157,11 @@ className="header-title-page1 w-full text-left mb-4"
       </header>
 
       {/* ✅ QUESTIONS */}
-      <div className="page5Q3">
+      <div className="page5Q3" style={{marginLeft:"43%"}}>
         {Object.keys(questions).map((key, index) => (
           <div className="input-group" key={key}>
             <label>
-              <strong>{String.fromCharCode(97 + index)} </strong>{questions[key]}
+              <strong style={{fontSize:"20px"}}>{String.fromCharCode(97 + index)} </strong>{questions[key]}
             </label>
             <input
               type="text"
@@ -173,11 +173,12 @@ className="header-title-page1 w-full text-left mb-4"
         ))}
       </div>
    {score && <ScoreCardEnhanced score={score} />}
+   <div className="spaces"></div>
       {/* Action Buttons */}
       <div className="action-buttons-container">
-        <button onClick={resetExercise} className="try-again-button">Start Again ↻</button>
-        <button onClick={showAnswerFunc} className="show-answer-btn swal-continue">Show Answer</button>
-        <button onClick={checkAnswer} className="check-button2">Check Answer ✓</button>
+        <button onClick={resetExercise} className="try-again-button">Recommencer ↻</button>
+        <button onClick={showAnswerFunc} className="show-answer-btn swal-continue">Afficher la réponse</button>
+        <button onClick={checkAnswer} className="check-button2">Vérifier la réponse✓</button>
       </div>
     </div>
   );

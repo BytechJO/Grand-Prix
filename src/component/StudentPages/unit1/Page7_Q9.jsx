@@ -150,38 +150,39 @@ className="header-title-page1 w-full text-left mb-4"
 
       {/* ✅ QUESTIONS LIST */}
       <div className="q7-card">
-        <div className="q7-sentences-list">
-          {sentences.map(sentence => {
-            const isCorrect = correctAnswers.includes(sentence.id);
-            const userChecked = !!checked[sentence.id];
+     <div className="q7-sentences-list">
+  {sentences.map(sentence => {
+    const isCorrect = correctAnswers.includes(sentence.id);
+    const userChecked = !!checked[sentence.id];
 
-            return (
-              <div
-                key={sentence.id}
-                className={`q7-sentence-item ${userChecked ? 'selected' : ''} ${
-                  showFeedback ? (userChecked === isCorrect ? 'correct' : 'incorrect') : ''
-                }`}
-                onClick={() => toggleCheck(sentence.id)}
-              >
-                <div className="q7-check-button">
-                  <Check className="q7-check-icon" strokeWidth={3} />
-                </div>
-                <div className="q7-sentence-text">
-                  <span className="q7-sentence-id">{sentence.id})</span>
-                  <span className="q7-sentence-content">{sentence.text}</span>
-                </div>
-              </div>
-            );
-          })}
+    return (
+      <div
+        key={sentence.id}
+        className={`q7-sentence-item ${userChecked ? 'selected' : ''} ${
+          showFeedback ? (userChecked === isCorrect ? 'correct' : 'incorrect') : ''
+        }`}
+        onClick={() => toggleCheck(sentence.id)}
+      >
+        <div className="q7-check-button">
+          <Check className="q7-check-icon" strokeWidth={3} />
         </div>
+        <div className="q7-sentence-text">
+          <span className="q7-sentence-id">{sentence.id})</span>
+          <span className="q7-sentence-content">{sentence.text}</span>
+        </div>
+      </div>
+    );
+  })}
+</div>
+
       </div>
      {score && <ScoreCardEnhanced score={score} />}
 
       {/* Action Buttons */}
       <div className="action-buttons-container">
-        <button onClick={resetExercise} className="try-again-button">Start Again ↻</button>
-        <button onClick={showAnswerFunc} className="show-answer-btn swal-continue">Show Answer</button>
-        <button onClick={checkAnswer} className="check-button2">Check Answer ✓</button>
+        <button onClick={resetExercise} className="try-again-button">Recommencer ↻</button>
+        <button onClick={showAnswerFunc} className="show-answer-btn swal-continue">Afficher la réponse</button>
+        <button onClick={checkAnswer} className="check-button2">Vérifier la réponse✓</button>
       </div>
     </div>
   );

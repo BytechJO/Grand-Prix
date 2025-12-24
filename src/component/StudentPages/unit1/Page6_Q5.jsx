@@ -258,20 +258,19 @@ const Page5_Q1_CleanAudio = () => {
         </div>
       </div>
       <div className="spaces"></div>
-
-      {/* Action Buttons */}
+      
       <div className="action-buttons-container">
         <button onClick={resetExercise} className="try-again-button">
-          Start Again ↻
+        Recommencer ↻
         </button>
         <button
           onClick={showAnswerFunc}
           className="show-answer-btn swal-continue"
         >
-          Show Answer
+        Afficher la réponse
         </button>
         <button onClick={checkAnswer} className="check-button2">
-          Check Answer ✓
+         Vérifier la réponse✓
         </button>
       </div>
     </div>

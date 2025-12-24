@@ -216,9 +216,9 @@ const Page5_Q1_CleanAudio = () => {
       {score && <ScoreCardEnhanced score={score} />}
 
       <div className="action-buttons-container">
-        <button onClick={resetExercise} className="try-again-button">Start Again ↻</button>
-        <button onClick={showAnswerFunc} className="show-answer-btn swal-continue">Show Answer</button>
-        <button onClick={checkAnswer} className="check-button2">Check Answer ✓</button>
+        <button onClick={resetExercise} className="try-again-button">Recommencer ↻</button>
+        <button onClick={showAnswerFunc} className="show-answer-btn swal-continue">Afficher la réponse</button>
+        <button onClick={checkAnswer} className="check-button2">Vérifier la réponse✓</button>
       </div>
     </div>
   );

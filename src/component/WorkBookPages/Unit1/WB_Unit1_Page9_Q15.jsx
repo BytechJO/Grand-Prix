@@ -118,7 +118,7 @@ l’exercice précédent.
    
 
       {/* ✅ TABLE WITH 6 ROWS */}
-      <div className="table-container" style={{ width: "100%", maxWidth: "600px", margin: "20px 0" }}>
+      <div className="table-container" style={{ width: "100%", maxWidth: "600px", marginLeft: "38%" }}>
         <table className="nationality-table" style={{ 
           width: "100%", 
           borderCollapse: "collapse",
@@ -188,7 +188,7 @@ l’exercice précédent.
                     onBlur={(e) => {
                       if (index !== 5) e.target.style.borderColor = "#ccc";
                     }}
-                    placeholder={index === 5 ? "Non requis" : `Masculin ${index + 1}`}
+                
                   />
                 </td>
                 
@@ -215,7 +215,7 @@ l’exercice précédent.
                     }}
                     onFocus={(e) => e.target.style.borderColor = "#4a90e2"}
                     onBlur={(e) => e.target.style.borderColor = "#ccc"}
-                    placeholder={`Féminin ${index + 1}`}
+                   
                   />
                 </td>
               </tr>
@@ -228,13 +228,13 @@ l’exercice précédent.
       {/* Action Buttons */}
       <div className="action-buttons-container">
         <button onClick={resetExercise} className="try-again-button">
-          Start Again ↻
+          Recommencer ↻
         </button>
         <button onClick={showAnswerFunc} className="show-answer-btn">
-          Show Answer
+         Afficher la réponse
         </button>
         <button onClick={checkAnswer} className="check-button2">
-          Check Answer ✓
+         Vérifier la réponse✓
         </button>
       </div>
     </div>

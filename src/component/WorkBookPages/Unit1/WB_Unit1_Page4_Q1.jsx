@@ -196,7 +196,7 @@ const resetExercise = () => {
   }}
 />
 
-              <p className="mt-2 text-sm" style={{ color: "#666", fontStyle: "italic" }}>{pronoun}</p>
+            
             </div>
           ))}
         </div>
@@ -205,9 +205,9 @@ const resetExercise = () => {
       <div className="spaces"></div>
 
       <div className="action-buttons-container" style={{ marginTop: "30px" }}>
-        <button onClick={resetExercise} className="try-again-button">Start Again ↻</button>
-        <button onClick={showAnswerFunc} className="show-answer-btn">Show Answer</button>
-        <button onClick={checkAnswer} className="check-button2">Check Answer ✓</button>
+        <button onClick={resetExercise} className="try-again-button">Recommencer ↻</button>
+        <button onClick={showAnswerFunc} className="show-answer-btn">Afficher la réponse</button>
+        <button onClick={checkAnswer} className="check-button2">Vérifier la réponse✓</button>
       </div>
 
           {score && <ScoreCardEnhanced score={score} />}

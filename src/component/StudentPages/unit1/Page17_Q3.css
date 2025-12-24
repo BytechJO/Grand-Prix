@@ -1,0 +1,61 @@
+
+
+.header-title-page1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.ex-A {
+  background-color: #73c8d2;
+  padding: 4px 10px;
+  margin-right: 10px;
+}
+
+.number-of-q {
+  margin-right: 10px;
+}
+
+/* 🟦 Table */
+.table-container {
+  width: 700px;
+  height: 420px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 30px auto;
+}
+
+/* Columns */
+.table-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Inputs */
+.table-input {
+  width: 220px;
+  padding: 6px 10px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #444;
+  outline: none;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Buttons */
+.action-buttons-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+.table-column:first-child {
+  border-right: 2px solid #444; /* لون الخط وسُمكه */
+  padding-right: 10%; /* بعض المسافة عن الخط */
+}
