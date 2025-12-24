@@ -24,7 +24,7 @@ import zoomOut from "../assets/unit1/imgs/Page 01/zoom out.svg";
 import onePage from "../assets/unit1/imgs/Page 01/one page.svg";
 import openBook from "../assets/unit1/imgs/Page 01/open-book.svg";
 import { FaKey } from "react-icons/fa";
-import audioBtn from "../assets/unit1/imgs/Page 01/audiobtn.png";
+import audioBtn from "../assets/unit1/imgs/Page 01/audiobtn.svg";
 import arrowBtn from "../assets/unit1/imgs/Page 01/Arrow.svg";
 import pauseBtn from "../assets/unit1/imgs/Right Video Button.svg";
 
@@ -373,7 +373,7 @@ const bookInfoSelector = {
         isOpen={rightBarOpen}
         close={() => setRightBarOpen(false)}
         menu={[
-          { key: "audio", label: "logo", icon: logo },
+          { key: "logo", label: "logo", icon: logo },
           { key: "audio", label: "Bouton Lire le son", icon: audioBtn },
           { key: "video", label: "Bouton vidéo", icon: pauseBtn },
           { key: "arrow", label: "Bouton fléché", icon: arrowBtn },

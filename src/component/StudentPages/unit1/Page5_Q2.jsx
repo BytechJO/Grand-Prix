@@ -100,7 +100,7 @@ className="header-title-page1 w-full text-left mb-4"
       </header>
 
       {/* Questions Section */}
-   <div className="exercise-content">
+   <div className="exercise1-content">
   <div className="situations-list">
     {situations.map(situation => (
       <div key={situation.id} className="situation-card">
@@ -128,8 +128,8 @@ className="header-title-page1 w-full text-left mb-4"
   </div>
 
   <div className="Q2U1">
-    <img style={{width:"70%",height:"70%"}} src={img1} alt="" />
-    <img style={{width:"70%",height:"70%"}} src={img2} alt="" />
+    <img style={{width:"100%",height:"100%"}} src={img1} alt="" />
+    <img style={{width:"100%",height:"100%"}} src={img2} alt="" />
   </div>
 </div>
 

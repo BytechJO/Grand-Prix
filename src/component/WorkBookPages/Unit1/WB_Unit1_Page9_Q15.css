@@ -1,8 +1,9 @@
 /* ===== Container ===== */
 .table-container {
-  width: 100%;
-  max-width: 620px;   /* ⬅️ تصغير الجدول */
-  margin-left: 33%;
+  width: 60%;
+  margin-left: 28%;
+  margin-top: 0%;
+    height: 50%;
 }
 
 /* ===== Table ===== */
@@ -27,12 +28,12 @@
 /* ===== Rows ===== */
 .table-row {
   border: 2px solid #de4484;
-  transition: background-color 0.3s;
+ 
 }
 
 /* ===== Cells ===== */
 .table-cell {
-  padding: 8px;      /* ⬅️ أقل */
+  padding: 2px;      /* ⬅️ أقل */
   border: 2px solid #de4484;
   text-align: center;
   vertical-align: middle;
