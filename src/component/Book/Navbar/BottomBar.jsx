@@ -123,9 +123,36 @@ export default function BottomBar({
       )}
 
       {/* RIGHT SIDEBAR */}
-      <button className="absolute right-3" onClick={icons.openRightSidebar}>
-        <icons.keyIcon size={18} color="#430f68" />
-      </button>
+<div
+  className="right"
+  style={{
+    position: "fixed",
+    right: "20px",     // أقصى اليمين
+    bottom: "13px",    // ⬅️ هذا الذي يضعه في الأسفل
+    display: "flex",
+    alignItems: "center",
+  }}
+>
+
+
+  <button
+    onClick={icons.openRightSidebar}
+    style={{
+      padding: 0,
+      background: "transparent",
+      border: "none",
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+
+    }}
+  >  <span style={{ marginRight: "5px", fontSize: "16px" }}>
+  Clé d'icône  </span>
+    <icons.keyIcon size={20} color="#430f68" />
+  </button>
+</div>
+
+
     </footer>
   );
 }

@@ -91,7 +91,7 @@ const Page5_Q1_CleanAudio = () => {
           fontWeight: "bold",
         }}
       >
-        <span className="ex-A" style={{ backgroundColor: "#73C8D2" }}>A</span>{" "}
+        <span className="ex-A" style={{ backgroundColor: "#73C8D2" }}>D</span>{" "}
         <span className="number-of-q">3</span>{" "}
        Complète le tableau.
       </header>

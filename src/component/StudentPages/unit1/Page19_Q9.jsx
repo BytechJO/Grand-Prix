@@ -171,7 +171,7 @@ className="header-title-page1 w-full text-left mb-4"
   {Object.keys(questions).map((key, index) => (
     <div className="input-group" key={key}>
       <label>
-        <strong>{String.fromCharCode(97 + index)} </strong>{questions[key]}
+        <strong style={{fontSize:"20px"}}>{String.fromCharCode(97 + index)} </strong>{questions[key]}
       </label>
       <input
         type="text"

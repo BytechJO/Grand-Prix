@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ValidationAlert from "../../Popup/ValidationAlert";
-
+import "./WB_Unit1_Page9_Q15.css"
 const Page5_Q1_CleanAudio = () => {
   // ✅ STATE FOR TABLE ROWS - جدول 6 صفوف فارغة
   const [rows, setRows] = useState(Array(6).fill({ masc: "", fem: "" }));
@@ -118,111 +118,50 @@ l’exercice précédent.
    
 
       {/* ✅ TABLE WITH 6 ROWS */}
-      <div className="table-container" style={{ width: "100%", maxWidth: "600px", marginLeft: "38%" }}>
-        <table className="nationality-table" style={{ 
-          width: "100%", 
-          borderCollapse: "collapse",
-  
-        }}>
-          <thead>
-            <tr style={{ 
-                border:"red 2px solid",
-              color: "black",
-              fontSize: "18px"
-            }}>
-              <th style={{ 
-                padding: "15px", 
-                textAlign: "center", 
-                fontWeight: "bold",
-                width: "50%",
-    
-              }}>
-                MASCULIN
-              </th>
-              <th style={{ 
-                padding: "15px", 
-                textAlign: "center", 
-                fontWeight: "bold",
-                width: "50%"
-            
-              }}>
-                FÉMININ
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((row, index) => (
-              <tr key={index} style={{ 
-                
-                transition: "background-color 0.3s",
-                             border:"red 2px solid",
-              }}>
-                {/* ✅ العمود الأول: المذكر - الصف السادس معطل */}
-                <td style={{ 
-                  padding: "12px", 
-                             border:"red 2px solid",
-                  verticalAlign: "middle",
-                  backgroundColor: index === 5 ? "#f0f0f0" : "transparent"
-                }}>
-                  <input
-                    type="text"
-                    value={row.masc}
-                    onChange={(e) => handleInputChange(index, 'masc', e.target.value)}
-                    disabled={index === 5} // ✅ الصف السادس معطل
-                    style={{
-                      width: "100%",
-                      padding: "10px",
-                
-                      borderRadius: "6px",
-                      fontSize: "16px",
-                      textAlign: "center",
-                      backgroundColor: index === 5 ? "#f5f5f5" : "#fff",
-                      transition: "border-color 0.3s",
-                      outline: "none",
-                      color: index === 5 ? "#888" : "inherit",
-                      cursor: index === 5 ? "not-allowed" : "text"
-                    }}
-                    onFocus={(e) => {
-                      if (index !== 5) e.target.style.borderColor = "#4a90e2";
-                    }}
-                    onBlur={(e) => {
-                      if (index !== 5) e.target.style.borderColor = "#ccc";
-                    }}
-                
-                  />
-                </td>
-                
-                {/* ✅ العمود الثاني: المؤنث - جميع الصفوف مفعلة */}
-                <td style={{ 
-                  padding: "12px", 
-                  border: "1px solid #e0e0e0",
-                  verticalAlign: "middle"
-                }}>
-                  <input
-                    type="text"
-                    value={row.fem}
-                    onChange={(e) => handleInputChange(index, 'fem', e.target.value)}
-                    style={{
-                      width: "100%",
-                      padding: "10px",
-                  
-                      borderRadius: "6px",
-                      fontSize: "16px",
-                      textAlign: "center",
-                      backgroundColor: "#fff",
-                      transition: "border-color 0.3s",
-                      outline: "none"
-                    }}
-                    onFocus={(e) => e.target.style.borderColor = "#4a90e2"}
-                    onBlur={(e) => e.target.style.borderColor = "#ccc"}
-                   
-                  />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+   <div className="table-container">
+  <table className="nationality-table">
+    <thead>
+      <tr className="table-header-row">
+        <th className="table-header">MASCULIN</th>
+        <th className="table-header">FÉMININ</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {rows.map((row, index) => (
+        <tr key={index} className="table-row">
+          
+          {/* العمود الأول */}
+          <td className={`table-cell ${index === 5 ? "disabled-cell" : ""}`}>
+            <input
+              type="text"
+              value={row.masc}
+              onChange={(e) =>
+                handleInputChange(index, "masc", e.target.value)
+              }
+              disabled={index === 5}
+              className={`table-input ${index === 5 ? "disabled-input" : ""}`}
+            />
+          </td>
+
+          {/* العمود الثاني */}
+          <td className="table-cell">
+            <input
+              type="text"
+              value={row.fem}
+              onChange={(e) =>
+                handleInputChange(index, "fem", e.target.value)
+              }
+              className="table-input"
+            />
+          </td>
+
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
 <div className="spces"></div>
 <div className="spces"></div>
       {/* Action Buttons */}

@@ -65,7 +65,7 @@ margin-left: 10%;
 }
 
 .image-box img {
-  width: 140px;
+  width: 50%;
   height: auto;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -84,6 +84,7 @@ margin-left: 10%;
 .bottom-image-row {
   display: flex;
   justify-content: center;
+   width: 50%;
 }
 
 

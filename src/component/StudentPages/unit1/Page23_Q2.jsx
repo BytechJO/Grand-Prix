@@ -91,8 +91,8 @@ const Page5_Q1_CleanAudio = () => {
       >
         <span style={{ backgroundColor: "#eaaa52", color: "#3fadb7" }} className="ex-A">DELF </span>
         <span style={{ color: "black" }} className="number-of-q">1</span>
-       Écoute le message et réponds aux questions. Coche la bonne réponse. <br /> Chaque réponse
-correcte vaut 3 points.
+Lis le petit message, puis indique si les affirmations sont vraies ou fausses. <br />
+Chaque réponse correcte vaut 2 points.
       </header>
 
        <div className="tf-layout">

@@ -162,25 +162,59 @@ className="header-title-page1 w-full text-left mb-4"
       </header>
 
       {/* ✅ QUESTIONS */}
-     <div className="page5Q5" style={{marginLeft:"13%"}}>
-        <div className="inputs-column">
-          {Object.keys(questions).map((key, index) => (
-            <div className="input-group" key={key}>
-              <label>
-                <strong style={{fontSize:"20px"}}>{String.fromCharCode(97 + index)} </strong>
-                {questions[key].split("____")[0]}
-                <input
-                  type="text"
-                  value={answers[key]}
-                  onChange={(e) => handleChange(key, e.target.value)}
-                  style={{ width: "130px", margin: "0 5px", ...getInputStyle(key) }}
-                />
-                {questions[key].split("____")[1]}
-              </label>
-            </div>
-          ))}
+   <div
+  className="page5Q5"
+  style={{ display: "flex", marginLeft: "13%", gap: "50px" }}
+>
+  {/* العمود الأول: 4 أسطر */}
+  <div
+    className="inputs-column"
+    style={{ display: "flex", flexDirection: "column", gap: "15px" }}
+  >
+    {Object.keys(questions)
+      .slice(0, 4)
+      .map((key, index) => (
+        <div className="input-group" key={key}>
+          <label>
+            <strong style={{ fontSize: "20px" }}>{String.fromCharCode(97 + index)} </strong>
+            {questions[key].split("____")[0]}
+            <input
+              type="text"
+              value={answers[key]}
+              onChange={(e) => handleChange(key, e.target.value)}
+              style={{ width: "130px", margin: "0 5px", ...getInputStyle(key) }}
+            />
+            {questions[key].split("____")[1]}
+          </label>
         </div>
-      </div>
+      ))}
+  </div>
+
+  {/* العمود الثاني: 3 أسطر */}
+  <div
+    className="inputs-column"
+    style={{ display: "flex", flexDirection: "column", gap: "15px" }}
+  >
+    {Object.keys(questions)
+      .slice(4, 7)
+      .map((key, index) => (
+        <div className="input-group" key={key}>
+          <label>
+            <strong style={{ fontSize: "20px" }}>{String.fromCharCode(97 + 4 + index)} </strong>
+            {questions[key].split("____")[0]}
+            <input
+              type="text"
+              value={answers[key]}
+              onChange={(e) => handleChange(key, e.target.value)}
+              style={{ width: "130px", margin: "0 5px", ...getInputStyle(key) }}
+            />
+            {questions[key].split("____")[1]}
+          </label>
+        </div>
+      ))}
+  </div>
+</div>
+
       {score && <ScoreCardEnhanced score={score} />}
 
       {/* Action Buttons */}

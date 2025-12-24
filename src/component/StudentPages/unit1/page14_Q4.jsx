@@ -113,9 +113,9 @@ const Page5_Q1_CleanAudio = () => {
       <header className="header-title-page1 w-full text-left mb-4"
         style={{ marginLeft: "42%", color: "black", marginTop: "5%", fontSize: "25px", fontWeight: "bold" }}
       >
-        <span style={{ backgroundColor: "#73C8D2" }} className="ex-A">A</span>{" "}
-        <span style={{ color: "black" }} className="number-of-q">5</span>
-        Écoute et réponds.
+        <span style={{ backgroundColor: "#73C8D2" }} className="ex-A">C</span>{" "}
+        <span style={{ color: "black" }} className="number-of-q">4</span>
+        Écoute et entoure les erreurs.
       </header>
 
       {/* AUDIO PLAYER */}

@@ -153,7 +153,7 @@ const Page5_Q1_CleanAudio = () => {
           fontWeight: "bold",
         }}
       >
-        <span className="ex-A" style={{ backgroundColor: "#73C8D2" }}>A</span>{" "}
+        <span className="ex-A" style={{ backgroundColor: "#73C8D2" }}>D</span>{" "}
         <span className="number-of-q">1</span>{" "}
      Écoute, répète et place dans l’ordre.
       </header>

@@ -330,7 +330,7 @@ const bookInfoSelector = {
         )}
       </div>
 
-      {/* BOTTOM BAR */}
+     
       <BottomBar
         pageIndex={pageIndex}
         totalPages={pages.length}
@@ -373,11 +373,19 @@ const bookInfoSelector = {
         isOpen={rightBarOpen}
         close={() => setRightBarOpen(false)}
         menu={[
+          { key: "audio", label: "logo", icon: logo },
           { key: "audio", label: "Bouton Lire le son", icon: audioBtn },
           { key: "video", label: "Bouton vidéo", icon: pauseBtn },
           { key: "arrow", label: "Bouton fléché", icon: arrowBtn },
           { key: "prev", label: "Bouton Précédent", icon: back },
           { key: "next", label: "Bouton Suivant", icon: next },
+          { key: "zoomIn", label: "zoomer", icon: zoomIn },
+          { key: "zoomout", label: "dézoomer", icon: zoomOut },
+          { key: "menu", label: "Ouvrir le menu", icon: menu },
+          { key: "home", label: "rentrer à la maison", icon: home },
+          { key: "fullScreen", label: "Plein écran", icon: fullScreen },
+          { key: "onePage", label: "vue d'une page", icon: onePage },
+          { key: "openBook", label: "vue sur deux pages", icon: openBook },
         ]}
       />
 

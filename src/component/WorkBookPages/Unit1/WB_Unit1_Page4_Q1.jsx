@@ -174,7 +174,7 @@ const resetExercise = () => {
   type="text"
   value={answers[pronoun]}
   onChange={(e) => handleInputChange(pronoun, e.target.value)}
-  placeholder={`${pronoun}...`}
+
   style={{
     width: "100%",
     maxWidth: "200px",

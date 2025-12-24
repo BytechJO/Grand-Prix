@@ -100,52 +100,39 @@ className="header-title-page1 w-full text-left mb-4"
       </header>
 
       {/* Questions Section */}
-      <div className="greeting-exercise w-full max-w-md">
-        <div className="exercise-container1">
-         
+   <div className="exercise-content">
+  <div className="situations-list">
+    {situations.map(situation => (
+      <div key={situation.id} className="situation-card">
+        <div className="situation-text">{situation.text}</div>
 
-          <div className="situations-list">
-            {situations.map(situation => (
-              <div key={situation.id} className="situation-card">
-                <div className="situation-text">{situation.text}</div>
-
-                <div className="greeting-options">
-                  <select
-                    value={situation.userGuess || ''}
-                    onChange={(e) => handleSelect(situation.id, e.target.value)}
-                    disabled={showFeedback}
-                  >
-                    <option value="" disabled>Select</option>
-                    <option value="La main">La main</option>
-                    <option value="La bise">La bise</option>
-                  </select>
-                </div>
-
-                {showFeedback && situation.isCorrect !== null && (
-                  <div className={`feedback-icon ${situation.isCorrect ? 'correct' : 'incorrect'}`}>
-                    {situation.isCorrect ? '✓' : '✕'}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-          <div className="Q2U1">
-            <img src={img1} alt="" />
-            <img src={img2} alt="" />
-
-
-          </div>
-          <div className="spaces"></div>
- 
-          <div className="action-buttons-container flex gap-4 mt-4">
-          <button onClick={resetExercise} className="try-again-button">Recommencer ↻</button>
-        <button onClick={showCorrectAnswer} className="show-answer-btn swal-continue">Afficher la réponse</button>
-        <button onClick={checkAnswers} className="check-button2">Vérifier la réponse✓</button>
-          </div>
+        <div className="greeting-options">
+          <select
+            value={situation.userGuess || ''}
+            onChange={(e) => handleSelect(situation.id, e.target.value)}
+            disabled={showFeedback}
+          >
+            <option value="" disabled>Select</option>
+            <option value="La main">La main</option>
+            <option value="La bise">La bise</option>
+          </select>
         </div>
-        {/* Score Card */}
-{score && <ScoreCardEnhanced score={score} />}
+
+        {showFeedback && situation.isCorrect !== null && (
+          <div className={`feedback-icon ${situation.isCorrect ? 'correct' : 'incorrect'}`}>
+            {situation.isCorrect ? '✓' : '✕'}
+          </div>
+        )}
       </div>
+    ))}
+  </div>
+
+  <div className="Q2U1">
+    <img style={{width:"70%",height:"70%"}} src={img1} alt="" />
+    <img style={{width:"70%",height:"70%"}} src={img2} alt="" />
+  </div>
+</div>
+
     </div>
   );
 };

@@ -198,7 +198,7 @@ className="header-title-page1 w-full text-left mb-4"
   style={{ marginLeft: "42%", color:"black",marginTop:"5%",fontSize:"25px", fontWeight:"bold" }}
       >
         <span style={{backgroundColor:"#73C8D2"}} className="ex-A">D</span> <span style={{color:"black"}} className="number-of-q">6</span>
-ouve la nationalité de chaquepe
+          Écoute et trouve la nationalité de chaque personne.
 
       </header>
    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
@@ -264,12 +264,12 @@ ouve la nationalité de chaquepe
         </div>
       </div>
       {/* ✅ QUESTIONS */}
-      <div className="page5Q5">
+        <div className="page5Q5" style={{marginLeft:"13%"}}>
         <div className="inputs-column">
           {Object.keys(questions).map((key, index) => (
             <div className="input-group" key={key}>
               <label>
-                <strong>{String.fromCharCode(97 + index)} </strong>
+                <strong style={{fontSize:"20px"}}>{String.fromCharCode(97 + index)} </strong>
                 {questions[key].split("____")[0]}
                 <input
                   type="text"
