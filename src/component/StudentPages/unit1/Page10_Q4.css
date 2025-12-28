@@ -42,7 +42,7 @@ margin-left: 10%;
 }
 
 /* منطقة الصور على اليمين */
-.images-area {
+.images-area3 {
   width: 300px; /* ثابت أو حسب رغبتك */
   display: flex;
   flex-direction: column;
@@ -50,22 +50,22 @@ margin-left: 10%;
 }
 
 /* صف الصور العلوية */
-.top-images-row {
+.top-images-row3 {
   display: flex;
   gap: 10px;
   justify-content: center;
 }
 
 /* كل صورة + input */
-.image-box {
+.image-box3{
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 5px;
 }
 
-.image-box img {
-  width: 50%;
+.image-box3 img {
+  width: 100%;
   height: auto;
   border: 1px solid #ccc;
   border-radius: 8px;

@@ -85,7 +85,7 @@ const Page5_Q1_CleanAudio = () => {
 
     if (correctCount === total) ValidationAlert.success(msg);
     else if (correctCount === 0) ValidationAlert.error(msg);
-    else ValidationAlert.warning(msg);
+    else ValidationAlert.error(msg);
   };
 
   // ✅ SHOW ANSWER

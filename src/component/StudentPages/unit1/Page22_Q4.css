@@ -1,0 +1,80 @@
+/* ============================
+   PAGE LAYOUT
+============================ */
+.page-wrapper4 {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* ============================
+   QUESTIONS LAYOUT (2 COLUMNS)
+============================ */
+.questions-container4 {
+  width: 100%;
+  max-width: 900px;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* عمودين */
+  column-gap: 80px;
+  row-gap: 20px;
+  margin-top: 20px;
+}
+
+/* كل صف */
+.question-row4 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* الجهة اليسرى */
+.left-part4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+/* الحرف */
+.question-letter4 {
+  font-weight: bold;
+  width: 20px;
+}
+
+/* النص */
+.question-text4 {
+  min-width: 70px;
+}
+
+/* input */
+.left-part4 input {
+  width: 80%;
+  border: none;
+  border-bottom: 2px solid black;
+  outline: none;
+  padding: 3px 6px;
+  font-size: 14px;
+}
+
+/* ============================
+   FLAG
+============================ */
+.flag-img {
+  width: 28px;       /* صغير */
+  height: auto;
+  margin-left: 0px; /* ملاصق للإنبوت */
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+@media (max-width: 768px) {
+  .questions-container4 {
+    grid-template-columns: 1fr; /* عمود واحد بالموبايل */
+  }
+
+  .left-part4 input {
+    width: 100%;
+  }
+}

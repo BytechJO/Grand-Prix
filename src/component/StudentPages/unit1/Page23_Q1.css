@@ -1,6 +1,6 @@
 .page-wrapper1 {
   width: 100%;
-  padding: 20px;
+  
 }
 
 
@@ -14,7 +14,7 @@
 }
 
 
-.image-box img {
+.image-box1 img {
   width: 340px; /* كانت 260px */
   height: auto;
 }

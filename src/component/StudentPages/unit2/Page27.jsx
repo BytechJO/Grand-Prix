@@ -39,7 +39,7 @@ const Page1 = ({ openPopup }) => {
           width="20"
           height="20"
           viewBox="0 0 90 90"
-          onClick={() => openPopup("exercise", { startIndex: 22 })}
+          onClick={() => openPopup("exercise", { startIndex: 26 })}
           // className="click-icon-page8-1 hover:scale-110 transition"
           style={{ overflow: "visible" }}
         >
@@ -66,7 +66,7 @@ const Page1 = ({ openPopup }) => {
           width="20"
           height="20"
           viewBox="0 0 90 90"
-          onClick={() => openPopup("exercise", { startIndex: 1 })}
+          onClick={() => openPopup("exercise", { startIndex: 27 })}
           // className="click-icon-page8-1 hover:scale-110 transition"
           style={{ overflow: "visible" }}
         >

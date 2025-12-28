@@ -126,7 +126,7 @@ correcte vaut 3 points.
       {score && <ScoreCardEnhanced score={score} />}
 
       <div className="question-container">
-        <div className="image-box">
+        <div className="image-box1">
           <img src={img1} alt="Question illustration" />
         </div>
 

@@ -8,7 +8,7 @@ import ValidationAlert from "../../Popup/ValidationAlert";
 import ScoreCardEnhanced from "../../Popup/ScoreCard"; 
 import "./Page17_Q1.css";
 
-/* 🔴 التغيير الوحيد هنا */
+/* 🔴 القائمة */
 const numbersList = [
   { id: "a", label: "Je suis sud-africain(e)." },
   { id: "b", label: "Je suis canadien(ne)." },
@@ -22,6 +22,7 @@ const numbersList = [
   { id: "j", label: "Je suis australien(ne)." },
 ];
 
+/* 🔴 الإجابات الصحيحة */
 const correctAnswers = {
   0: "b",
   1: "d",
@@ -77,10 +78,10 @@ const Page5_Q1_CleanAudio = () => {
     }
   };
 
-  /* 🔴 تغيير بسيط لقبول حرف واحد فقط */
+  /* 🔴 تحديث الـ input */
   const handleInputChange = (index, value) => {
     if (/^[A-Za-z]?$/.test(value)) {
-      setInputs({ ...inputs, [index]: value.toUpperCase() });
+      setInputs({ ...inputs, [index]: value.toLowerCase() });
     }
   };
 
@@ -126,6 +127,7 @@ const Page5_Q1_CleanAudio = () => {
     setActiveIndex(index);
   };
 
+  /* 🔴 مواقع الـ inputs فوق الصورة */
   const inputPositions = [
     { id: 0, top: "30%", left: "16%" },
     { id: 1, top: "45%", left: "22%" },
@@ -155,7 +157,7 @@ const Page5_Q1_CleanAudio = () => {
       >
         <span className="ex-A" style={{ backgroundColor: "#73C8D2" }}>D</span>{" "}
         <span className="number-of-q">1</span>{" "}
-     Écoute, répète et place dans l’ordre.
+        Écoute, répète et place dans l’ordre.
       </header>
 
       {/* Audio Player */}
@@ -166,12 +168,14 @@ const Page5_Q1_CleanAudio = () => {
               ref={audioRef}
               src={CD6_Pg8_Instruction1_AdultLady}
               onTimeUpdate={(e) => {
-                setCurrent(e.target.currentTime);
-                updateCaption(e.target.currentTime);
+                const time = e.target.currentTime;
+                setCurrent(time);
+                updateCaption(time);
               }}
               onLoadedMetadata={(e) => setDuration(e.target.duration)}
             />
-
+  
+            {/* Time & Slider */}
             <div className="top-row">
               <span className="audio-time">
                 {new Date(current * 1000).toISOString().substring(14, 19)}
@@ -186,47 +190,45 @@ const Page5_Q1_CleanAudio = () => {
                   audioRef.current.currentTime = e.target.value;
                   updateCaption(Number(e.target.value));
                 }}
+                style={{
+                  background: `linear-gradient(to right, #430f68 ${(current / duration) * 100}%, #d9d9d9ff ${(current / duration) * 100}%)`,
+                }}
               />
               <span className="audio-time">
                 {new Date(duration * 1000).toISOString().substring(14, 19)}
               </span>
             </div>
-
+  
+            {/* Controls */}
             <div className="bottom-row flex justify-between items-center">
+              {/* Captions */}
               <div
                 className={`round-btn ${showCaption ? "active" : ""}`}
+                style={{ position: "relative" }}
                 onClick={() => setShowCaption(!showCaption)}
               >
                 <TbMessageCircle size={36} />
-                <div className={`caption-inPopup ${showCaption ? "show" : ""}`}>
-                  {captions.map((cap, i) => (
-                    <p
-                      key={i}
-                      className={`caption-inPopup-line2 ${
-                        activeIndex === i ? "active" : ""
-                      }`}
-                    >
-                      {cap.text}
-                    </p>
+                <div className={`caption-inPopup ${showCaption ? "show" : ""}`} style={{ top:"100%", left:"10%" }}>
+                  {captions.map((cap,i) => (
+                    <p key={i} id={`caption-${i}`} className={`caption-inPopup-line2 ${activeIndex===i?"active":""}`}>{cap.text}</p>
                   ))}
                 </div>
               </div>
 
+              {/* Play/Pause */}
               <button className="play-btn2" onClick={togglePlay}>
-                {isPlaying ? <FaPause size={26} /> : <FaPlay size={26} />}
+                {isPlaying ? <FaPause size={26}/> : <FaPlay size={26}/>}
               </button>
 
+              {/* Settings */}
               <div className="settings-wrapper">
-                <button
-                  className={`round-btn ${showSettings ? "active" : ""}`}
-                  onClick={() => setShowSettings(!showSettings)}
-                >
-                  <IoMdSettings size={36} />
+                <button className={`round-btn ${showSettings?"active":""}`} onClick={()=>setShowSettings(!showSettings)}>
+                  <IoMdSettings size={36}/>
                 </button>
                 {showSettings && (
                   <div className="settings-popup">
                     <label>Volume</label>
-                    <input
+                    <input id="V"
                       type="range"
                       min="0"
                       max="1"
@@ -248,84 +250,103 @@ const Page5_Q1_CleanAudio = () => {
       {score && <ScoreCardEnhanced score={score} />}
 
       {/* Exercise */}
-   <div
-  className="exercise-container"
-  style={{
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: "25px",
-    width: "100%",
-  }}
->
-  {/* IMAGE */}
-  <div
-    className="image2-container"
-    style={{ position: "relative", width: "100%", display: "flex", justifyContent: "center" }}
-  >
-    <img src={imgBackground} alt="Exercise" style={{ width: "80%",height:"80%" }} />
-
-    {inputPositions.map(pos => (
-      <input
-        key={pos.id}
-        type="text"
-        maxLength="1"
-        className="number-input"
-        value={inputs[pos.id] || ""}
-        onChange={(e) => handleInputChange(pos.id, e.target.value)}
+      <div
+        className="exercise-container"
         style={{
-          position: "absolute",
-          top: pos.top,
-          left: pos.left,
-          width: "3%",
-          height: "5%",
-          
-          textAlign: "center",
-          fontSize: "18px",
-          border: "2px solid #f48684",
-          backgroundColor: "white",
+          display: "flex",
+          width: "100%",
+          height: "100vh", 
+          gap: "20px",
         }}
-      />
-    ))}
-  </div>
-
-  {/* LIST */}
-  <div className="numbers-list" style={{ width: "60%" }}>
-   
-    <ul
-      style={{
-        listStyle: "none",
-        padding: 0,
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr", // 👈 عمودين
-        gap: "10px 20px",
-      }}
-    >
-      {numbersList.map(item => {
-        const isUsed = Object.values(inputs).includes(item.id);
-        return (
-          <li
-            key={item.id}
+      >
+        {/* القائمة على اليسار */}
+        <div
+          className="numbers-list"
+          style={{
+            width: "25%", 
+            overflowY: "auto",
+          }}
+        >
+          <ul
             style={{
-              backgroundColor: "#f2f2f2",
-              padding: "8px 10px",
-              borderRadius: "6px",
-              display: "flex",
-              gap: "8px",
-              fontWeight: "bold",
-              color: isUsed ? "blue" : "black",
+              listStyle: "none",
+              padding: 0,
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: "10px",
             }}
           >
-            <span>{item.id}.</span>
-            <span>{item.label}</span>
-          </li>
-        );
-      })}
-    </ul>
-  </div>
-</div>
+            {numbersList.map(item => {
+              // 🔹 أي حرف مطابق لـ item.id يصبح أزرق
+              const isUsed = Object.values(inputs).some(val => val === item.id);
+              return (
+                <li
+                  key={item.id}
+                  style={{
+                    backgroundColor: "#f2f2f2",
+                    padding: "8px 10px",
+                    borderRadius: "6px",
+                    display: "flex",
+                    gap: "8px",
+                    fontWeight: "bold",
+                    color: isUsed ? "blue" : "black",
+                  }}
+                >
+                  <span>{item.id}.</span>
+                  <span>{item.label}</span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
 
+        {/* الصورة على اليمين */}
+        <div
+          className="image2-container"
+          style={{
+            position: "relative",
+            flexGrow: 1, 
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            overflow: "hidden",
+          }}
+        >
+          <img
+            src={imgBackground}
+            alt="Exercise"
+            style={{
+              width: "100%", 
+              height: "100%",
+              objectFit: "contain",
+            }}
+          />
 
+          {inputPositions.map(pos => (
+            <input
+              key={pos.id}
+              type="text"
+              maxLength="1"
+              className="number-input"
+              value={inputs[pos.id] || ""}
+              onChange={(e) => handleInputChange(pos.id, e.target.value)}
+              style={{
+                position: "absolute",
+                top: pos.top,
+                left: pos.left,
+                width: "3%",
+                height: "5%",
+                textAlign: "center",
+                fontSize: "18px",
+                border: "2px solid #f48684",
+                backgroundColor: "white",
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Buttons */}
       <div className="action-buttons-container">
         <button onClick={resetExercise} className="try-again-button">
          Recommencer ↻

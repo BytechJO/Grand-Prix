@@ -1,61 +1,81 @@
-
-
-.header-title-page1 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 30px;
-}
-
-.ex-A {
-  background-color: #73c8d2;
-  padding: 4px 10px;
-  margin-right: 10px;
-}
-
-.number-of-q {
-  margin-right: 10px;
-}
-
-/* 🟦 Table */
 .table-container {
-  width: 700px;
-  height: 420px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 30px auto;
+  justify-content: center;
+  gap: 30%;
+  padding: 30px;
+  background-size: cover;
+  background-position: center;
+
+  position: relative;
 }
 
-/* Columns */
-.table-column {
+
+.table-container {
+  position: relative;
+}
+
+/* الخط الفاصل */
+.table-container::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  left: 50%;
+  width: 2px;
+
+  background: black;
+  transform: translateX(-50%);
+
+}
+
+
+/* عمود */
+.table-column1 {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding: 20px;
+ 
+
+  /* Glass Effect */
+
+
+
 }
 
-/* Inputs */
-.table-input {
-  width: 220px;
-  padding: 6px 10px;
-  background: transparent;
-  border: none;
-  border-bottom: 2px solid #444;
-  outline: none;
-  font-size: 16px;
+/* الحقول */
+.table-input1 {
+  width: 160px;
+  padding: 10px 12px;
+  font-size: 20px;
+  font-weight: 600;
   text-align: center;
+
+
+border-bottom: black solid 2px;
+
+
+  color: #333;
+
+  transition: all 0.25s ease;
 }
 
-/* Buttons */
-.action-buttons-container {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 30px;
+/* عند التركيز */
+.table-input1:focus {
+  outline: none;
+  border-color: #7b3fe4;
+  background: transparent;
+  box-shadow: 0 0 0 2px rgba(123, 63, 228, 0.3);
 }
-.table-column:first-child {
-  border-right: 2px solid #444; /* لون الخط وسُمكه */
-  padding-right: 10%; /* بعض المسافة عن الخط */
+
+/* الحقول الثابتة */
+.table-input1[readonly] {
+
+  color: #444;
+  cursor: not-allowed;
+  font-weight: bold;
+}
+.table-input1 input{
+
+  border-bottom: 2px black solid;
 }

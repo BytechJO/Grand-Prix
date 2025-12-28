@@ -221,7 +221,7 @@ const Page5_Q1_CleanAudio = () => {
         </div>
       </div>
 
-      <div className="spaces"></div>
+   
 
       <div className="action-buttons-container">
         <button onClick={resetExercise} className="try-again-button">Recommencer ↻</button>

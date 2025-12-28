@@ -1,51 +1,78 @@
 import React, { useState, useRef } from "react";
+import imgBackground from "../../../assets/unite2pages/svg/Q126.png";
 import ValidationAlert from "../../Popup/ValidationAlert";
+import ScoreCardEnhanced from "../../Popup/ScoreCard"; 
 
 
-import { TbMessageCircle } from "react-icons/tb";
-import ScoreCardEnhanced from "../../Popup/ScoreCard"; // عدّل المسار حسب مكانه
+/* 🔴 القائمة */
+const numbersList = [
+  { id: "a", label: "Je suis sud-africain(e)." },
+  { id: "b", label: "Je suis canadien(ne)." },
+  { id: "c", label: "Je suis indien(ne)." },
+  { id: "d", label: "Je suis américain(e)." },
+  { id: "e", label: "Je suis finlandais(e)." },
+  { id: "f", label: "Je suis australien(ne)." },
+  { id: "g", label: "Je suis australien(ne)." },
+  { id: "h", label: "Je suis australien(ne)." },
+  { id: "i", label: "Je suis australien(ne)." },
+  { id: "j", label: "Je suis australien(ne)." },
+];
+
+/* 🔴 الإجابات الصحيحة */
+const correctAnswers = {
+  0: "b",
+  1: "d",
+  2: "h",
+  3: "e",
+  4: "g",
+  5: "a",
+  6: "f",
+  7: "j",
+  8: "c",
+  9: "i",
+};
 
 const Page5_Q1_CleanAudio = () => {
   const audioRef = useRef(null);
-
-  const [score, setScore] = useState(null); // لتخزين عدد الإجابات الصحيحة وإجمالي الأسئلة
-
-  // ✅ ANSWERS
-  const [] = useState("");
-  const [] = useState("");
+  const [inputs, setInputs] = useState({});
+  const [score, setScore] = useState(null);
 
 
 
-  // ✅ CHECK ANSWER
-  const checkAnswer = () => {
-    const correctBoyName = "Antoine";
-    const correctGirlName = "Emma";
 
-    if (!boyName.trim() || !girlName.trim()) {
-      ValidationAlert.info("Attention!", "Veuillez remplir les deux champs.");
-      return;
+  const resetAudio = () => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.pause();
+      setIsPlaying(false);
+      setCurrent(0);
     }
+  };
 
-    const isBoyCorrect =
-      boyName.trim().toLowerCase() === correctBoyName.toLowerCase();
-    const isGirlCorrect =
-      girlName.trim().toLowerCase() === correctGirlName.toLowerCase();
+  /* 🔴 تحديث الـ input */
+  const handleInputChange = (index, value) => {
+    if (/^[A-Za-z]?$/.test(value)) {
+      setInputs({ ...inputs, [index]: value.toLowerCase() });
+    }
+  };
 
-    const correctCount = (isBoyCorrect ? 1 : 0) + (isGirlCorrect ? 1 : 0);
-    const total = 2;
+  const checkAnswer = () => {
+    let correctCount = 0;
+    Object.keys(correctAnswers).forEach(key => {
+      if (inputs[key] === correctAnswers[key]) correctCount++;
+    });
 
-    // ✅ تحديث ScoreCardEnhanced
+    const total = Object.keys(correctAnswers).length;
     setScore({ correct: correctCount, total });
 
-    // التنبيهات
     if (correctCount === total) {
       ValidationAlert.success(
         `Excellent! (${correctCount}/${total})`,
-        "All answers are correct!"
+        "All answers correct!"
       );
     } else if (correctCount === 0) {
       ValidationAlert.error(
-        `All answers are incorrect. (${correctCount}/${total})`,
+        `All answers incorrect (${correctCount}/${total})`,
         "Try again!"
       );
     } else {
@@ -56,82 +83,161 @@ const Page5_Q1_CleanAudio = () => {
     }
   };
 
-  // ✅ SHOW ANSWER
-  const showAnswerFunc = () => {
-    setBoyName("Antoine");
-    setGirlName("Emma");
+  const showAnswerFunc = () => setInputs(correctAnswers);
 
-    // جميع الإجابات صحيحة بعد العرض
-    const total = 2;
-    const correctCount = 2;
-    setScore({ correct: correctCount, total });
-
-    ValidationAlert.success(
-      "Answers shown",
-      "The correct names have been placed.",
-      `${correctCount}/${total}`
-    );
-  };
-
-  // ✅ RESET
   const resetExercise = () => {
-    setBoyName("");
-    setGirlName("");
-    setScore(null); // إعادة تعيين ScoreCard
+    setInputs({});
+    setScore(null);
     resetAudio();
   };
 
-  // === Captions state ===
-  const [showCaption, setShowCaption] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(null);
 
-  // === Captions array ===
-  const captions = [
-    { start: 5, end: 6.9, text: "Grand Prix A1" },
-    { start: 7.3, end: 8.2, text: "unité 1" },
-    { start: 8.7, end: 9.5, text: " se présenter. " },
-    { start: 10.2, end: 11.2, text: "Section A." },
-    { start: 11.9, end: 12.3, text: "Salut." },
-    { start: 12.9, end: 14.3, text: "Exercice 5" },
-    { start: 15.23, end: 16.77, text: "Écoute et réponds." },
-    { start: 18.78, end: 20.31, text: "Je m'appelle Antoine." },
-    { start: 21.39, end: 22.51, text: "Je m'appelle Emma." },
+
+  /* 🔴 مواقع الـ inputs فوق الصورة */
+  const inputPositions = [
+    { id: 0, top: "30%", left: "16%" },
+    { id: 1, top: "45%", left: "22%" },
+    { id: 2, top: "69%", left: "33%" },
+    { id: 3, top: "30%", left: "47%" },
+    { id: 4, top: "42%", left: "43%" },
+    { id: 5, top: "76%", left: "47%" },
+    { id: 6, top: "75%", left: "70%" },
+    { id: 7, top: "50%", left: "70%" },
+    { id: 8, top: "52%", left: "58%" },
+    { id: 9, top: "30%", left: "75%" },
   ];
+
   return (
     <div className="page-wrapper1 flex flex-col items-center justify-start gap-8 p-4">
-      {/* Question Header */}
+
+      {/* Header */}
       <header
- className="header-title-page1 w-full text-left mb-4"
-  style={{ marginLeft: "42%", color:"black",marginTop:"5%",fontSize:"25px", fontWeight:"bold" }}
+        className="header-title-page1 w-full text-left mb-4"
+        style={{
+          marginLeft: "42%",
+          color: "black",
+          marginTop: "5%",
+          fontSize: "25px",
+          fontWeight: "bold",
+        }}
       >
-        <span style={{ backgroundColor: "#73C8D2" }} className="ex-A">
-          A
-        </span>{" "}
-        <span style={{ color: "black" }} className="number-of-q">
-          5
-        </span>
-        Écoute et réponds.
+        <span className="ex-A" style={{ backgroundColor: "#df4f89" }}>A</span>
+        <span className="number-of-q">1</span>{" "}
+        Écoute, répète et place dans l’ordre.
       </header>
-}
+
+  
 
       {score && <ScoreCardEnhanced score={score} />}
 
-      {/* ✅ QUESTIONS */}
+      {/* Exercise */}
+      <div
+        className="exercise-container"
+        style={{
+          display: "flex",
+          width: "100%",
+          height: "100vh", 
+          gap: "20px",
+          overflow:"hidden"
+        }}
+      >
+        {/* القائمة على اليسار */}
+        <div
+          className="numbers-list"
+          style={{
+            width: "25%", 
+            overflowY: "auto",
+          }}
+        >
+          <ul
+            style={{
+              listStyle: "none",
+              padding: 0,
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: "10px",
+            }}
+          >
+            {numbersList.map(item => {
+              // 🔹 أي حرف مطابق لـ item.id يصبح أزرق
+              const isUsed = Object.values(inputs).some(val => val === item.id);
+              return (
+                <li
+                  key={item.id}
+                  style={{
+                    backgroundColor: "#f2f2f2",
+                    padding: "8px 10px",
+                    borderRadius: "6px",
+                    display: "flex",
+                    gap: "8px",
+                    fontWeight: "bold",
+                    color: isUsed ? "blue" : "black",
+                  }}
+                >
+                  <span>{item.id}.</span>
+                  <span>{item.label}</span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
 
+        {/* الصورة على اليمين */}
+        <div
+          className="image2-container"
+          style={{
+            position: "relative",
+            flexGrow: 1, 
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            overflow: "hidden",
+          }}
+        >
+          <img
+            src={imgBackground}
+            alt="Exercise"
+            style={{
+              width: "70%", 
+              height: "20%",
+            
+            }}
+          />
 
-      {/* Action Buttons */}
+          {inputPositions.map(pos => (
+            <input
+              key={pos.id}
+              type="text"
+              maxLength="1"
+              className="number-input"
+              value={inputs[pos.id] || ""}
+              onChange={(e) => handleInputChange(pos.id, e.target.value)}
+              style={{
+                position: "absolute",
+                top: pos.top,
+                left: pos.left,
+                width: "3%",
+                height: "5%",
+                textAlign: "center",
+                fontSize: "18px",
+                border: "2px solid #f48684",
+                backgroundColor: "white",
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Buttons */}
       <div className="action-buttons-container">
         <button onClick={resetExercise} className="try-again-button">
-          Start Again ↻
+         Recommencer ↻
         </button>
-        <button
-          onClick={showAnswerFunc}
-          className="show-answer-btn swal-continue"
-        >
-          Show Answer
+        <button onClick={showAnswerFunc} className="show-answer-btn">
+         Afficher la réponse
         </button>
         <button onClick={checkAnswer} className="check-button2">
-          Check Answer ✓
+          Vérifier la réponse✓
         </button>
       </div>
     </div>

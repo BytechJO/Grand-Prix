@@ -79,7 +79,7 @@ const Page5_Q1_CleanAudio = () => {
   };
 
   return (
- <div className="page-wrapper1 flex flex-col items-center justify-start gap-8 p-4">
+ <div className="page-wrapper2 flex flex-col items-center justify-start gap-8 p-4">
       {/* Header */}
         <header
         className="header-title-page1 w-full text-left mb-4"
@@ -104,14 +104,14 @@ const Page5_Q1_CleanAudio = () => {
         style={{ backgroundImage: `url(${background})` }}
       >
         {/* العمود الأيسر */}
-        <div className="table-column">
+        <div className="table-column1">
           {col1.map((value, index) => {
             const isFixed = fixedValuesCol1[index] !== null;
 
             return (
               <input
                 key={index}
-                className="table-input"
+                className="table-input1"
                 value={isFixed ? fixedValuesCol1[index] : value}
                 readOnly={isFixed}
                 onChange={(e) => {
@@ -127,14 +127,14 @@ const Page5_Q1_CleanAudio = () => {
         </div>
 
         {/* العمود الأيمن */}
-        <div className="table-column">
+        <div className="table-column1">
           {col2.map((value, index) => {
             const isFixed = fixedValuesCol2[index] !== null;
 
             return (
               <input
                 key={index}
-                className="table-input"
+                className="table-input1"
                 value={isFixed ? fixedValuesCol2[index] : value}
                 readOnly={isFixed}
                 onChange={(e) => {
@@ -149,7 +149,7 @@ const Page5_Q1_CleanAudio = () => {
           })}
         </div>
       </div>
-
+<div className="spaces"></div>
       {/* Buttons */}
       <div className="action-buttons-container">
         <button onClick={resetExercise} className="try-again-button">

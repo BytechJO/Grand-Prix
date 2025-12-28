@@ -194,8 +194,8 @@ export default function Book() {
 
   // UNITS
   const studentUnits = [
-    { id: 1, label: "Unité 1 Se présenter", start: 4, pages: 8 },
-    // { id: 2, label: "Student Unit 2", start: 10, pages: 12 },
+    { id: 1, label: "Unité 1 Se présenter", start: 4, pages: 22 },
+    { id: 2, label: "Unité 2 Se présenter", start: 27, pages: 25 },
     // { id: 3, label: "Student Unit 3", start: 22, pages: 9 },
     // { id: 4, label: "Student Unit 4", start: 30, pages: 10 },
     // { id: 5, label: "Student Unit 5", start: 40, pages: 10 },

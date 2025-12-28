@@ -48,7 +48,9 @@ const CurrentLesson = lesson?.component;
       Swal.fire({
         html: `
           <div class="custom-popup-content">
-            <h2 style="font-size:25px;color=black">Congratulations! You've finished all the exercises of Unit🎉</br> Do you want to continue to Unit ${
+            <h2 style="font-size:25px;color=black">Félicitations! Vous avez terminé tous les exercices🎉
+
+Souhaitez-vous recommencer depuis le début? ${
               lesson.unit + 1
             } exercises?</h2>
           </div>
@@ -57,8 +59,8 @@ const CurrentLesson = lesson?.component;
         imageHeight: 200,
         icon: "question",
         background: "#dfeaf6",
-        confirmButtonText: "Yes",
-        cancelButtonText: "No",
+        confirmButtonText: "Oui",
+        cancelButtonText: "Non",
         showCancelButton: true, // ✔️ هذا هو السبب الرئيسي
         allowOutsideClick: false,
         allowEscapeKey: false,
@@ -82,8 +84,9 @@ const CurrentLesson = lesson?.component;
       Swal.fire({
         html: `
           <div class="custom-popup-content">
-            <h2 style="font-size:25px;color=black">Congratulations! You've finished all the exercises 🎉</br>
-                Do you want to restart from the beginning?</h2>
+            <h2 style="font-size:25px;color=black">Félicitations! Vous avez terminé tous les exercices🎉
+
+Souhaitez-vous recommencer depuis le début?</h2>
           </div>
         `,
         imageWidth: 200,

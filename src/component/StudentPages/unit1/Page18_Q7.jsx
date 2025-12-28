@@ -198,7 +198,7 @@ const Page5_Q1_CleanAudio = () => {
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <div className="exercise-layout-vertical"style={{paddingTop:"0%" ,marginTop:"0%"}}>
           {/* Drop zones */}
-          <div className="image-section-horizontal">
+          <div className="letter-sentence-pair">
             {exerciseData.topImages.map((topImg, index) => (
               <Droppable key={`drop-${index + 1}`} droppableId={`drop-${index + 1}`}>
                 {(provided, snapshot) => (
@@ -228,7 +228,7 @@ const Page5_Q1_CleanAudio = () => {
           {/* Draggable Images */}
           <Droppable droppableId="bottom-images" direction="horizontal">
             {(provided) => (
-              <div className="letters-section-horizontal" ref={provided.innerRef} {...provided.droppableProps} style={{ display: "flex", gap: "10px", marginTop: "20px" }}>
+              <div className="image-section-horizontal" ref={provided.innerRef} {...provided.droppableProps} style={{ display: "flex", gap: "10px", marginTop: "20px" }}>
                 {availableImages.map((img, index) => (
                   <Draggable key={img.id} draggableId={img.id} index={index}>
                     {(providedDraggable, snapshot) => (

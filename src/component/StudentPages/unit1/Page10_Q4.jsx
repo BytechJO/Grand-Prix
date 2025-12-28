@@ -283,19 +283,19 @@ className="header-title-page1 w-full text-left mb-4"
   </div>
 
   {/* Images Inputs - الصور على اليمين */}
-  <div className="images-area">
-    <div className="top-images-row">
-      <div className="image-box">
+  <div className="images-area3">
+    <div className="top-images-row3">
+      <div className="image-box3">
         <img src={img1} alt="img1" />
         <input className="image-input" value={answers.imgA || ""} onChange={e => handleChange("imgA", e.target.value)} placeholder="a/b/c" />
       </div>
-      <div className="image-box">
+      <div className="image-box3">
         <img src={img2} alt="img2" />
         <input className="image-input" value={answers.imgB || ""} onChange={e => handleChange("imgB", e.target.value)} placeholder="a/b/c" />
       </div>
     </div>
     <div className="bottom-image-row">
-      <div className="image-box">
+      <div className="image-box3">
         <img src={img3} alt="img3" />
         <input className="image-input" value={answers.imgC || ""} onChange={e => handleChange("imgC", e.target.value)} placeholder="a/b/c" />
       </div>

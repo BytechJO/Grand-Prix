@@ -1,0 +1,113 @@
+/* classification-input-exercise.css */
+
+/* تنسيقات الكلمات الصحيحة والخاطئة */
+.correct-word {
+  background-color: #d1fae5 !important;
+  border-color: #10b981 !important;
+  color: #065f46;
+  animation: pulseCorrect 1.5s ease;
+}
+
+.wrong-word {
+  background-color: #fee2e2 !important;
+  border-color: #ef4444 !important;
+  color: #7f1d1d;
+  animation: shake 0.5s ease;
+}
+
+@keyframes pulseCorrect {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(16, 185, 129, 0);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* تحسينات للأزرار */
+.action-buttons-container button {
+  position: relative;
+  overflow: hidden;
+}
+
+.action-buttons-container button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.action-buttons-container button:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(40, 40);
+    opacity: 0;
+  }
+}
+
+/* تحسينات للوضع المحمول */
+@media (max-width: 768px) {
+  .input-group .flex {
+    flex-direction: column;
+  }
+  
+  .input-group button {
+    width: 100%;
+    margin-top: 8px;
+  }
+  
+  .correction-section {
+    font-size: 14px;
+  }
+}
+
+/* تلميحات */
+.word-item {
+  position: relative;
+}
+
+.word-item:hover::before {
+  content: 'Cliquez pour supprimer';
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.word-item:hover::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #333;
+}
