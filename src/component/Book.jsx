@@ -26,7 +26,7 @@ import openBook from "../assets/unit1/imgs/Page 01/open-book.svg";
 import { FaKey } from "react-icons/fa";
 import audioBtn from "../assets/unit1/imgs/Page 01/audiobtn.svg";
 import arrowBtn from "../assets/unit1/imgs/Page 01/Arrow.svg";
-import pauseBtn from "../assets/unit1/imgs/Right Video Button.svg";
+
 
 // === PAGES DATA ===
 import { studentPages, workbookPages, teacherPages } from "./BookData";
@@ -83,7 +83,7 @@ export default function Book() {
   }, []);
 
   useEffect(() => {
-    setPageIndex(0);
+   
     setOffset({ x: 0, y: 0 });
     setZoom(1);
 

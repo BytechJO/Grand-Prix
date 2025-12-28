@@ -80,7 +80,7 @@ const Page5 = ({ openPopup }) => {
             className="Click -icon-CD-page5 hover:scale-110 transition"
 
 
-              style={{ overflow: "visible" , position:"absolute",top:"15.3%",left:"48%"  }}
+              style={{ overflow: "visible" , position:"absolute",top:"15.3%",left:"47%"  }}
             >
               <svg
                 width="20"

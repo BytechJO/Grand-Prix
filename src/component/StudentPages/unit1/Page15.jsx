@@ -15,7 +15,7 @@ const Page10 = ({ openPopup }) => {
 
       {/* زر الصوت الأول */}  <div
                   className="Click -icon-CD-page5 hover:scale-110 transition"
-                    style={{ overflow: "visible" , position:"absolute",top:"56%",left:"40%"  }}
+                    style={{ overflow: "visible" , position:"absolute",top:"56%",left:"38.5%"  }}
                   >
                     <svg
                       width="20"

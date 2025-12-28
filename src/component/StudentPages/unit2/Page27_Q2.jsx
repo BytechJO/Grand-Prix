@@ -21,74 +21,81 @@ const wordsList = [
 
 /* 🔴 الإجابات الصحيحة */
 const correctAnswers = {
-  masculins: [
-    "un stylo",
-    "un crayon",
-    "un livre",
-    "un cahier",
-    "des crayons de couleur",
-    "un sac à dos",
-    "un taille-crayon",
-    "des surligneurs",
-    "un compas"
-  ],
-  feminins: [
-    "une paire de ciseaux",
-    "une trousse",
-    "une règle",
-    "une gomme"
-  ]
+  masculins: [0, 2, 4, 6, 8, 9, 10, 11, 12], // أرقام الكلمات المذكرة
+  feminins: [1, 3, 5, 7] // أرقام الكلمات المؤنثة
 };
 
 const Page5_Q1_CleanAudio = () => {
   const [masculinInput, setMasculinInput] = useState("");
   const [femininInput, setFemininInput] = useState("");
-  const [masculinWords, setMasculinWords] = useState([]);
-  const [femininWords, setFemininWords] = useState([]);
+  const [masculinNumbers, setMasculinNumbers] = useState([]);
+  const [femininNumbers, setFemininNumbers] = useState([]);
   const [score, setScore] = useState(null);
   const [checkedAnswers, setCheckedAnswers] = useState({ masculins: [], feminins: [] });
   const [showCorrections, setShowCorrections] = useState(false);
 
-  // دالة لإضافة كلمة إلى القائمة المذكرة
-  const addMasculinWord = () => {
-    if (masculinInput.trim() !== "") {
-      setMasculinWords([...masculinWords, masculinInput.trim()]);
-      setMasculinInput("");
+  // دالة لإضافة رقم إلى القائمة المذكرة
+  const addMasculinNumber = () => {
+    const num = parseInt(masculinInput.trim());
+    if (!isNaN(num) && num >= 1 && num <= wordsList.length) {
+      const index = num - 1; // تحويل لرقم الفهرس (يبدأ من 0)
+      if (!masculinNumbers.includes(index) && !femininNumbers.includes(index)) {
+        setMasculinNumbers([...masculinNumbers, index]);
+        setMasculinInput("");
+      } else {
+        ValidationAlert.warning("Ce numéro est déjà utilisé", "Choisissez un autre numéro");
+      }
+    } else {
+      ValidationAlert.warning("Numéro invalide", `Veuillez entrer un numéro entre 1 et ${wordsList.length}`);
     }
   };
 
-  // دالة لإضافة كلمة إلى القائمة المؤنثة
-  const addFemininWord = () => {
-    if (femininInput.trim() !== "") {
-      setFemininWords([...femininWords, femininInput.trim()]);
-      setFemininInput("");
+  // دالة لإضافة رقم إلى القائمة المؤنثة
+  const addFemininNumber = () => {
+    const num = parseInt(femininInput.trim());
+    if (!isNaN(num) && num >= 1 && num <= wordsList.length) {
+      const index = num - 1; // تحويل لرقم الفهرس (يبدأ من 0)
+      if (!femininNumbers.includes(index) && !masculinNumbers.includes(index)) {
+        setFemininNumbers([...femininNumbers, index]);
+        setFemininInput("");
+      } else {
+        ValidationAlert.warning("Ce numéro est déjà utilisé", "Choisissez un autre numéro");
+      }
+    } else {
+      ValidationAlert.warning("Numéro invalide", `Veuillez entrer un numéro entre 1 et ${wordsList.length}`);
     }
   };
 
-  // السماح بالضغط على Enter لإضافة الكلمة
+  // السماح بالضغط على Enter لإضافة الرقم
   const handleKeyPress = (e, type) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       if (type === 'masculin') {
-        addMasculinWord();
+        addMasculinNumber();
       } else {
-        addFemininWord();
+        addFemininNumber();
       }
     }
   };
 
-  // إزالة كلمة من القائمة المذكرة
-  const removeMasculinWord = (index) => {
-    const newWords = [...masculinWords];
-    newWords.splice(index, 1);
-    setMasculinWords(newWords);
+  // إزالة رقم من القائمة المذكرة
+  const removeMasculinNumber = (index) => {
+    const newNumbers = [...masculinNumbers];
+    const removedIndex = newNumbers.indexOf(index);
+    if (removedIndex > -1) {
+      newNumbers.splice(removedIndex, 1);
+      setMasculinNumbers(newNumbers);
+    }
   };
 
-  // إزالة كلمة من القائمة المؤنثة
-  const removeFemininWord = (index) => {
-    const newWords = [...femininWords];
-    newWords.splice(index, 1);
-    setFemininWords(newWords);
+  // إزالة رقم من القائمة المؤنثة
+  const removeFemininNumber = (index) => {
+    const newNumbers = [...femininNumbers];
+    const removedIndex = newNumbers.indexOf(index);
+    if (removedIndex > -1) {
+      newNumbers.splice(removedIndex, 1);
+      setFemininNumbers(newNumbers);
+    }
   };
 
   // التحقق من الإجابات
@@ -98,48 +105,47 @@ const Page5_Q1_CleanAudio = () => {
     let wrongMasculin = 0;
     let wrongFeminin = 0;
     
-    const correctMasculins = [];
-    const wrongMasculins = [];
-    const correctFeminins = [];
-    const wrongFeminins = [];
+    const correctMasculinNumbers = [];
+    const wrongMasculinNumbers = [];
+    const correctFemininNumbers = [];
+    const wrongFemininNumbers = [];
     
-    // التحقق من الكلمات في القائمة المذكرة
-    masculinWords.forEach(word => {
-      if (correctAnswers.masculins.includes(word)) {
+    // التحقق من الأرقام في القائمة المذكرة
+    masculinNumbers.forEach(num => {
+      if (correctAnswers.masculins.includes(num)) {
         correctMasculin++;
-        correctMasculins.push(word);
+        correctMasculinNumbers.push(num);
       } else {
         wrongMasculin++;
-        wrongMasculins.push(word);
+        wrongMasculinNumbers.push(num);
       }
     });
     
-    // التحقق من الكلمات في القائمة المؤنثة
-    femininWords.forEach(word => {
-      if (correctAnswers.feminins.includes(word)) {
+    // التحقق من الأرقام في القائمة المؤنثة
+    femininNumbers.forEach(num => {
+      if (correctAnswers.feminins.includes(num)) {
         correctFeminin++;
-        correctFeminins.push(word);
+        correctFemininNumbers.push(num);
       } else {
         wrongFeminin++;
-        wrongFeminins.push(word);
+        wrongFemininNumbers.push(num);
       }
     });
     
-    // الكلمات المفقودة (التي لم يذكرها الطالب)
+    // الأرقام المفقودة (التي لم يذكرها الطالب)
     const missingMasculins = correctAnswers.masculins.filter(
-      word => !masculinWords.includes(word)
+      num => !masculinNumbers.includes(num)
     );
     
     const missingFeminins = correctAnswers.feminins.filter(
-      word => !femininWords.includes(word)
+      num => !femininNumbers.includes(num)
     );
     
     const totalWords = wordsList.length;
     const totalCorrect = correctMasculin + correctFeminin;
     const totalWrong = wrongMasculin + wrongFeminin;
-    const totalMissing = missingMasculins.length + missingFeminins.length;
     
-    // حساب النقاط (الكلمات الصحيحة فقط)
+    // حساب النقاط
     const finalScore = totalCorrect;
     
     setScore({ 
@@ -150,21 +156,21 @@ const Page5_Q1_CleanAudio = () => {
         correctFeminin,
         wrongMasculin,
         wrongFeminin,
-        missingMasculins,
-        missingFeminins
+        totalCorrect,
+        totalWrong
       }
     });
     
     // حفظ الإجابات للتصحيح
     setCheckedAnswers({
       masculins: {
-        correct: correctMasculins,
-        wrong: wrongMasculins,
+        correct: correctMasculinNumbers,
+        wrong: wrongMasculinNumbers,
         missing: missingMasculins
       },
       feminins: {
-        correct: correctFeminins,
-        wrong: wrongFeminins,
+        correct: correctFemininNumbers,
+        wrong: wrongFemininNumbers,
         missing: missingFeminins
       }
     });
@@ -192,8 +198,8 @@ const Page5_Q1_CleanAudio = () => {
 
   // عرض الإجابات النموذجية
   const showAnswerFunc = () => {
-    setMasculinWords([...correctAnswers.masculins]);
-    setFemininWords([...correctAnswers.feminins]);
+    setMasculinNumbers([...correctAnswers.masculins]);
+    setFemininNumbers([...correctAnswers.feminins]);
     setShowCorrections(false);
   };
 
@@ -201,32 +207,42 @@ const Page5_Q1_CleanAudio = () => {
   const resetExercise = () => {
     setMasculinInput("");
     setFemininInput("");
-    setMasculinWords([]);
-    setFemininWords([]);
+    setMasculinNumbers([]);
+    setFemininNumbers([]);
     setScore(null);
     setCheckedAnswers({ masculins: [], feminins: [] });
     setShowCorrections(false);
   };
 
-  // دالة للتحقق إذا كانت الكلمة صحيحة أو خاطئة (للتلوين)
-  const getWordClass = (word, type) => {
+  // دالة للتحقق إذا كان الرقم صحيح أو خاطئ (للتلوين)
+  const getNumberClass = (num, type) => {
     if (!showCorrections) return "";
     
     if (type === 'masculin') {
-      if (checkedAnswers.masculins.correct.includes(word)) {
-        return "correct-word";
-      } else if (checkedAnswers.masculins.wrong.includes(word)) {
-        return "wrong-word";
+      if (checkedAnswers.masculins.correct.includes(num)) {
+        return "correct-number";
+      } else if (checkedAnswers.masculins.wrong.includes(num)) {
+        return "wrong-number";
       }
     } else {
-      if (checkedAnswers.feminins.correct.includes(word)) {
-        return "correct-word";
-      } else if (checkedAnswers.feminins.wrong.includes(word)) {
-        return "wrong-word";
+      if (checkedAnswers.feminins.correct.includes(num)) {
+        return "correct-number";
+      } else if (checkedAnswers.feminins.wrong.includes(num)) {
+        return "wrong-number";
       }
     }
     
     return "";
+  };
+
+  // دالة للحصول على النص المعروض للرقم
+  const getDisplayText = (num) => {
+    return `${num + 1}. ${wordsList[num]}`;
+  };
+
+  // الحصول على الكلمة من رقمها
+  const getWordByNumber = (num) => {
+    return wordsList[num];
   };
 
   return (
@@ -243,8 +259,8 @@ const Page5_Q1_CleanAudio = () => {
         }}
       >
         <span className="ex-A" style={{ backgroundColor: "#df4f89" }}>A</span>
-        <span className="number-of-q">1</span>{" "}
-        Écris les mots qui sont :
+        <span className="number-of-q">3</span>{" "}
+    Écris les mots qui sont
       </header>
 
       {score && <ScoreCardEnhanced score={score} />}
@@ -252,27 +268,28 @@ const Page5_Q1_CleanAudio = () => {
       {/* Exercise Container */}
       <div className="exercise-container w-full max-w-6xl flex flex-col md:flex-row gap-8">
         
-        {/* التعليمات والقائمة */}
-        <div className="instructions-section w-full md:w-1/3">
-          <div className="instructions p-4 bg-gray-50 rounded-lg mb-4">
-            <h3 className="text-lg font-bold mb-2">Instructions :</h3>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>Écrivez les mots dans les bonnes catégories</li>
-              <li>Cliquez sur "Ajouter" ou appuyez sur Entrée</li>
-              <li>Vous pouvez faire des erreurs</li>
-              <li>Les corrections s'affichent après vérification</li>
-            </ul>
-          </div>
-          
-          <div className="words-reference p-4 bg-white rounded-lg shadow-md">
-            <h3 className="text-lg font-bold mb-3 text-center">Liste des mots :</h3>
-            <div className="words-grid grid grid-cols-2 gap-2">
+        {/* جدول الكلمات المرقمة */}
+        <div className="words-table-section w-full md:w-1/3">
+          <div className="words-table-container p-4 bg-white rounded-lg shadow-md">
+            <h3 className="text-lg font-bold mb-3 text-center">Tableau des mots :</h3>
+            <div className="words-grid grid grid-cols-1 gap-2">
               {wordsList.map((word, index) => (
                 <div 
                   key={index}
-                  className="word-ref p-2 bg-blue-50 rounded text-sm text-center"
+                  className={`word-row p-3 rounded border flex items-center gap-3 ${
+                    masculinNumbers.includes(index) ? 'bg-blue-50 border-blue-300' : 
+                    femininNumbers.includes(index) ? 'bg-pink-50 border-pink-300' : 
+                    'bg-gray-50 border-gray-200'
+                  }`}
                 >
-                  {word}
+                  <div className={`number-circle w-8 h-8 flex items-center justify-center rounded-full font-bold ${
+                    masculinNumbers.includes(index) ? 'bg-blue-500 text-white' : 
+                    femininNumbers.includes(index) ? 'bg-pink-500 text-white' : 
+                    'bg-gray-300 text-gray-700'
+                  }`}>
+                    {index + 1}
+                  </div>
+                  <span className="word-text">{word}</span>
                 </div>
               ))}
             </div>
@@ -293,15 +310,17 @@ const Page5_Q1_CleanAudio = () => {
               <div className="input-group p-4 bg-blue-100 border-x-2 border-blue-300">
                 <div className="flex gap-2">
                   <input
-                    type="text"
+                    type="number"
+                    min="1"
+                    max={wordsList.length}
                     value={masculinInput}
                     onChange={(e) => setMasculinInput(e.target.value)}
                     onKeyPress={(e) => handleKeyPress(e, 'masculin')}
-                    placeholder="Écrivez un mot masculin..."
+                    placeholder={`Entrez un numéro (1-${wordsList.length})...`}
                     className="flex-1 p-3 rounded border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                   <button
-                    onClick={addMasculinWord}
+                    onClick={addMasculinNumber}
                     className="px-4 bg-blue-500 hover:bg-blue-600 text-white rounded font-medium transition-colors"
                   >
                     Ajouter
@@ -309,22 +328,27 @@ const Page5_Q1_CleanAudio = () => {
                 </div>
               </div>
               
-              {/* قائمة الكلمات المضافة */}
-              <div className="words-container min-h-[300px] p-4 bg-blue-50 border-2 border-blue-300 border-t-0 rounded-b-lg">
-                {masculinWords.length === 0 ? (
+              {/* قائمة الأرقام المضافة */}
+              <div className="numbers-container min-h-[300px] p-4 bg-blue-50 border-2 border-blue-300 border-t-0 rounded-b-lg">
+                {masculinNumbers.length === 0 ? (
                   <div className="empty-message text-gray-400 italic text-center mt-20">
-                    Aucun mot ajouté. Écrivez des mots masculins ci-dessus.
+                    Aucun numéro ajouté. Écrivez des numéros ci-dessus.
                   </div>
                 ) : (
-                  <div className="words-grid grid grid-cols-1 gap-3">
-                    {masculinWords.map((word, index) => (
+                  <div className="numbers-grid grid grid-cols-1 gap-3">
+                    {masculinNumbers.map((num, index) => (
                       <div 
                         key={index}
-                        className={`word-item p-3 rounded-lg border flex justify-between items-center shadow-sm ${getWordClass(word, 'masculin')}`}
+                        className={`number-item p-3 rounded-lg border flex justify-between items-center shadow-sm ${getNumberClass(num, 'masculin')}`}
                       >
-                        <span>{word}</span>
+                        <div className="flex items-center gap-3">
+                          <span className="number-badge bg-blue-100 text-blue-800 px-2 py-1 rounded font-bold">
+                            {num + 1}
+                          </span>
+                          <span className="word-text">{wordsList[num]}</span>
+                        </div>
                         <button 
-                          onClick={() => removeMasculinWord(index)}
+                          onClick={() => removeMasculinNumber(num)}
                           className="remove-btn text-red-500 hover:text-red-700 text-lg font-bold"
                         >
                           ×
@@ -342,17 +366,17 @@ const Page5_Q1_CleanAudio = () => {
                   <div className="space-y-1">
                     {checkedAnswers.masculins.correct.length > 0 && (
                       <div className="text-green-600">
-                        ✓ Correct: {checkedAnswers.masculins.correct.join(", ")}
+                        ✓ Correct: {checkedAnswers.masculins.correct.map(n => n + 1).join(", ")}
                       </div>
                     )}
                     {checkedAnswers.masculins.wrong.length > 0 && (
                       <div className="text-red-600">
-                        ✗ Erreur: {checkedAnswers.masculins.wrong.join(", ")}
+                        ✗ Erreur: {checkedAnswers.masculins.wrong.map(n => n + 1).join(", ")}
                       </div>
                     )}
                     {checkedAnswers.masculins.missing.length > 0 && (
                       <div className="text-yellow-600">
-                        ⓘ Manquant: {checkedAnswers.masculins.missing.join(", ")}
+                        ⓘ Manquant: {checkedAnswers.masculins.missing.map(n => n + 1).join(", ")}
                       </div>
                     )}
                   </div>
@@ -360,7 +384,7 @@ const Page5_Q1_CleanAudio = () => {
               )}
               
               <div className="count-display mt-2 text-center text-blue-700 font-medium">
-                {masculinWords.length} mot(s) ajouté(s)
+                {masculinNumbers.length} numéro(s) ajouté(s)
               </div>
             </div>
 
@@ -374,15 +398,17 @@ const Page5_Q1_CleanAudio = () => {
               <div className="input-group p-4 bg-pink-100 border-x-2 border-pink-300">
                 <div className="flex gap-2">
                   <input
-                    type="text"
+                    type="number"
+                    min="1"
+                    max={wordsList.length}
                     value={femininInput}
                     onChange={(e) => setFemininInput(e.target.value)}
                     onKeyPress={(e) => handleKeyPress(e, 'feminin')}
-                    placeholder="Écrivez un mot féminin..."
+                    placeholder={`Entrez un numéro (1-${wordsList.length})...`}
                     className="flex-1 p-3 rounded border border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-500"
                   />
                   <button
-                    onClick={addFemininWord}
+                    onClick={addFemininNumber}
                     className="px-4 bg-pink-500 hover:bg-pink-600 text-white rounded font-medium transition-colors"
                   >
                     Ajouter
@@ -390,22 +416,27 @@ const Page5_Q1_CleanAudio = () => {
                 </div>
               </div>
               
-              {/* قائمة الكلمات المضافة */}
-              <div className="words-container min-h-[300px] p-4 bg-pink-50 border-2 border-pink-300 border-t-0 rounded-b-lg">
-                {femininWords.length === 0 ? (
+              {/* قائمة الأرقام المضافة */}
+              <div className="numbers-container min-h-[300px] p-4 bg-pink-50 border-2 border-pink-300 border-t-0 rounded-b-lg">
+                {femininNumbers.length === 0 ? (
                   <div className="empty-message text-gray-400 italic text-center mt-20">
-                    Aucun mot ajouté. Écrivez des mots féminins ci-dessus.
+                    Aucun numéro ajouté. Écrivez des numéros ci-dessus.
                   </div>
                 ) : (
-                  <div className="words-grid grid grid-cols-1 gap-3">
-                    {femininWords.map((word, index) => (
+                  <div className="numbers-grid grid grid-cols-1 gap-3">
+                    {femininNumbers.map((num, index) => (
                       <div 
                         key={index}
-                        className={`word-item p-3 rounded-lg border flex justify-between items-center shadow-sm ${getWordClass(word, 'feminin')}`}
+                        className={`number-item p-3 rounded-lg border flex justify-between items-center shadow-sm ${getNumberClass(num, 'feminin')}`}
                       >
-                        <span>{word}</span>
+                        <div className="flex items-center gap-3">
+                          <span className="number-badge bg-pink-100 text-pink-800 px-2 py-1 rounded font-bold">
+                            {num + 1}
+                          </span>
+                          <span className="word-text">{wordsList[num]}</span>
+                        </div>
                         <button 
-                          onClick={() => removeFemininWord(index)}
+                          onClick={() => removeFemininNumber(num)}
                           className="remove-btn text-red-500 hover:text-red-700 text-lg font-bold"
                         >
                           ×
@@ -423,17 +454,17 @@ const Page5_Q1_CleanAudio = () => {
                   <div className="space-y-1">
                     {checkedAnswers.feminins.correct.length > 0 && (
                       <div className="text-green-600">
-                        ✓ Correct: {checkedAnswers.feminins.correct.join(", ")}
+                        ✓ Correct: {checkedAnswers.feminins.correct.map(n => n + 1).join(", ")}
                       </div>
                     )}
                     {checkedAnswers.feminins.wrong.length > 0 && (
                       <div className="text-red-600">
-                        ✗ Erreur: {checkedAnswers.feminins.wrong.join(", ")}
+                        ✗ Erreur: {checkedAnswers.feminins.wrong.map(n => n + 1).join(", ")}
                       </div>
                     )}
                     {checkedAnswers.feminins.missing.length > 0 && (
                       <div className="text-yellow-600">
-                        ⓘ Manquant: {checkedAnswers.feminins.missing.join(", ")}
+                        ⓘ Manquant: {checkedAnswers.feminins.missing.map(n => n + 1).join(", ")}
                       </div>
                     )}
                   </div>
@@ -441,7 +472,7 @@ const Page5_Q1_CleanAudio = () => {
               )}
               
               <div className="count-display mt-2 text-center text-pink-700 font-medium">
-                {femininWords.length} mot(s) ajouté(s)
+                {femininNumbers.length} numéro(s) ajouté(s)
               </div>
             </div>
           </div>
@@ -449,23 +480,14 @@ const Page5_Q1_CleanAudio = () => {
       </div>
 
       {/* Buttons */}
-      <div className="action-buttons-container mt-8 flex gap-4">
-        <button 
-          onClick={resetExercise} 
-          className="try-again-button px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg font-medium transition-colors duration-200 shadow-md hover:shadow-lg"
-        >
-          Recommencer ↻
+    <div className="action-buttons-container">
+        <button onClick={resetExercise} className="try-again-button">
+         Recommencer ↻
         </button>
-        <button 
-          onClick={showAnswerFunc} 
-          className="show-answer-btn px-6 py-3 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg font-medium transition-colors duration-200 shadow-md hover:shadow-lg"
-        >
-          Afficher la réponse
+        <button onClick={showAnswerFunc} className="show-answer-btn">
+         Afficher la réponse
         </button>
-        <button 
-          onClick={checkAnswer} 
-          className="check-button2 px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium transition-colors duration-200 shadow-md hover:shadow-lg"
-        >
+        <button onClick={checkAnswer} className="check-button2">
           Vérifier la réponse✓
         </button>
       </div>

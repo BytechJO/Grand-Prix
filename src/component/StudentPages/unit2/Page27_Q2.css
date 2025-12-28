@@ -1,20 +1,147 @@
-/* classification-input-exercise.css */
+/* number-classification-exercise.css */
 
-/* تنسيقات الكلمات الصحيحة والخاطئة */
-.correct-word {
+/* تنسيقات الأرقام الصحيحة والخاطئة */
+.correct-number {
   background-color: #d1fae5 !important;
   border-color: #10b981 !important;
   color: #065f46;
   animation: pulseCorrect 1.5s ease;
 }
 
-.wrong-word {
+.wrong-number {
   background-color: #fee2e2 !important;
   border-color: #ef4444 !important;
   color: #7f1d1d;
   animation: shake 0.5s ease;
 }
 
+/* تنسيقات الدوائر والأرقام */
+.number-circle {
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.number-circle:hover {
+  transform: scale(1.1);
+}
+
+.number-badge {
+  font-size: 14px;
+  min-width: 40px;
+  text-align: center;
+}
+
+/* تحسينات لحقل الإدخال */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* تنسيقات جدول الكلمات */
+.word-row {
+  transition: all 0.2s ease;
+}
+
+.word-row:hover {
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.word-text {
+  flex: 1;
+  font-weight: 500;
+}
+
+/* تنسيقات العناصر المضافة */
+.number-item {
+  transition: all 0.3s ease;
+}
+
+.number-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* تلميحات */
+.number-item:hover::before {
+  content: 'Cliquez pour supprimer';
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.number-item:hover::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #333;
+}
+
+/* تنسيقات التصحيح */
+.correction-section {
+  border-left: 4px solid;
+  animation: slideIn 0.5s ease;
+}
+
+.correction-section h4 {
+  border-bottom: 2px solid;
+  padding-bottom: 5px;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* تجاوب للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .word-row {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .number-circle {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+  
+  .number-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .number-item > div {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* تأثيرات النبض والاهتزاز */
 @keyframes pulseCorrect {
   0%, 100% {
     box-shadow: 0 0 0 rgba(16, 185, 129, 0);
@@ -30,84 +157,19 @@
   75% { transform: translateX(5px); }
 }
 
-/* تحسينات للأزرار */
-.action-buttons-container button {
-  position: relative;
-  overflow: hidden;
+/* إشارات الألوان */
+.color-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
 }
 
-.action-buttons-container button::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 5px;
-  height: 5px;
-  background: rgba(255, 255, 255, 0.5);
-  opacity: 0;
-  border-radius: 100%;
-  transform: scale(1, 1) translate(-50%);
-  transform-origin: 50% 50%;
+.masculin-indicator {
+  background-color: #3b82f6;
 }
 
-.action-buttons-container button:focus:not(:active)::after {
-  animation: ripple 1s ease-out;
-}
-
-@keyframes ripple {
-  0% {
-    transform: scale(0, 0);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(40, 40);
-    opacity: 0;
-  }
-}
-
-/* تحسينات للوضع المحمول */
-@media (max-width: 768px) {
-  .input-group .flex {
-    flex-direction: column;
-  }
-  
-  .input-group button {
-    width: 100%;
-    margin-top: 8px;
-  }
-  
-  .correction-section {
-    font-size: 14px;
-  }
-}
-
-/* تلميحات */
-.word-item {
-  position: relative;
-}
-
-.word-item:hover::before {
-  content: 'Cliquez pour supprimer';
-  position: absolute;
-  top: -25px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #333;
-  color: white;
-  padding: 3px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  white-space: nowrap;
-  z-index: 10;
-}
-
-.word-item:hover::after {
-  content: '';
-  position: absolute;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid #333;
+.feminin-indicator {
+  background-color: #ec4899;
 }

@@ -96,7 +96,7 @@ const Page6 = ({ openPopup }) => {
           overflow: "visible",
           position: "absolute",
           top: "6.7%",
-          left: "58%",
+          left: "57%",
         }}
       >
         <svg
@@ -123,7 +123,7 @@ const Page6 = ({ openPopup }) => {
           overflow: "visible",
           position: "absolute",
           top: "61%",
-          left: "30%",
+          left: "29%",
         }}
       >
         <svg
