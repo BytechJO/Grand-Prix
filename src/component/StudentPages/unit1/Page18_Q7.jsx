@@ -198,7 +198,7 @@ const Page5_Q1_CleanAudio = () => {
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <div className="exercise-layout-vertical"style={{paddingTop:"0%" ,marginTop:"0%"}}>
           {/* Drop zones */}
-          <div className="letter-sentence-pair">
+          <div className="image-section-horizontal">
             {exerciseData.topImages.map((topImg, index) => (
               <Droppable key={`drop-${index + 1}`} droppableId={`drop-${index + 1}`}>
                 {(provided, snapshot) => (
@@ -214,7 +214,7 @@ const Page5_Q1_CleanAudio = () => {
                         <img 
                           src={exerciseData.bottomImages.find(img => img.id === droppedImages[`drop-${index + 1}`]).src} 
                           alt="Dropped" 
-                          style={{ width: "80px", height: "80px" }}
+                          style={{ width: "50px", height: "50px" }}
                         />
                       )}
                       {provided.placeholder}

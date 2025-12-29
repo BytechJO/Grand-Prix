@@ -5,7 +5,40 @@ import page14_CD2 from "../../../assets/unit1/SoundU1/ScQ5.mp3";
 import AudioWithCaption from "../../AudioWithCaption";
 import Q1 from "./Page5_Q1"
 import arrowBtn from "../../../assets/unit1/imgs/Page 01/Arrow.svg";
+const captionsExample = [
+  { start:5.0, end: 6.87, text: "Grand Prix A1" },
+  { start:7.23, end: 8.13, text: "unité 1" },
+  { start:8.51, end: 9.43, text: "se présenter" },
+  { start:9.99, end: 10.91, text: "Section C" },
+  { start:11.53, end: 12.07, text: "mon âge" },
+  { start:12.99, end: 13.91, text: "Exercice 4" },
+  { start:14.72, end: 16.81, text: "écoute et entoure les erreurs" },
+  { start:19.17, end: 20.70, text: "Je m'appelle Jean-Pierre," },
+  { start:21.17, end: 21.85, text: "j'ai 16 ans." },
+  { start:22.59, end: 30.61, text: "Mon numéro d'étudiant est le 95738640." },
 
+
+
+ 
+  
+];
+const Q5caption = [
+  { start:5.0, end: 6.87, text: "Grand Prix A1" },
+  { start:7.23, end: 8.13, text: "unité 1" },
+  { start:8.51, end: 9.43, text: "se présenter" },
+  { start:9.99, end: 10.91, text: "Section C" },
+  { start:11.53, end: 12.07, text: "mon âge" },
+  { start:12.99, end: 13.91, text: "Exercice 5" },
+  { start:14.72, end: 16.81, text: "écoute et entoure les erreurs" },
+  { start:19.17, end: 20.70, text: "Je m'appelle Jean-Pierre," },
+  { start:21.17, end: 21.85, text: "j'ai 16 ans." },
+  { start:22.59, end: 30.61, text: "Mon numéro d'étudiant est le 95738640." },
+
+
+
+ 
+  
+];
 
 const Page10 = ({ openPopup }) => {
 
@@ -30,7 +63,7 @@ const Page10 = ({ openPopup }) => {
         onClick={() =>
           openPopup(
             "audio",
-            <AudioWithCaption src={page5_CD2} />
+            <AudioWithCaption src={page5_CD2} captions={captionsExample} />
           )
         }
       >
@@ -79,7 +112,7 @@ const Page10 = ({ openPopup }) => {
         onClick={() =>
           openPopup(
             "audio",
-            <AudioWithCaption src={page14_CD2} />
+            <AudioWithCaption src={page14_CD2} captions={Q5caption} />
           )
         }
       >
