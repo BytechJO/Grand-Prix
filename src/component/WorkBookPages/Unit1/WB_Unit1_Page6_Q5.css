@@ -8,6 +8,7 @@ margin-left: 20%;
     flex-direction: row;
 }
 
+
 /* العمود الخاص بالـ inputs */
 .inputs-column {
     width: 45%; /* يمكن تعديل العرض حسب الحاجة */

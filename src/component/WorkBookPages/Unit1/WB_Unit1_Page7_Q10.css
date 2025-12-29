@@ -25,6 +25,22 @@
 
 }
 
+@media (max-width: 900px) {
+  .questions-grid {
+    width: 100%;
+    margin-right: 0;
+    padding: 10px;
+    transform: scale(0.95);
+  }
+}
+
+@media (max-width: 600px) {
+  .questions-grid {
+    transform: scale(0.9);
+    padding: 8px;
+  }
+}
+
 .sentence-row {
   padding: 10px 0;
   border-bottom: 1px dashed #e5e7eb;

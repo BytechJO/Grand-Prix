@@ -1,175 +1,70 @@
-/* number-classification-exercise.css */
-
-/* تنسيقات الأرقام الصحيحة والخاطئة */
-.correct-number {
-  background-color: #d1fae5 !important;
-  border-color: #10b981 !important;
-  color: #065f46;
-  animation: pulseCorrect 1.5s ease;
+/* الحاوية الرئيسية */
+.page-wrapper1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem;
 }
 
-.wrong-number {
-  background-color: #fee2e2 !important;
-  border-color: #ef4444 !important;
-  color: #7f1d1d;
-  animation: shake 0.5s ease;
+/* تمرين الكلمات + التصنيف */
+.exercise-container {
+  display: flex;
+  flex-direction: row; /* صفوف أفقية */
+  gap: 2rem;
+  width: 100%;
+  overflow-x: auto; /* تفعيل تمرير أفقي إذا الشاشة ضيقة */
+  scroll-behavior: smooth;
 }
 
-/* تنسيقات الدوائر والأرقام */
-.number-circle {
-  transition: all 0.3s ease;
-  font-size: 14px;
+/* أقسام الكلمات المرقمة والتصنيف */
+.words-table-section,
+.classification-section {
+  flex: 0 0 auto; /* منع الانكماش */
+  min-width: 300px; /* عرض أدنى */
 }
 
-.number-circle:hover {
-  transform: scale(1.1);
+/* الأعمدة داخل التصنيف */
+.classification-section .flex {
+  flex-direction: row;
+  gap: 1.5rem;
 }
 
-.number-badge {
-  font-size: 14px;
-  min-width: 40px;
-  text-align: center;
+/* الأعمدة المذكر والمؤنث */
+.masculin-column,
+.feminin-column {
+  flex: 0 0 auto;
+  min-width: 250px;
 }
 
-/* تحسينات لحقل الإدخال */
-input[type="number"] {
-  -moz-appearance: textfield;
+/* جدول الكلمات */
+.words-table-container {
+  min-width: 250px;
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+/* تحسين عرض الأرقام المضافة */
+.numbers-container {
+  max-height: 400px;
+  overflow-y: auto; /* تمرير عمودي إذا محتوى طويل */
 }
 
-/* تنسيقات جدول الكلمات */
-.word-row {
-  transition: all 0.2s ease;
+/* إزالة الانكسار العمودي للهواتف */
+@media (max-width: 1024px) {
+  .exercise-container {
+    flex-wrap: nowrap; /* لا يلتف */
+    
+  }
+
+  .classification-section .flex {
+    flex-wrap: nowrap; /* الأعمدة تبقى بجانب بعضها */
+  }
 }
 
-.word-row:hover {
-  transform: translateX(5px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+/* تحسين تمرير الأفق */
+.exercise-container::-webkit-scrollbar {
+  height: 8px;
 }
-
-.word-text {
-  flex: 1;
-  font-weight: 500;
-}
-
-/* تنسيقات العناصر المضافة */
-.number-item {
-  transition: all 0.3s ease;
-}
-
-.number-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* تلميحات */
-.number-item:hover::before {
-  content: 'Cliquez pour supprimer';
-  position: absolute;
-  top: -25px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #333;
-  color: white;
-  padding: 3px 8px;
+.exercise-container::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.2);
   border-radius: 4px;
-  font-size: 12px;
-  white-space: nowrap;
-  z-index: 10;
-}
-
-.number-item:hover::after {
-  content: '';
-  position: absolute;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid #333;
-}
-
-/* تنسيقات التصحيح */
-.correction-section {
-  border-left: 4px solid;
-  animation: slideIn 0.5s ease;
-}
-
-.correction-section h4 {
-  border-bottom: 2px solid;
-  padding-bottom: 5px;
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* تجاوب للشاشات الصغيرة */
-@media (max-width: 768px) {
-  .word-row {
-    padding: 10px;
-    font-size: 14px;
-  }
-  
-  .number-circle {
-    width: 30px;
-    height: 30px;
-    font-size: 12px;
-  }
-  
-  .number-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-  
-  .number-item > div {
-    width: 100%;
-    justify-content: space-between;
-  }
-}
-
-/* تأثيرات النبض والاهتزاز */
-@keyframes pulseCorrect {
-  0%, 100% {
-    box-shadow: 0 0 0 rgba(16, 185, 129, 0);
-  }
-  50% {
-    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
-  }
-}
-
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  75% { transform: translateX(5px); }
-}
-
-/* إشارات الألوان */
-.color-indicator {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  margin-right: 8px;
-}
-
-.masculin-indicator {
-  background-color: #3b82f6;
-}
-
-.feminin-indicator {
-  background-color: #ec4899;
 }

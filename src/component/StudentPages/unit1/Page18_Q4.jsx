@@ -91,17 +91,37 @@ const Page5_Q1_CleanAudio = () => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const captions = [
-    { start: 5, end: 6.9, text: "Grand Prix A1" },
-    { start: 7.3, end: 8.2, text: "unité 1" },
-    { start: 8.7, end: 9.5, text: " se présenter. " },
-    { start: 10.2, end: 11.2, text: "Section A." },
-    { start: 11.9, end: 12.3, text: "Salut." },
-    { start: 12.9, end: 14.3, text: "Exercice 5" },
-    { start: 15.23, end: 16.77, text: "Écoute et réponds." },
-    { start: 18.78, end: 20.31, text: "Je m'appelle Antoine." },
-    { start: 21.39, end: 22.51, text: "Je m'appelle Emma." },
+      { start: 4.9, end: 6.6, text: "Grand Prix A1," },
+    { start: 6.6, end: 8.0, text: "Unité 1" },
+    { start: 8.0, end: 8.9, text: "Se présenter" },
+    { start: 9.7, end: 10.5, text: "Section D" },
+    { start: 11.1, end: 12.2, text: "Ma nationalité" },
+    { start: 13.0, end: 14.0, text: "Exercice 6" },
+    { start: 15.0, end: 16.5, text: "Écoute et trouve" },
+    { start: 16.5, end: 17.6, text: "la nationalité" },
+    { start: 17.6, end: 18.1, text: "de chaque" },
+    { start: 18.1, end: 18.7, text: "personne." },
+    { start: 20.5, end: 21.8, text: "Les personnages" },
+    { start: 21.8, end: 22.0, text: "sont" },
+    { start: 22.0, end: 23.1, text: "dans le bus." },
+    { start: 23.1, end: 23.4, text: "Ils se" },
+    { start: 23.4, end: 24.5, text: "présentent." },
+    { start: 24.5, end: 25.6, text: "Sophia et Alison" },
+    { start: 25.6, end: 26.6, text: "sont Suisses" },
+    { start: 27.2, end: 28.4, text: "Boris est Russe." },
+    { start: 28.9, end: 29.6, text: "Paul et Thomas" },
+    { start: 29.6, end: 30.4, text: "sont Anglais" },
+    { start: 30.4, end: 31.3, text: "et Annabelle" },
+    { start: 31.3, end: 32.0, text: "est Allemande." },
+  
   ];
+  const updateCaption = (currentTime) => {
+  const index = captions.findIndex(
+    (cap) => currentTime >= cap.start && currentTime <= cap.end
+  );
 
+  setActiveIndex(index !== -1 ? index : null);
+};
   // دالة لتحديد الكلاس الأخضر أو الأحمر
   const getLabelClass = (type, value) => {
     if (!score) return "";
@@ -122,69 +142,110 @@ const Page5_Q1_CleanAudio = () => {
       </header>
 
       {/* ================= Audio Player ================= */}
-      <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-        <div className="audio-popup-read" style={{ width: "30%" }}>
-          <div className="audio-inner player-ui">
-            <audio
-              ref={audioRef}
-              src={CD6_Pg8_Instruction1_AdultLady}
-              onTimeUpdate={(e) => setCurrent(e.target.currentTime)}
-              onLoadedMetadata={(e) => setDuration(e.target.duration)}
-            />
-            <div className="top-row">
-              <span className="audio-time">
-                {new Date(current * 1000).toISOString().substring(14, 19)}
-              </span>
-              <input
-                type="range"
-                className="audio-slider"
-                min="0"
-                max={duration}
-                value={current}
-                onChange={(e) => audioRef.current.currentTime = e.target.value}
-                style={{
-                  background: `linear-gradient(to right, #430f68 ${(current / duration) * 100}%, #d9d9d9ff ${(current / duration) * 100}%)`,
-                }}
-              />
-              <span className="audio-time">
-                {new Date(duration * 1000).toISOString().substring(14, 19)}
-              </span>
-            </div>
-            <div className="bottom-row flex justify-between items-center">
-              <div className={`round-btn ${showCaption ? "active" : ""}`} style={{ position: "relative" }} onClick={() => setShowCaption(!showCaption)}>
-                <TbMessageCircle size={36}/>
-                <div className={`caption-inPopup ${showCaption ? "show" : ""}`} style={{ top:"100%", left:"10%" }}>
-                  {captions.map((cap,i) => (
-                    <p key={i} id={`caption-${i}`} className={`caption-inPopup-line2 ${activeIndex===i?"active":""}`}>{cap.text}</p>
-                  ))}
+   <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                <div className="audio-popup-read" style={{ width: "30%" }}>
+                  <div className="audio-inner player-ui">
+                    <audio
+                      ref={audioRef}
+                      src={CD6_Pg8_Instruction1_AdultLady}
+                      onTimeUpdate={(e) => {
+                        const time = e.target.currentTime;
+                        setCurrent(time);
+                        updateCaption(time);
+                      }}
+                      onLoadedMetadata={(e) => setDuration(e.target.duration)}
+                    />
+        
+                    {/* Time & Slider */}
+                    <div className="top-row">
+                      <span className="audio-time">
+                        {new Date(current * 1000).toISOString().substring(14, 19)}
+                      </span>
+        
+                      <input
+                        type="range"
+                        className="audio-slider"
+                        min="0"
+                        max={duration}
+                        value={current}
+                        onChange={(e) => {
+                          audioRef.current.currentTime = e.target.value;
+                          updateCaption(Number(e.target.value));
+                        }}
+                        style={{
+                          background: `linear-gradient(to right, #430f68 ${
+                            (current / duration) * 100
+                          }%, #d9d9d9ff ${(current / duration) * 100}%)`,
+                        }}
+                      />
+        
+                      <span className="audio-time">
+                        {new Date(duration * 1000).toISOString().substring(14, 19)}
+                      </span>
+                    </div>
+        
+                    {/* Controls */}
+                    <div className="bottom-row flex justify-between items-center">
+                      {/* Captions */}
+                      <div
+                        className={`round-btn ${showCaption ? "active" : ""}`}
+                        style={{ position: "relative" }}
+                        onClick={() => setShowCaption(!showCaption)}
+                      >
+                        <TbMessageCircle size={36} />
+                        <div
+                          className={`caption-inPopup ${showCaption ? "show" : ""}`}
+                          style={{ top: "100%", left: "10%" }}
+                        >
+                          {captions.map((cap, i) => (
+                            <p
+                              key={i}
+                              id={`caption-${i}`}
+                              className={`caption-inPopup-line2 ${
+                                activeIndex === i ? "active" : ""
+                              }`}
+                            >
+                              {cap.text}
+                            </p>
+                          ))}
+                        </div>
+                      </div>
+        
+                      {/* Play/Pause */}
+                      <button className="play-btn2" onClick={togglePlay}>
+                        {isPlaying ? <FaPause size={26} /> : <FaPlay size={26} />}
+                      </button>
+        
+                      {/* Settings */}
+                      <div className="settings-wrapper">
+                        <button
+                          className={`round-btn ${showSettings ? "active" : ""}`}
+                          onClick={() => setShowSettings(!showSettings)}
+                        >
+                          <IoMdSettings size={36} />
+                        </button>
+                        {showSettings && (
+                          <div className="settings-popup">
+                            <label>Volume</label>
+                            <input
+                              id="V"
+                              type="range"
+                              min="0"
+                              max="1"
+                              step="0.05"
+                              value={volume}
+                              onChange={(e) => {
+                                setVolume(e.target.value);
+                                audioRef.current.volume = e.target.value;
+                              }}
+                            />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <button className="play-btn2" onClick={togglePlay}>
-                {isPlaying ? <FaPause size={26}/> : <FaPlay size={26}/>}
-              </button>
-              <div className="settings-wrapper">
-                <button className={`round-btn ${showSettings?"active":""}`} onClick={()=>setShowSettings(!showSettings)}>
-                  <IoMdSettings size={36}/>
-                </button>
-                {showSettings && (
-                  <div className="settings-popup">
-                    <label>Volume</label>
-                    <input
-                      type="range"
-                      min="0"
-                      max="1"
-                      step="0.05"
-                      value={volume}
-                      onChange={(e)=>{setVolume(e.target.value); audioRef.current.volume = e.target.value}}
-                    />
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {score && <ScoreCardEnhanced score={score}/>}
 
       <div className="qcm-container">

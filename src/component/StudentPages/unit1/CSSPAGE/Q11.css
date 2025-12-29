@@ -406,7 +406,18 @@ width: 100%;
   margin-right: 10%;
 
 }
+@media(max-width:1025px){
 
+
+.imgexrsize {
+  width: 30%; /* حجم الصورة */
+  height: 5%;
+  display: flex;
+  margin-right: 10%;
+
+}
+
+}
 .imgexrsize img {
   width: 100%; /* حجم الصورة */
   height: 5%;

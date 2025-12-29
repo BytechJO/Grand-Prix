@@ -181,6 +181,13 @@ const showCorrectDragAnswer = () => {
   { start: 38.9, end: 39.9, text: "Bonjour Madame Blanc !" },
   ];
   // =========================================================
+const updateCaption = (currentTime) => {
+  const index = captions.findIndex(
+    (cap) => currentTime >= cap.start && currentTime <= cap.end
+  );
+
+  setActiveIndex(index !== -1 ? index : null);
+};
 
   return (
     <div className="page-wrapper1 flex flex-col items-center justify-start gap-8 p-4">

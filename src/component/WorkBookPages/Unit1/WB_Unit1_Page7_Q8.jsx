@@ -164,7 +164,7 @@ Complète avec le verbe « avoir » au présent.
     style={{
       display: "grid",
       gridTemplateColumns: "1fr 1fr", // ✅ عمودين
-      gap: "20px 80px",               // مسافة بين الصفوف والأعمدة
+      gap: "20px 10px",               // مسافة بين الصفوف والأعمدة
       alignItems: "start",
     }}
   >

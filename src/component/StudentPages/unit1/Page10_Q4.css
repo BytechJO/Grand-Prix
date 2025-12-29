@@ -43,7 +43,7 @@ margin-left: 10%;
 
 /* منطقة الصور على اليمين */
 .images-area3 {
-  width: 300px; /* ثابت أو حسب رغبتك */
+  width: 40%; /* ثابت أو حسب رغبتك */
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -98,7 +98,7 @@ margin-left: 10%;
   .images-area {
     width: 100%;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* منع التفاف الصور */
     justify-content: center;
   }
 
@@ -108,6 +108,112 @@ margin-left: 10%;
   }
 
   .image-box img {
-    width: 120px;
+    max-width: 45%; /* مثال لتقليل حجم الصور */
+  }
+}
+
+/* ===============================
+   الحاوية الرئيسية
+================================ */
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  width: 60%;
+  max-width: 1000px;
+  margin-left: 10%;
+}
+
+/* ===============================
+   منطقة التمارين (اليسار)
+================================ */
+.exercise-area {
+  flex: 1;
+}
+
+.dialogue {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.dialogue input {
+  width: 150px;
+  padding: 3px 5px;
+  margin: 0 5px;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.correct {
+  border-color: green;
+  background-color: #e0ffe0;
+}
+
+.incorrect {
+  border-color: red;
+  background-color: #ffe0e0;
+}
+
+/* ===============================
+   منطقة الصور (اليمين)
+================================ */
+.images-area3 {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* صف الصور العلوي */
+.top-images-row3,
+.bottom-image-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: nowrap; /* مهم جداً */
+}
+
+/* كل صورة + input */
+.image-box3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; /* حجم ثابت */
+}
+
+.image-box3 img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.image-input {
+  width: 50px;
+  text-align: center;
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* ===============================
+   Responsive (موبايل)
+================================ */
+@media (max-width: 900px) {
+  .main-content {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .images-area3 {
+    width: 50%;
+  }
+
+  .image-box3 {
+    width: 100%; /* تصغير فقط */
   }
 }

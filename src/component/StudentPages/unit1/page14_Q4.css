@@ -7,6 +7,8 @@
   position: relative; /* مهم ليتمركز inputs مطلقًا داخلها */
 }
 
+
+
 .inputsp14q {
   width: 800px;  /* حجم البطاقة */
   height: 500px;
@@ -56,4 +58,25 @@ background-color: aliceblue;
   width: 10%;
   height: 20%;
 
+}
+
+/* Media Query للشاشات أقل من 900px */
+@media (max-width: 900px) {
+  .image-popup {
+    width: 90%;       /* عرض أكبر لتتناسب مع الشاشة */
+    height: 250px;    /* تقليل الارتفاع */
+    margin-top: 15px; /* تعديل المسافة العلوية إذا لزم */
+  }
+}
+
+/* Media Query للشاشات الصغيرة جدًا أقل من 500px */
+
+.inputsp15 {
+  width: 800px;  /* حجم البطاقة */
+  height: 500px;
+  background-image: url('../../../assets/unit1/sectionD/14png.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative; /* مهم ليكون المرجع للـ absolute */
 }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ValidationAlert from "../../Popup/ValidationAlert";
 
 import ScoreCardEnhanced from "../../Popup/ScoreCard"; // عدّل المسار حسب مكانه
-
+import "./Page22_Q1.css"
 const Page5_Q2_SAppeler = () => {
   // === STATE ===
   const [answers, setAnswers] = useState({
@@ -164,7 +164,7 @@ Complète les phrases avec le verbe « s’appeler ».
       </header>
 
       {/* ✅ QUESTIONS */}
-        <div className="page5Q5" style={{marginLeft:"13%"}}>
+        <div className="page22Q1" style={{marginLeft:"13%"}}>
         <div className="inputs-column">
           {Object.keys(questions).map((key, index) => (
             <div className="input-group" key={key}>

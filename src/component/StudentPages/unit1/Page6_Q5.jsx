@@ -124,6 +124,14 @@ const Page5_Q1_CleanAudio = () => {
     { start: 18.78, end: 20.31, text: "Je m'appelle Antoine." },
     { start: 21.39, end: 22.51, text: "Je m'appelle Emma." },
   ];
+  const updateCaption = (currentTime) => {
+  const index = captions.findIndex(
+    (cap) => currentTime >= cap.start && currentTime <= cap.end
+  );
+
+  setActiveIndex(index !== -1 ? index : null);
+};
+
   return (
     <div className="page-wrapper1 flex flex-col items-center justify-start gap-8 p-4">
       {/* Question Header */}

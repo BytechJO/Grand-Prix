@@ -625,3 +625,27 @@ height: 40%;
 .try-again-button:hover {
   background-color: #e0a800;
 }
+
+
+
+
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 900px) {
+  .header-title-page1 {
+    margin-left: 0;        /* إلغاء الإزاحة */
+    margin-right: 50%;        /* إلغاء الإزاحة */
+    text-align: center;   /* توسيط */
+    font-size: 1px;
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  .header-title-page1 {
+    font-size: 10px;
+    line-height: 1.4;
+  }
+}

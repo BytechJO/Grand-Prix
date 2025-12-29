@@ -128,7 +128,7 @@ const checkAnswer = () => {
           </div>
         ))}
       </div>
-
+<div className="spaces"></div>
       {score && <ScoreCardEnhanced score={score} />}
 
       {/* الأزرار */}

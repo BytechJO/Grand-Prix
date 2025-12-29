@@ -17,10 +17,6 @@ const captionsExample = [
   { start:21.17, end: 21.85, text: "j'ai 16 ans." },
   { start:22.59, end: 30.61, text: "Mon numéro d'étudiant est le 95738640." },
 
-
-
- 
-  
 ];
 const Q5caption = [
   { start:5.0, end: 6.87, text: "Grand Prix A1" },
@@ -29,10 +25,11 @@ const Q5caption = [
   { start:9.99, end: 10.91, text: "Section C" },
   { start:11.53, end: 12.07, text: "mon âge" },
   { start:12.99, end: 13.91, text: "Exercice 5" },
-  { start:14.72, end: 16.81, text: "écoute et entoure les erreurs" },
-  { start:19.17, end: 20.70, text: "Je m'appelle Jean-Pierre," },
-  { start:21.17, end: 21.85, text: "j'ai 16 ans." },
-  { start:22.59, end: 30.61, text: "Mon numéro d'étudiant est le 95738640." },
+  { start:15.26, end: 16.37, text: "Écoute encore une fois." },
+  { start:17.13, end: 18.67, text: "Note les informations correctes." },
+  { start:20.96, end: 22.31, text: "Je m'appelle Jean-Pierre." },
+  { start:22.95, end: 23.55, text: "J'ai 16 ans." },
+  { start:24.41, end: 33.01, text: "Mon numéro d'étudiant est le 957386421." },
 
 
 

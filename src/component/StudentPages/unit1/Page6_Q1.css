@@ -180,36 +180,38 @@
   margin-left: 0; /* إزالة أي هوامش */
 }
 
-/* تصميم متجاوب */
-@media (max-width: 768px) {
-  .image-section-horizontal {
-    grid-template-columns: 1fr;
-    gap: 30px;
+@media (max-width: 821px) {
+
+  .image-container img{
+width: 80%;
+height: 80%;
+    order: -1; /* جعل الصورة تظهر أولا */
+
   }
-  
-  .letters-section-horizontal {
-    grid-template-columns: 1fr;
+}
+/* تصميم متجاوب */
+@media (max-width: 770px) {
+
+  .image-container img{
+width: 70%;
+height: 80%;
+    order: -1; /* جعل الصورة تظهر أولا */
+
   }
   
   /* على الأجهزة المحمولة، نجعل كل شيء متناسقا */
   .image-container {
-    flex-direction: column !important; /* تجاهل الاتجاهات المختلفة */
     gap: 20px;
     text-align: center;
   }
   
   .letter-sentence-pair {
-    flex-direction: column;
+  
     gap: 10px;
     text-align: center;
   }
   
-  .image-container img {
-    width: 200px;
-    height: 200px;
-    order: -1; /* جعل الصورة تظهر أولا */
-  }
-  
+ 
   .drop-box {
     margin: 0 !important; /* إزالة الهوامش على المحمول */
   }

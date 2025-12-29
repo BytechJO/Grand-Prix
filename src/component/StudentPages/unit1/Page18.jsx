@@ -8,22 +8,30 @@ import arrowBtn from "../../../assets/unit1/imgs/Page 01/Arrow.svg";
 
 const Page10 = ({ openPopup }) => {
   const captionsExample = [
-    { start: 5.0, end: 7.0, text: "GrandPrixA1" },
-    { start: 7.3, end: 8.3, text: "unité 1," },
-    { start: 8.3, end: 9.6, text: " seprésenter. " },
-    { start: 10.2, end: 11.2, text: " SectionA " },
-    { start: 13.1, end: 14.2, text: " Exercice1 " },
-    { start: 14.8, end: 15.3, text: " Écoute " },
-    { start: 15.8, end: 17.9, text: " répète et place dans l'ordre. " },
-    { start: 20.4, end: 21.2, text: " Bonjour Loïc." },
-    { start: 22.7, end: 23.5, text: " Bonjour Théo." },
-    { start: 25.5, end: 26.3, text: "Salut Amélie" },
-    { start: 27.8, end: 28.1, text: "Salut Emma" },
-    { start: 30.4, end: 31.5, text: "Bonjour Madame Rose" },
-    { start: 32.8, end: 33.7, text: "Bonjour Madame Lucas." },
-    { start: 35.4, end: 36.1, text: "Bonjour Monsieur Henry." },
-    { start: 38.7, end: 39.4, text: "Au revoir Tom" },
-    { start: 40.7, end: 41.4, text: "Au revoir Adam." },
+    { start: 4.9, end: 6.6, text: "Grand Prix A1," },
+    { start: 6.6, end: 8.0, text: "Unité 1" },
+    { start: 8.0, end: 8.9, text: "Se présenter" },
+    { start: 9.7, end: 10.5, text: "Section D" },
+    { start: 11.1, end: 12.2, text: "Ma nationalité" },
+    { start: 13.0, end: 14.0, text: "Exercice 6" },
+    { start: 15.0, end: 16.5, text: "Écoute et trouve" },
+    { start: 16.5, end: 17.6, text: "la nationalité" },
+    { start: 17.6, end: 18.1, text: "de chaque" },
+    { start: 18.1, end: 18.7, text: "personne." },
+    { start: 20.5, end: 21.8, text: "Les personnages" },
+    { start: 21.8, end: 22.0, text: "sont" },
+    { start: 22.0, end: 23.1, text: "dans le bus." },
+    { start: 23.1, end: 23.4, text: "Ils se" },
+    { start: 23.4, end: 24.5, text: "présentent." },
+    { start: 24.5, end: 25.6, text: "Sophia et Alison" },
+    { start: 25.6, end: 26.6, text: "sont Suisses" },
+    { start: 27.2, end: 28.4, text: "Boris est Russe." },
+    { start: 28.9, end: 29.6, text: "Paul et Thomas" },
+    { start: 29.6, end: 30.4, text: "sont Anglais" },
+    { start: 30.4, end: 31.3, text: "et Annabelle" },
+    { start: 31.3, end: 32.0, text: "est Allemande." },
+  
+
   ];
   return (
     <div className="page_5-background" style={{ position: "relative" }}>
