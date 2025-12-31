@@ -1,8 +1,7 @@
 import React, { useState, useRef } from "react";
 import imgBackground from "../../../assets/unite2pages/svg/page31Q1.svg";
 import ValidationAlert from "../../Popup/ValidationAlert";
-import ScoreCardEnhanced from "../../Popup/ScoreCard"; 
-
+import ScoreCardEnhanced from "../../Popup/ScoreCard";
 
 /* 🔴 القائمة */
 const numbersList = [
@@ -37,9 +36,6 @@ const Page5_Q1_CleanAudio = () => {
   const [inputs, setInputs] = useState({});
   const [score, setScore] = useState(null);
 
-
-
-
   const resetAudio = () => {
     if (audioRef.current) {
       audioRef.current.currentTime = 0;
@@ -58,7 +54,7 @@ const Page5_Q1_CleanAudio = () => {
 
   const checkAnswer = () => {
     let correctCount = 0;
-    Object.keys(correctAnswers).forEach(key => {
+    Object.keys(correctAnswers).forEach((key) => {
       if (inputs[key] === correctAnswers[key]) correctCount++;
     });
 
@@ -91,8 +87,6 @@ const Page5_Q1_CleanAudio = () => {
     resetAudio();
   };
 
-
-
   /* 🔴 مواقع الـ inputs فوق الصورة */
   const inputPositions = [
     { id: 0, top: "30%", left: "16%" },
@@ -109,7 +103,6 @@ const Page5_Q1_CleanAudio = () => {
 
   return (
     <div className="page-wrapper1 flex flex-col items-center justify-start gap-8 p-4">
-
       {/* Header */}
       <header
         className="header-title-page1 w-full text-left mb-4"
@@ -121,12 +114,12 @@ const Page5_Q1_CleanAudio = () => {
           fontWeight: "bold",
         }}
       >
-        <span className="ex-A" style={{ backgroundColor: "#df4f89" }}>A</span>
-        <span className="number-of-q">1</span>{" "}
-        Écoute, répète et place dans l’ordre.
+        <span className="ex-A" style={{ backgroundColor: "#df4f89" }}>
+          B
+        </span>
+        <span className="number-of-q">1</span> Liste les mots masculins et
+        féminins de l'exercice 1. Ensuite, mets chaque mot au pluriel.
       </header>
-
-  
 
       {score && <ScoreCardEnhanced score={score} />}
 
@@ -136,16 +129,16 @@ const Page5_Q1_CleanAudio = () => {
         style={{
           display: "flex",
           width: "100%",
-          height: "100vh", 
+          height: "100vh",
           gap: "20px",
-          overflow:"hidden"
+          overflow: "hidden",
         }}
       >
         {/* القائمة على اليسار */}
         <div
           className="numbers-list"
           style={{
-            width: "25%", 
+            width: "25%",
             overflowY: "auto",
           }}
         >
@@ -158,9 +151,11 @@ const Page5_Q1_CleanAudio = () => {
               gap: "10px",
             }}
           >
-            {numbersList.map(item => {
+            {numbersList.map((item) => {
               // 🔹 أي حرف مطابق لـ item.id يصبح أزرق
-              const isUsed = Object.values(inputs).some(val => val === item.id);
+              const isUsed = Object.values(inputs).some(
+                (val) => val === item.id
+              );
               return (
                 <li
                   key={item.id}
@@ -187,7 +182,7 @@ const Page5_Q1_CleanAudio = () => {
           className="image2-container"
           style={{
             position: "relative",
-            flexGrow: 1, 
+            flexGrow: 1,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -198,13 +193,12 @@ const Page5_Q1_CleanAudio = () => {
             src={imgBackground}
             alt="Exercise"
             style={{
-              width: "70%", 
+              width: "70%",
               height: "20%",
-            
             }}
           />
 
-          {inputPositions.map(pos => (
+          {inputPositions.map((pos) => (
             <input
               key={pos.id}
               type="text"
@@ -231,10 +225,10 @@ const Page5_Q1_CleanAudio = () => {
       {/* Buttons */}
       <div className="action-buttons-container">
         <button onClick={resetExercise} className="try-again-button">
-         Recommencer ↻
+          Recommencer ↻
         </button>
         <button onClick={showAnswerFunc} className="show-answer-btn">
-         Afficher la réponse
+          Afficher la réponse
         </button>
         <button onClick={checkAnswer} className="check-button2">
           Vérifier la réponse✓

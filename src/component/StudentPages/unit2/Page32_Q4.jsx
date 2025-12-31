@@ -80,10 +80,9 @@ const Page5_Q1_CleanAudio = () => {
         }}
       >
         <span className="ex-A" style={{ backgroundColor: "#df4f89" }}>
-          A
+          B
         </span>
-        <span className="number-of-q">4</span> Écoute et écris l'information
-        manquante.
+        <span className="number-of-q">4</span> Écoute et écris l’information manquante.
       </header>
 
       {score && <ScoreCardEnhanced score={score} />}

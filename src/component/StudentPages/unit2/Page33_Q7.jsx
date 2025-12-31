@@ -161,8 +161,8 @@ const resetExercise = () => {
           fontWeight: "bold",
         }}
       >
-        <span className="ex-A" style={{ backgroundColor: "#df4f89" }}>A</span>
-        <span className="number-of-q">8</span>{" "}
+        <span className="ex-A" style={{ backgroundColor: "#df4f89" }}>B</span>
+        <span className="number-of-q">7</span>{" "}
    Vrai (✔️ ) ou faux (✖️) ?
       </header>
 

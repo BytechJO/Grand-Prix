@@ -320,7 +320,7 @@ const Page5_Q1_CleanAudio = () => {
   return (
     <div className="page-wrapper1 flex flex-col items-center justify-start gap-8 p-4">
       {/* Header */}
-      <header
+     <header
         className="header-title-page1 w-full text-left mb-4"
         style={{
           marginLeft: "42%",
@@ -330,10 +330,13 @@ const Page5_Q1_CleanAudio = () => {
           fontWeight: "bold",
         }}
       >
-        <span className="ex-A" style={{ backgroundColor: "#df4f89" }}>A</span>
-        <span className="number-of-q">3</span>{" "}
-        Écris les mots qui sont
+        <span className="ex-A" style={{ backgroundColor: "#df4f89" }}>
+          B
+        </span>
+        <span className="number-of-q">2</span> Liste les mots masculins et
+        féminins de l'exercice 1. Ensuite, mets chaque mot au pluriel.
       </header>
+
 
       {score && <ScoreCardEnhanced score={score} />}
 

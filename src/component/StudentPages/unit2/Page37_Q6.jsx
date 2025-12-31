@@ -102,12 +102,12 @@ const correctAnswers = {
 
   return (
      <div className="page-wrapper1 flex flex-col items-center justify-start gap-8 p-4">
- <header
-className="header-title-page1 w-full text-left mb-4"
-  style={{ marginLeft: "42%", color:"black",marginTop:"5%",fontSize:"25px", fontWeight:"bold" }}
+     <header
+        className="header-title-page1 w-full text-left mb-4"
+        style={{ marginLeft: "42%", color:"black",marginTop:"5%",fontSize:"25px", fontWeight:"bold" }}
       >
-        <span style={{backgroundColor:"#73C8D2"}} className="ex-A">c</span> <span style={{color:"black"}} className="number-of-q">7</span>Entoure la bonne réponse.
-      </header>
+        <span  style={{ backgroundColor: "#df4f89" }} className="ex-A">C</span> <span style={{color:"black"}} className="number-of-q">6</span>
+Entoure la bonne réponse.     </header>
 
       {/* ================= Exercise 7 ================= */}
       <div className="exercise-choices w-full max-w-4xl">
