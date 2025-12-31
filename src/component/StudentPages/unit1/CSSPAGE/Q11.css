@@ -4,6 +4,19 @@
   padding: 5px;
   font-family: Arial, sans-serif;
 }
+.q11-input-correct {
+  background-color: #e6ffe6; /* أخضر فاتح */
+  border-bottom: 2px solid #2ecc71;
+}
+
+.q11-input-incorrect {
+  background-color: #ffe6e6; /* أحمر فاتح */
+  border-bottom: 2px solid #e74c3c;
+}
+
+.q11-input-default {
+  background-color: transparent;
+}
 
 .q11-card {
   margin: 0 auto;

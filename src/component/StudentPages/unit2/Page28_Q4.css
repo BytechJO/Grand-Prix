@@ -1,100 +1,192 @@
-/* images-on-right.css */
-
-.exercise-container {
-  min-height: 600px;
-  margin-left: 15%;
-}
-
-
-
-.image-container {
-  transition: all 0.3s ease;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 280px;
-
-}
-
-.image-container:first-child {
-  margin-top: 0;
-}
-
-
-
-.image-container img {
-  max-height: 300px; /* أكبر قليلاً */
-  min-height: 250px;
-  object-fit: contain;
-
-}
-
-/* الحوار على اليسار */
-.dialogue-section {
-}
-
-/* تجاوب للشاشات المتوسطة */
-@media (max-width: 1024px) {
-  .exercise-container {
+/* التمرين الرئيسي */
+.page28q4-exercise-container {
+ width: 100%;
+   
+    padding: 20px;
+    display: flex;
     flex-direction: column;
-  }
-  
-  .images-section {
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
-    gap: 20px;
-    margin-left: 0;
-  }
-  
-  .image-container {
-    width: 48%;
-    min-height: 220px;
-  }
-  
-  .image-container img {
-    max-height: 220px;
-  }
-  
-  .dialogue-section {
-    width: 100%;
-    margin-right: 0;
-  }
+   
+    margin-left: 20%;
 }
 
-/* تجاوب للشاشات الصغيرة */
-@media (max-width: 768px) {
-  .images-section {
+/* تصميم ريسبونسيف للشاشات الكبيرة */
+@media (min-width: 1024px) {
+    .page28q4-exercise-container {
+        flex-direction: row;
+   
+    }
+    
+    .page28q4-dialogue-section {
+        width: 50%;
+        order: 1; /* الحوار على اليسار */
+    }
+    
+    .page28q4-images-section {
+        width: 50%;
+        order: 2; /* الصور على اليمين */
+    }
+}
+
+/* قسم الحوار */
+.page28q4-dialogue-section {
+    display: flex;
     flex-direction: column;
-  }
-  
-  .image-container {
+}
+
+.page28q4-dialogue-exercise {
+    border-radius: 12px;
+    padding: 32px;
     width: 100%;
-    max-height: 200px;
-  }
-  
-  .dialogue-text {
+}
+
+.page28q4-dialogue-text {
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* أسطر الحوار */
+.dialogue-line {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0px;
+}
+
+.dialogue-line .speaker {
+    font-weight: 700;
+    min-width: 80px;
+    flex-shrink: 0;
+}
+
+.dialogue-line .speaker.text-pink-600 {
+    color: #db2777;
+}
+
+.dialogue-line .speaker.text-blue-600 {
+    color: #2563eb;
+}
+
+.dialogue-line .text {
+    color: #374151;
+    line-height: 1.6;
+}
+
+/* حقول الإدخال */
+.missing-word-input {
+    padding: 6px 12px;
+    border: none;
+    border-bottom: 2px solid #f9a8d4;
+    background-color: transparent;
     font-size: 16px;
-  }
+    transition: all 0.3s ease;
+    min-width: 150px;
+    max-width: 250px;
 }
 
-/* تأثيرات خاصة للصور على اليمين */
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.missing-word-input:focus {
+    outline: none;
+    border-bottom-color: #3b82f6;
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
 }
 
-.image-container {
-  animation: slideInRight 0.5s ease;
+/* الملاحظة */
+.note {
+    font-style: italic;
+    color: #6b7280;
+    font-size: 14px;
+    margin-right: 80px;
+    margin-top: -10px;
+    margin-bottom: 10px;
 }
 
-.image-container:nth-child(2) {
-  animation-delay: 0.1s;
+/* قسم الصور */
+.page28q4-images-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
+
+.page28q4-image-container {
+    padding: 20px;
+    height: fit-content;
+}
+
+.page28q4-image {
+    width: 100%;
+    height: auto;
+    max-height: 280px;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+/* تصميم ريسبونسيف للشاشات المتوسطة */
+@media (max-width: 800px) {
+    .page28q4-exercise-container {
+        flex-direction: column;
+        margin-left: 0%;
+        gap: 0%;
+    }
+    .page28q4-dialogue-exercise{
+
+      width: 100%;
+    }
+    .page28q4-images-section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0px;
+        width: 100%;
+    }
+    
+    .page28q4-image-container {
+        height: 100%;
+    }
+}
+
+/* تصميم ريسبونسيف للشاشات الصغيرة */
+
+
+/* ألوان إضافية للتخصيص */
+.text-pink-600 {
+    color: #db2777;
+}
+
+.text-blue-600 {
+    color: #2563eb;
+}
+
+.text-gray-500 {
+    color: #6b7280;
+}
+
+.border-pink-300 {
+    border-color: #f9a8d4;
+}
+
+.border-blue-300 {
+    border-color: #93c5fd;
+}
+
+/* تأثيرات التركيز على حقول الإدخال */
+.focus\:outline-none:focus {
+    outline: none;
+}
+
+.focus\:border-blue-500:focus {
+    border-bottom-color: #3b82f6;
+}
+
+.focus\:border-pink-500:focus {
+    border-bottom-color: #ec4899;
+}
+
+/* الظلال والأشكال */
+.rounded-xl {
+    border-radius: 12px;
+}
+
+.shadow-md {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+

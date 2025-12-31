@@ -2,7 +2,7 @@ import React from 'react'
 
 import page_1 from "../../../assets/unite2pages/31.png"
 
-import page5_CD2 from "../../../assets/unit1/SoundU1/1.mp3";
+import page5_CD2 from "../../../assets/U2Audio/SecBQ1.mp3";
 import AudioWithCaption from "../../AudioWithCaption";
 import arrowBtn from "../../../assets/unit1/imgs/Page 01/Arrow.svg";
 const Page1 = ({ openPopup }) => {
@@ -14,7 +14,20 @@ const Page1 = ({ openPopup }) => {
         // className="w-full h-full object-contain rounded-2xl shadow-lg"
       />
     
-
+   <div
+        id="CD-1-page5"
+        className="headset-icon-CD-page5 hover:scale-110 transition"
+        style={{
+          position: "absolute",
+          top: "12%", // عدّل حسب مكان الزر
+          left: "2%", // عدّل حسب مكان الزر
+          cursor: "pointer",
+          width: "50px",
+          height: "50px",
+       
+        }}
+        onClick={() => openPopup("audio", <AudioWithCaption src={page5_CD2} />)}
+      ></div>
       <div
         className="Click -icon-CD-page5 hover:scale-110 transition"
         style={{

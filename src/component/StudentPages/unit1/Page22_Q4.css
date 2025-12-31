@@ -69,12 +69,12 @@
 /* ============================
    RESPONSIVE
 ============================ */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .questions-container4 {
-    grid-template-columns: 1fr; /* عمود واحد بالموبايل */
+   
   }
 
   .left-part4 input {
-    width: 100%;
+    width: 50%;
   }
 }

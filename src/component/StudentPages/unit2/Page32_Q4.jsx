@@ -93,7 +93,7 @@ const Page5_Q1_CleanAudio = () => {
         {/* الحوار على اليسار */}
         <div className="dialogue-section lg:w-2/3">
           <div className="dialogue-exercise w-full bg-white p-8 rounded-xl ">
-            <div className="dialogue-text space-y-6">
+            <div className="dialogue-text space-y-1">
               {/* Ligne 1 */}
               <div className="dialogue-line flex items-start">
                 <span className="speaker font-bold text-pink-600 min-w-[80px]">

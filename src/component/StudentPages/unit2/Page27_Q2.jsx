@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ValidationAlert from "../../Popup/ValidationAlert";
 import ScoreCardEnhanced from "../../Popup/ScoreCard";
+import "./Page27_Q2.css"
 
 /* 🔴 الكلمات للتصنيف */
 const wordsList = [
@@ -21,8 +22,8 @@ const wordsList = [
 
 /* 🔴 الإجابات الصحيحة */
 const correctAnswers = {
-  masculins: [0, 2, 4, 6, 8, 9, 10, 11, 12], // أرقام الكلمات المذكرة
-  feminins: [1, 3, 5, 7] // أرقام الكلمات المؤنثة
+  masculins: [0, 2, 4, 6, 8, 9, 10, 11, 12],
+  feminins: [1, 3, 5, 7]
 };
 
 const Page5_Q1_CleanAudio = () => {
@@ -31,20 +32,83 @@ const Page5_Q1_CleanAudio = () => {
   const [masculinNumbers, setMasculinNumbers] = useState([]);
   const [femininNumbers, setFemininNumbers] = useState([]);
   const [score, setScore] = useState(null);
-  const [checkedAnswers, setCheckedAnswers] = useState({ masculins: [], feminins: [] });
+  const [checkedAnswers, setCheckedAnswers] = useState({ 
+    masculins: { correct: [], wrong: [], missing: [] }, 
+    feminins: { correct: [], wrong: [], missing: [] } 
+  });
   const [showCorrections, setShowCorrections] = useState(false);
+  const [lastAddedNumber, setLastAddedNumber] = useState(null);
+  const [selectedWordIndex, setSelectedWordIndex] = useState(null);
+  
+  // Refs للسكرول
+  const wordsGridRef = useRef(null);
+  const wordRowRefs = useRef([]);
+  const masculinInputRef = useRef(null);
+  const femininInputRef = useRef(null);
+
+  // تهيئة refs للكلمات
+  useEffect(() => {
+    wordRowRefs.current = wordRowRefs.current.slice(0, wordsList.length);
+  }, []);
+
+  // السكرول التلقائي عند اختيار رقم
+  useEffect(() => {
+    if (lastAddedNumber !== null && wordsGridRef.current) {
+      const index = lastAddedNumber;
+      
+      // تأخير بسيط للتأكد من تحديث DOM
+      setTimeout(() => {
+        if (wordRowRefs.current[index]) {
+          wordRowRefs.current[index].scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'center'
+          });
+          
+          // تمييز الكلمة مؤقتاً
+          setSelectedWordIndex(index);
+          
+          // إزالة التمييز بعد 2 ثانية
+          setTimeout(() => {
+            setSelectedWordIndex(null);
+          }, 2000);
+        }
+      }, 100);
+    }
+  }, [lastAddedNumber]);
+
+  // دالة محسنة لإضافة رقم مع السكرول
+  const addNumberWithScroll = (num, type) => {
+    const index = num - 1;
+    
+    if (type === 'masculin') {
+      if (!masculinNumbers.includes(index) && !femininNumbers.includes(index)) {
+        setMasculinNumbers([...masculinNumbers, index]);
+        setMasculinInput("");
+        setLastAddedNumber(index);
+        // التركيز على حقل المؤنث بعد الإضافة
+        setTimeout(() => femininInputRef.current?.focus(), 100);
+      } else {
+        ValidationAlert.warning("Ce numéro est déjà utilisé", "Choisissez un autre numéro");
+      }
+    } else {
+      if (!femininNumbers.includes(index) && !masculinNumbers.includes(index)) {
+        setFemininNumbers([...femininNumbers, index]);
+        setFemininInput("");
+        setLastAddedNumber(index);
+        // التركيز على حقل المذكر بعد الإضافة
+        setTimeout(() => masculinInputRef.current?.focus(), 100);
+      } else {
+        ValidationAlert.warning("Ce numéro est déjà utilisé", "Choisissez un autre numéro");
+      }
+    }
+  };
 
   // دالة لإضافة رقم إلى القائمة المذكرة
   const addMasculinNumber = () => {
     const num = parseInt(masculinInput.trim());
     if (!isNaN(num) && num >= 1 && num <= wordsList.length) {
-      const index = num - 1; // تحويل لرقم الفهرس (يبدأ من 0)
-      if (!masculinNumbers.includes(index) && !femininNumbers.includes(index)) {
-        setMasculinNumbers([...masculinNumbers, index]);
-        setMasculinInput("");
-      } else {
-        ValidationAlert.warning("Ce numéro est déjà utilisé", "Choisissez un autre numéro");
-      }
+      addNumberWithScroll(num, 'masculin');
     } else {
       ValidationAlert.warning("Numéro invalide", `Veuillez entrer un numéro entre 1 et ${wordsList.length}`);
     }
@@ -54,13 +118,7 @@ const Page5_Q1_CleanAudio = () => {
   const addFemininNumber = () => {
     const num = parseInt(femininInput.trim());
     if (!isNaN(num) && num >= 1 && num <= wordsList.length) {
-      const index = num - 1; // تحويل لرقم الفهرس (يبدأ من 0)
-      if (!femininNumbers.includes(index) && !masculinNumbers.includes(index)) {
-        setFemininNumbers([...femininNumbers, index]);
-        setFemininInput("");
-      } else {
-        ValidationAlert.warning("Ce numéro est déjà utilisé", "Choisissez un autre numéro");
-      }
+      addNumberWithScroll(num, 'feminin');
     } else {
       ValidationAlert.warning("Numéro invalide", `Veuillez entrer un numéro entre 1 et ${wordsList.length}`);
     }
@@ -80,22 +138,14 @@ const Page5_Q1_CleanAudio = () => {
 
   // إزالة رقم من القائمة المذكرة
   const removeMasculinNumber = (index) => {
-    const newNumbers = [...masculinNumbers];
-    const removedIndex = newNumbers.indexOf(index);
-    if (removedIndex > -1) {
-      newNumbers.splice(removedIndex, 1);
-      setMasculinNumbers(newNumbers);
-    }
+    const newNumbers = masculinNumbers.filter(num => num !== index);
+    setMasculinNumbers(newNumbers);
   };
 
   // إزالة رقم من القائمة المؤنثة
   const removeFemininNumber = (index) => {
-    const newNumbers = [...femininNumbers];
-    const removedIndex = newNumbers.indexOf(index);
-    if (removedIndex > -1) {
-      newNumbers.splice(removedIndex, 1);
-      setFemininNumbers(newNumbers);
-    }
+    const newNumbers = femininNumbers.filter(num => num !== index);
+    setFemininNumbers(newNumbers);
   };
 
   // التحقق من الإجابات
@@ -196,11 +246,16 @@ const Page5_Q1_CleanAudio = () => {
     }
   };
 
-  // عرض الإجابات النموذجية
+  // عرض الإجابات النموذجية - الدالة المفقودة
   const showAnswerFunc = () => {
     setMasculinNumbers([...correctAnswers.masculins]);
     setFemininNumbers([...correctAnswers.feminins]);
     setShowCorrections(false);
+    setScore(null);
+    ValidationAlert.success(
+      "Réponses affichées",
+      "Les réponses correctes sont maintenant affichées dans les colonnes."
+    );
   };
 
   // إعادة تعيين التمرين
@@ -210,8 +265,15 @@ const Page5_Q1_CleanAudio = () => {
     setMasculinNumbers([]);
     setFemininNumbers([]);
     setScore(null);
-    setCheckedAnswers({ masculins: [], feminins: [] });
+    setCheckedAnswers({ 
+      masculins: { correct: [], wrong: [], missing: [] }, 
+      feminins: { correct: [], wrong: [], missing: [] } 
+    });
     setShowCorrections(false);
+    setLastAddedNumber(null);
+    setSelectedWordIndex(null);
+    // التركيز على حقل المذكر بعد الإعادة
+    setTimeout(() => masculinInputRef.current?.focus(), 100);
   };
 
   // دالة للتحقق إذا كان الرقم صحيح أو خاطئ (للتلوين)
@@ -235,9 +297,23 @@ const Page5_Q1_CleanAudio = () => {
     return "";
   };
 
-  // دالة للحصول على النص المعروض للرقم
-  const getDisplayText = (num) => {
-    return `${num + 1}. ${wordsList[num]}`;
+  // دالة للحصول على كلاس الكلمة في القائمة
+  const getWordRowClass = (index) => {
+    let classes = '';
+    
+    if (masculinNumbers.includes(index)) {
+      classes += ' bg-blue-50 border-blue-300';
+    } else if (femininNumbers.includes(index)) {
+      classes += ' bg-pink-50 border-pink-300';
+    } else {
+      classes += ' bg-gray-50 border-gray-200';
+    }
+    
+    if (selectedWordIndex === index) {
+      classes += ' selected recently-added';
+    }
+    
+    return classes;
   };
 
   // الحصول على الكلمة من رقمها
@@ -260,38 +336,58 @@ const Page5_Q1_CleanAudio = () => {
       >
         <span className="ex-A" style={{ backgroundColor: "#df4f89" }}>A</span>
         <span className="number-of-q">3</span>{" "}
-    Écris les mots qui sont
+        Écris les mots qui sont
       </header>
 
       {score && <ScoreCardEnhanced score={score} />}
 
       {/* Exercise Container */}
-      <div className="exercise-container w-full max-w-6xl flex flex-col md:flex-row gap-8">
+      <div className="exercise-container27 ">
         
         {/* جدول الكلمات المرقمة */}
-        <div className="words-table-section w-full md:w-1/3">
-          <div className="words-table-container p-4 bg-white rounded-lg shadow-md">
-            <h3 className="text-lg font-bold mb-3 text-center">Tableau des mots :</h3>
-            <div className="words-grid grid grid-cols-1 gap-2">
+        <div className="words-table-section27 ">
+          <div className="words-table-container27 ">
+            <h3 className="text-base ">
+              Tableau des mots :
+            </h3>
+
+            {/* شبكة الكلمات مع ref للسكرول */}
+            <div 
+              className="words-grid "
+              ref={wordsGridRef}
+            >
               {wordsList.map((word, index) => (
                 <div 
                   key={index}
-                  className={`word-row p-3 rounded border flex items-center gap-3 ${
-                    masculinNumbers.includes(index) ? 'bg-blue-50 border-blue-300' : 
-                    femininNumbers.includes(index) ? 'bg-pink-50 border-pink-300' : 
-                    'bg-gray-50 border-gray-200'
-                  }`}
+                  ref={el => wordRowRefs.current[index] = el}
+                  className={`word-row p-2 sm:p-3 rounded border flex items-center gap-2 sm:gap-3 transition-all duration-300 ${getWordRowClass(index)}`}
+                  data-index={index}
                 >
-                  <div className={`number-circle w-8 h-8 flex items-center justify-center rounded-full font-bold ${
+                  <div className={`number-circle w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 flex items-center justify-center rounded-full font-bold text-xs sm:text-sm md:text-base transition-colors duration-300 ${
                     masculinNumbers.includes(index) ? 'bg-blue-500 text-white' : 
                     femininNumbers.includes(index) ? 'bg-pink-500 text-white' : 
                     'bg-gray-300 text-gray-700'
                   }`}>
                     {index + 1}
                   </div>
-                  <span className="word-text">{word}</span>
+                  <span className="word-text text-sm sm:text-base truncate">{word}</span>
+                  
+                  {/* مؤشر حالة الكلمة */}
+                  {(masculinNumbers.includes(index) || femininNumbers.includes(index)) && (
+                    <span className={`ml-auto px-2 py-1 text-xs rounded-full ${
+                      masculinNumbers.includes(index) ? 'bg-blue-100 text-blue-800' : 
+                      'bg-pink-100 text-pink-800'
+                    }`}>
+                      {masculinNumbers.includes(index) ? '♂' : '♀'}
+                    </span>
+                  )}
                 </div>
               ))}
+            </div>
+            
+            {/* تعليمات السكرول */}
+            <div className="mt-3 text-xs text-gray-500 text-center">
+              ✓ Le défilement automatique s'active lors de la sélection d'un numéro
             </div>
           </div>
         </div>
@@ -310,6 +406,7 @@ const Page5_Q1_CleanAudio = () => {
               <div className="input-group p-4 bg-blue-100 border-x-2 border-blue-300">
                 <div className="flex gap-2">
                   <input
+                    ref={masculinInputRef}
                     type="number"
                     min="1"
                     max={wordsList.length}
@@ -321,7 +418,7 @@ const Page5_Q1_CleanAudio = () => {
                   />
                   <button
                     onClick={addMasculinNumber}
-                    className="px-4 bg-blue-500 hover:bg-blue-600 text-white rounded font-medium transition-colors"
+                    className="px-2 bg-blue-500 hover:bg-blue-600 text-white rounded font-medium transition-colors"
                   >
                     Ajouter
                   </button>
@@ -395,9 +492,10 @@ const Page5_Q1_CleanAudio = () => {
               </div>
               
               {/* حقل الإدخال */}
-              <div className="input-group p-4 bg-pink-100 border-x-2 border-pink-300">
+              <div className="input-group27 p-4 bg-pink-100 border-x-2 border-pink-300">
                 <div className="flex gap-2">
                   <input
+                    ref={femininInputRef}
                     type="number"
                     min="1"
                     max={wordsList.length}
@@ -478,9 +576,9 @@ const Page5_Q1_CleanAudio = () => {
           </div>
         </div>
       </div>
-
+<div className="spaces"></div>
       {/* Buttons */}
-    <div className="action-buttons-container">
+      <div className="action-buttons-container">
         <button onClick={resetExercise} className="try-again-button">
          Recommencer ↻
         </button>

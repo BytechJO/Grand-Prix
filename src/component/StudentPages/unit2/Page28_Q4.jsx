@@ -89,12 +89,12 @@ const Page5_Q1_CleanAudio = () => {
       {score && <ScoreCardEnhanced score={score} />}
 
       {/* Exercise Container */}
-      <div className="exercise-container w-full max-w-6xl flex flex-col lg:flex-row gap-8">
-        
+<div className="page28q4-exercise-container w-full max-w-6xl flex flex-col lg:flex-row gap-8">
+          
         {/* الحوار على اليسار */}
-        <div className="dialogue-section lg:w-2/3">
-          <div className="dialogue-exercise w-full bg-white p-8 rounded-xl ">
-            <div className="dialogue-text space-y-6">
+        <div className="page28q4-dialogue-section lg:w-2/3">
+    <div className="page28q4-dialogue-exercise w-full bg-white p-8 rounded-xl">
+      <div className="page28q4-dialogue-text space-y-6">
               
               {/* Ligne 1 */}
               <div className="dialogue-line flex items-start">
@@ -243,25 +243,25 @@ const Page5_Q1_CleanAudio = () => {
         </div>
 
         {/* الصور على اليمين */}
-        <div className="images-section lg:w-1/3 flex flex-col gap-6">
-          <div className="image-container bg-white p-4 rounded-xl ">
-            <img 
-              src={img1} 
-              alt="Dialogue illustration 1" 
-              className="w-full h-auto max-h-[280px] object-contain"
-            />
-          </div>
-          <div className="image-container bg-white p-4 rounded-xl ">
-            <img 
-              src={img2} 
-              alt="Dialogue illustration 2" 
-              className="w-full h-auto max-h-[280px] object-contain"
-            />
-          </div>
-        </div>
+       <div className="page28q4-images-section lg:w-1/3 flex flex-col gap-6">
+    <div className="page28q4-image-container bg-white p-4 rounded-xl">
+      <img 
+        src={img1} 
+        alt="Dialogue illustration 1" 
+        className="page28q4-image w-full h-auto max-h-[280px] object-contain"
+      />
+    </div>
+    <div className="page28q4-image-container bg-white p-4 rounded-xl">
+      <img 
+        src={img2} 
+        alt="Dialogue illustration 2" 
+        className="page28q4-image w-full h-auto max-h-[280px] object-contain"
+      />
+    </div>
+  </div>
 
       </div>
-
+<div className="spaces"></div>
       {/* Buttons */}
        <div className="action-buttons-container">
         <button onClick={resetExercise} className="try-again-button">
